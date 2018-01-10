@@ -5,6 +5,8 @@ import zhijian from '@/components/zhijian'
 import zhijians from '@/components/zhijians'
 import zhijian2 from '@/components/zhijia2'
 import zhijian3 from '@/components/zhijian3'
+import zhijian4 from '@/components/zhijian4'
+// import check from '@/components/check'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +31,16 @@ export default new Router({
       		name:'zhijian3',
       		component:zhijian3
       	},
+        {
+          path:'/zhijian4',
+          name:'zhijian4',
+          component:zhijian4
+        },
+        // {
+        //   path:'/check',
+        //   name:'check',
+        //   component:check
+        // },
       ]
 
     }

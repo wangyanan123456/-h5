@@ -1,7 +1,6 @@
 <template>
   <div class="head">
   	<div class="title">{{count}}</div>
-  	<div class="hui"></div>
   </div>
 </template>
 <script type="text/javascript">
@@ -19,26 +18,22 @@ import { mapState } from 'vuex'
 <style scoped>
 .head{
 	width:100%;
-	height: 1.23rem;
+	height: 0.64rem;
 	position: fixed;
 	top:0;
+	z-index: 1000;
 }
 .title{
 	
 	width:100%;
-	height: 1.05rem;
+	height: 0.64rem;
 	text-align: center;
-	line-height: 1.3rem;
-	font-size:0.3rem;
+	line-height: 0.8rem;
+	font-size:0.18rem;
 	color: #fff;
 	background: -webkit-linear-gradient(top, #2C2D31, #101013);
 	opacity: 0.9;
 	font-weight: bold;
-}
-.hui{
-	width:100%;
-	height: 0.23rem;
-	background: #EFEFF4;
 }
 
  

@@ -1,5 +1,6 @@
 <template>
 	<div class="zhijian">
+	<div class="none"></div>
 	<router-view/>
 	<zhijians></zhijians>
 	</div>
@@ -16,6 +17,6 @@ export default{
 </script>
 <style type="text/css">
 	.zhijian{
-		padding-top: 1.28rem;
+		padding-top: 1.26rem;
 	}
 </style>

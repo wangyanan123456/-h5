@@ -1,0 +1,87 @@
+
+.header{
+  width:100%;
+  height: 1.23rem;
+  position: fixed;
+  top:0;
+  z-index: 3000;
+}
+.title{
+  width:100%;
+  height: 1.0rem;
+  text-align: center;
+  line-height: 1.3rem;
+  font-size:0.3rem;
+  color: #fff;
+  background: -webkit-linear-gradient(top, #2C2D31, #101013);
+  /*background: red;*/
+  opacity: 0.9;
+}
+.hui{
+  width:100%;
+  height: 0.24rem;
+  background: #EFEFF4;
+}
+.head{
+    width:100%;
+    background: #EFEFF4;
+    text-align: left;
+    padding-top: 1.23rem;
+    min-height:88.5vh;
+   }
+    .backto{
+    color: #fff;
+    display: flex;
+    margin-left: 0.16rem;
+     position: fixed;
+    top:0.25rem;
+    z-index: 3000;
+   }
+   .backto img{
+    width:0.16rem;
+    height: 0.28rem;
+    background-size: 100% 100%;
+    margin-top: 0.24rem;
+    margin-right: 0.08rem;
+   }
+   .backto div{
+    margin-top: 0.22rem;
+    font-size: 0.25rem;
+   }
+
+   li{
+    width:100%;
+    background: #fff;
+    display: flex;
+    
+   
+   }
+   .left{
+    
+    padding-bottom: 0.2rem;
+    margin-left:0.23rem;
+    padding-top: 0.2rem;
+    width:70%;
+    border-bottom: 1px solid #e5e5e5;
+   }
+
+  .zhandian{
+    font-size:0.28rem;
+    color: #333;
+  }
+  .palce{
+    font-size:0.19rem;
+    color: #666;
+    margin-top: 0.2rem;
+  }
+  .right{
+     width:30%;
+    padding-left: 0.8rem;
+    margin-top: 0.38rem;
+    font-size: 0.28rem;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+ 
+ 
+  
