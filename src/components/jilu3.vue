@@ -12,7 +12,7 @@
 			<div>
 				<div class="backto" @click.stop="naviTo({path: '/jilu2'})">
 					<div>
-						<img src="../assets/img/backto.png">
+						<img src="../assets/img/back.png">
 					</div>
 					<div class="back">返回</div>
 				</div>

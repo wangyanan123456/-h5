@@ -4,7 +4,7 @@
 			<div>
 				<div class="backto" @click.stop="naviTo({path: '/zhijian3'})">
 					<div>
-						<img src="../assets/img/backto.png">
+						<img src="../assets/img/back.png">
 					</div>
 					<div class="back">返回</div>
 				</div>
@@ -98,13 +98,13 @@ export default{
 	.zhijian4 .backto{
 		display: flex;
 		margin-right: 0.71rem;
-		font-size: 0.16rem;
-		color: #353535;
+		font-size: 0.14rem;
+		color: #008CFF;
 	}
 	.zhijian4 .backto img{
 		width: 0.06rem;
 		height: 0.1rem;
-		margin-top: 0.21rem;
+		margin-top: 0.18rem;
 		margin-right: 0.05rem;
 	}
 	.zhijian4 .wrap .back{

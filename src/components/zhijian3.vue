@@ -4,7 +4,7 @@
 			<div>
 				<div class="backto">
 					<div>
-						<img src="../assets/img/backto.png">
+						<img src="../assets/img/back.png">
 					</div>
 					<div>返回</div>
 				</div>
@@ -96,8 +96,8 @@ export default{
 	.zhijian3 .backto{
 		display: flex;
 		margin-right: 0.71rem;
-		font-size: 0.16rem;
-		color: #353535;
+		font-size: 0.14rem;
+		color: #008CFF;
 	}
 	.zhijian3 .backto img{
 		width: 0.06rem;
