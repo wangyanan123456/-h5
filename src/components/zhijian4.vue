@@ -10,11 +10,8 @@
 				</div>
 				<div class="divTitle">黑眼豆豆质检/<span class='span' style='color:#008CFF'>配料</span></div>
 			</div>
-
-			<a  @click='baidu'>跳转百度</a>
 			<ul>
-				<li >
-				 <a href="../../html/goodshuishou.html">
+				<li @click.stop="naviTo({path: '/check'})">
 					<div class="weight">
 						<div>称重</div>
 						<div class="begin">未开始</div>
@@ -31,11 +28,10 @@
 							<div>0</div>
 						</div>
 					</div>
-					</a>
 				</li>
-				<li>
+				<li @click.stop="naviTo({path: '/check'})">
 					<div class="weight">
-						<div>称重</div>
+						<div>是否过期</div>
 						<div class="thought">已通过</div>
 					</div>
 					<div class="detail">
@@ -66,8 +62,8 @@ export default{
 	          path, query
 	        })
 	    },
-	    baidu:function(){
-	    	window.open('check.html')
+	    baidu:function(e){
+	    	 window.location.href = e
 	    }
   }
 }

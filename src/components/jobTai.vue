@@ -1,11 +1,21 @@
 <template>
   <div class="hello">
     <div v-if='img'>
-      <div @click.stop="naviTo({path: '/zhijian'})">hello</div>
+          <ul class="jobList">
+            <li @click.stop="naviTo({path: '/zhijian'})">
+              <img src="../assets/img/kucun.png">
+            </li>
+            <li>
+               <img src="../assets/img/zhiliang.png">
+            </li>
+            <li>
+               <img src="../assets/img/boss.png">
+            </li>
+          </ul>
     </div>
     <div  v-if='!img'>hi</div>
     <div class="footer">
-       <ul>
+      <ul>
       <li @click="tojobtai">
            <div  :class="img?'img1':'img4'"  ></div>
           
@@ -52,7 +62,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello{
-  padding-top:0.64rem;
+  padding-top:0.69rem;
   width:100%;
   min-height: 80vh;
   background: #EFEFF4;
@@ -90,7 +100,7 @@ export default {
     margin: 0 auto;
   }
   .footer .img2{
-    background: url('../assets/img/foot22.png') ;
+    background: url('../assets/img/img7.png') ;
     background-size: 100% 100%;
     height: 0.24rem;
     width:0.22rem;
@@ -111,6 +121,11 @@ export default {
     width:0.22rem;
     margin: 0 auto;
 
+  }
+  .jobList li{
+    width:100;
+    height: 1.3rem;
+    margin-top: 0.1rem;
   }
 
   

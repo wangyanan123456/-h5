@@ -1,7 +1,7 @@
 <template>
 	<div class="tab">
 		<ul>
-			<li @click.stop="naviTo({path: '/zhijian'})">质检任务</li>
+			<li @click.stop="naviTo({path: '/zhijian'})"  :class="($route.path === '/zhijian' || $route.path === '/zhijian4' || $route.path === '/zhijian3')?'color':'color2'" >质检任务</li>
 			<li >问题清单</li>
 			<li style="margin-right:none;">质检记录</li>
 		</ul>
@@ -48,6 +48,13 @@ export default{
 		width:100%;
 		height: 0.15rem;
 		background: #EFEFF4;
+	}
+	.color{
+		color: #1AAD19;
+		border-bottom: 3px solid #1AAD19;
+	}
+	.color2{
+		color: blue;
 	}
 	
 </style>
