@@ -10,6 +10,15 @@ import check from '@/components/check'
 import yanshou from '@/components/yanshou'
 import problem from '@/components/problem'
 import yanshou2 from '@/components/yanshou2'
+import wenlist1 from '@/components/wenlist1'
+import wenlist2 from '@/components/wenlist2'
+import xiugai from '@/components/xiugai'
+import wenyanshou from '@/components/wenyanshou'
+import wenyanshou2 from '@/components/wenyanshou2'
+import jilu from '@/components/jilu'
+import jilu2 from '@/components/jilu2'
+import jilu3 from '@/components/jilu3'
+import jilu4 from '@/components/jilu4'
 
 Vue.use(Router)
 
@@ -39,11 +48,38 @@ export default new Router({
           path:'/zhijian4',
           name:'zhijian4',
           component:zhijian4
-        }
+        },
+        {
+          path: '/wenlist1',
+          name: 'wenlist1',
+          component: wenlist1
+        },
+        {
+          path: '/jilu',
+          name: 'jilu',
+          component: jilu
+        },
+         {
+          path: '/jilu2',
+          name: 'jilu2',
+          component: jilu2
+        },
+        {
+          path: '/jilu3',
+          name: 'jilu3',
+          component: jilu3
+        },
+         {
+          path: '/jilu4',
+          name: 'jilu4',
+          component: jilu4
+        },
+        
         
       ]
 
     },
+
      {
       path: '/check',
       name: 'check',
@@ -64,5 +100,26 @@ export default new Router({
       name: 'yanshou2',
       component: yanshou2
     },
+    {
+      path: '/wenlist2',
+      name: 'wenlist2',
+      component: wenlist2
+    },
+    {
+      path: '/xiugai',
+      name: 'xiugai',
+      component: xiugai
+    },
+    {
+      path: '/wenyanshou',
+      name: 'wenyanshou',
+      component: wenyanshou
+    },
+    {
+      path: '/wenyanshou2',
+      name: 'wenyanshou2',
+      component: wenyanshou2
+    }
+    
   ]
 })

@@ -5,10 +5,10 @@
             <li @click.stop="naviTo({path: '/zhijian'})">
               <img src="../assets/img/kucun.png">
             </li>
-            <li>
+            <li @click.stop="naviTo({path: '/wenlist1'})">
                <img src="../assets/img/zhiliang.png">
             </li>
-            <li>
+            <li @click.stop="naviTo({path: '/jilu'})">
                <img src="../assets/img/boss.png">
             </li>
           </ul>

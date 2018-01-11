@@ -1,6 +1,15 @@
 <template>
-	<div class="zhijian3"  @click.stop="naviTo({path: '/zhijian'})">
+	<div class="zhijian3"  @click.stop="naviTo({path: '/jilu'})">
+	<div class="today">
+			<div>
+				<img src="../assets/img/data.png">
+			</div>
+			<div>
+				<input value="请选择日期" />
+			</div>
+	</div>
 		<div class="box">
+		
 			<div>
 				<div class="backto">
 					<div>
@@ -11,7 +20,7 @@
 				<div class="divTitle">黑眼豆豆质检</div>
 			</div>
 			<ul>
-			<li  @click.stop="naviTo({path: '/zhijian4'})">
+			<li  @click.stop="naviTo({path: '/jilu3'})">
 				<div class="flex">
 					<div>黑眼豆豆</div>
 					<div class="kai">
@@ -23,7 +32,7 @@
 					</div>
 				</div>
 			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
+			<li  @click.stop="naviTo({path: '/jilu3'})">
 				<div class="flex">
 					<div>黑眼豆豆</div>
 					<div class="kai">
@@ -34,7 +43,7 @@
 						
 					</div>
 				</div>
-			</li><li  @click.stop="naviTo({path: '/zhijian3'})">
+			</li><li  @click.stop="naviTo({path: '/jilu3'})">
 				<div class="flex">
 					<div>黑眼豆豆</div>
 					<div class="kai">
@@ -45,7 +54,7 @@
 						
 					</div>
 				</div>
-			</li><li  @click.stop="naviTo({path: '/zhijian3'})">
+			</li><li  @click.stop="naviTo({path: '/jilu3'})">
 				<div class="flex">
 					<div>黑眼豆豆</div>
 					<div class="kai">
@@ -126,8 +135,6 @@ export default{
 	.flex{
 		display: flex;
 		position: relative;
-		font-size: 0.14rem;
-		color: #666;
 	}
 	.zhijian3 .kai{
 		display: flex;
@@ -142,5 +149,29 @@ export default{
 	}
 	.zhijian3 li:last-child{
 		border: none;
+	}
+	.today {
+		width:3.45rem;
+		height: 0.35rem;
+		background: #fff;
+		margin: 0 auto;
+		margin-bottom: 0.15rem;
+		border-radius: 0.24rem;
+		display: flex;
+	}
+	.today  input{
+		border:none;
+		height: 0.25rem;
+		line-height: 0.25rem;
+		width:1.5rem;
+		color: #999;
+		margin-top: 0.05rem;
+	}
+	.today img{
+		width:0.17rem;
+		height: 0.16rem;
+		margin-left:0.17rem;
+		margin-top: 0.1rem;
+		margin-right: 0.05rem;
 	}
 </style>

@@ -1,8 +1,16 @@
 <template>
 	<div class="zhijian4">
+	<div class="today">
+			<div>
+				<img src="../assets/img/data.png">
+			</div>
+			<div>
+				<input value="请选择日期" />
+			</div>
+	</div>
 		<div class="wrap">
 			<div>
-				<div class="backto" @click.stop="naviTo({path: '/zhijian3'})">
+				<div class="backto" @click.stop="naviTo({path: '/jilu2'})">
 					<div>
 						<img src="../assets/img/backto.png">
 					</div>
@@ -11,14 +19,14 @@
 				<div class="divTitle">黑眼豆豆质检/<span class='span' style='color:#008CFF'>配料</span></div>
 			</div>
 			<ul>
-				<li @click.stop="naviTo({path: '/check'})">
+				<li @click.stop="naviTo({path: '/jilu4'})">
 					<div class="phone">
 						<img src="../assets/img/phone.png" class="phone1">
 						<img src="../assets/img/phone.png" class="phone2">
 					</div>
 					<div class="weight">
 						<div>称重</div>
-						<div class="begin">未开始</div>
+						<div class="begin">已验收</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -33,14 +41,14 @@
 						</div>
 					</div>
 				</li>
-				<li @click.stop="naviTo({path: '/check'})">
+				<li @click.stop="naviTo({path: '/jilu4'})">
 				<div class="phone">
 						<img src="../assets/img/phone.png" class="phone1">
 						<img src="../assets/img/phone.png" class="phone2">
 					</div>
 					<div class="weight">
 						<div>是否过期</div>
-						<div class="thought">已通过</div>
+						<div class="thought">已验收</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -62,7 +70,7 @@
 </template>
 <script type="text/javascript">
 export default{
-	name:'zhijian4',
+	name:'jilu3',
 	methods:{
    
 	    naviTo({path, query}) {
@@ -149,7 +157,7 @@ export default{
 		top:0.34rem;
 		right:0.15rem;
 		font-size: 0.14rem;
-		color: #008CFF;
+		color: #1AAD19;
 	}
 	.zhijian4 .detail{
 		height: 1.055rem;
@@ -175,6 +183,30 @@ export default{
 		right:0.15rem;
 		font-size: 0.14rem;
 		color: #1AAD19;
+	}
+	.today {
+		width:3.45rem;
+		height: 0.35rem;
+		background: #fff;
+		margin: 0 auto;
+		margin-bottom: 0.15rem;
+		border-radius: 0.24rem;
+		display: flex;
+	}
+	.today  input{
+		border:none;
+		height: 0.25rem;
+		line-height: 0.25rem;
+		width:1.5rem;
+		color: #999;
+		margin-top: 0.05rem;
+	}
+	.today img{
+		width:0.17rem;
+		height: 0.16rem;
+		margin-left:0.17rem;
+		margin-top: 0.1rem;
+		margin-right: 0.05rem;
 	}
 
 	

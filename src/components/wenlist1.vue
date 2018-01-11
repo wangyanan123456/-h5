@@ -1,24 +1,15 @@
 <template>
-	<div class="zhijian4">
+	<div class="wenlist1">
+		<div class="backto" @click.stop="naviTo({path: '/'})">
+	      <img src="../assets/img/backto.png">
+	      <div>返回</div>
+	    </div>
 		<div class="wrap">
-			<div>
-				<div class="backto" @click.stop="naviTo({path: '/zhijian3'})">
-					<div>
-						<img src="../assets/img/backto.png">
-					</div>
-					<div class="back">返回</div>
-				</div>
-				<div class="divTitle">黑眼豆豆质检/<span class='span' style='color:#008CFF'>配料</span></div>
-			</div>
 			<ul>
-				<li @click.stop="naviTo({path: '/check'})">
-					<div class="phone">
-						<img src="../assets/img/phone.png" class="phone1">
-						<img src="../assets/img/phone.png" class="phone2">
-					</div>
+				<li @click.stop="naviTo({path: '/wenlist2'})">
 					<div class="weight">
 						<div>称重</div>
-						<div class="begin">未开始</div>
+						<div class="begin">待整改</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -33,14 +24,10 @@
 						</div>
 					</div>
 				</li>
-				<li @click.stop="naviTo({path: '/check'})">
-				<div class="phone">
-						<img src="../assets/img/phone.png" class="phone1">
-						<img src="../assets/img/phone.png" class="phone2">
-					</div>
+				<li @click.stop="naviTo({path: '/wenyanshou2'})">
 					<div class="weight">
 						<div>是否过期</div>
-						<div class="thought">已通过</div>
+						<div class="thought">已整改</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -62,7 +49,7 @@
 </template>
 <script type="text/javascript">
 export default{
-	name:'zhijian4',
+	name:'wenlist1',
 	methods:{
    
 	    naviTo({path, query}) {
@@ -77,82 +64,59 @@ export default{
 }
 </script>
 <style type="text/css">
-	.zhijian4{
+	.wenlist1{
 		width:100%;
-		height: 81vh;
+		height: 80vh;
 		/*padding-top: 1.28rem;*/
 		background: #EFEFF4;
+		/*background: red;*/
 	}
-	.zhijian4 .wrap{
+	.wenlist1 .wrap{
 		width:3.45rem;
 		margin: 0 auto;
 	}
-	.zhijian4 .wrap>div{
-		display: flex;
-		width:3.30rem;
-		height: 0.66rem;
-		background: #fff;
-		line-height: 0.46rem;
-		padding-left: 0.15rem;
-	}
-	.zhijian4 .backto{
-		display: flex;
-		margin-right: 0.71rem;
-		font-size: 0.16rem;
-		color: #353535;
-	}
-	.zhijian4 .backto img{
-		width: 0.06rem;
-		height: 0.1rem;
-		margin-top: 0.21rem;
+	
+	.wenlist1 .backto{
+	    position: fixed;
+	    top:0.32rem;
+	    z-index: 1200;
+	    color: #fff;
+	    display: flex;
+	    left: 0.05rem;
+	   }
+   	.wenlist1 .backto img{
+		width: 0.1rem;
+		height: 0.18rem;
 		margin-right: 0.05rem;
-	}
-	.zhijian4 .wrap .back{
-		color: #008CFF;
-		font-size: 0.14rem;
-	}
-	.zhijian4 .wrap ul{
 		
-		margin-top: 0.1rem;
+   	}
+	.wenlist1 .wrap ul{
+		
+		/*margin-top: 0.1rem;*/
 	}
-	.zhijian4 .wrap ul li{
+	.wenlist1 .wrap ul li{
 		padding-left: 0.15rem;
 		margin-bottom: 0.11rem;
 		background: #fff;
-		position: relative;
 	}
-	.phone1{
-		position: absolute;
-		top:-0.3rem;
-		left: 0.2rem;
-	}
-	.phone2{
-		position: absolute;
-		top:-0.3rem;
-		right: 0.2rem;
-	}
-	.zhijian4 .wrap ul li img{
-		width:0.16rem;
-		height: 0.48rem;
-	}
-	.zhijian4 .wrap  .weight{
+	.wenlist1 .wrap  .weight{
 		display: flex;
 		height: 0.32rem;
-		padding-top: 0.34rem;
+		padding-top: 0.15rem;
 		border-bottom: 1px solid #e5e5e5;
 		position: relative;
 		font-size: 0.16rem;
 		color: #353535;
 	}
-	.zhijian4 .begin{
+	.wenlist1 .begin{
 		position: absolute;
-		top:0.34rem;
+		top:0.15rem;
 		right:0.15rem;
 		font-size: 0.14rem;
 		color: #008CFF;
 	}
-	.zhijian4 .detail{
-		height: 1.055rem;
+	.wenlist1 .detail{
+		height: 0.9rem;
 		display: flex;
 		text-align: left;
 		font-size: 0.14rem;
@@ -160,18 +124,18 @@ export default{
 		margin-top: 0.05rem;
 		position: relative;
 	}
-	.zhijian4 .detail div{
+	.wenlist1 .detail div{
 		margin-top: 0.05rem;
 		
 	}
-	.zhijian4 .right{
+	.wenlist1 .right{
 		position: absolute;
 		right:0.15rem;
 		text-align: right;
 	}
-	.zhijian4 .thought{
+	.wenlist1 .thought{
 		position: absolute;
-		top:0.34rem;
+		top:0.15rem;
 		right:0.15rem;
 		font-size: 0.14rem;
 		color: #1AAD19;

@@ -2,8 +2,8 @@
 	<div class="tab">
 		<ul>
 			<li @click.stop="naviTo({path: '/zhijian'})"  :class="($route.path === '/zhijian' || $route.path === '/zhijian4' || $route.path === '/zhijian3')?'color':'color2'" >质检任务</li>
-			<li >问题清单</li>
-			<li style="margin-right:none;">质检记录</li>
+			<li @click.stop="naviTo({path: '/wenlist1'})" :class="($route.path === '/wenlist1' || $route.path ==='/wenlist2' )?'color':'color2'">问题清单</li>
+			<li @click.stop="naviTo({path: '/jilu'  })" style="margin-right:none;" :class="($route.path === '/jilu'  ||  $route.path ==='/jilu2'    ||  $route.path ==='/jilu3'    ||  $route.path ==='/jilu4' )?'color':'color2'">质检记录</li>
 		</ul>
 		<div class="hui"></div>
 	</div>
@@ -54,7 +54,7 @@ export default{
 		border-bottom: 3px solid #1AAD19;
 	}
 	.color2{
-		color: blue;
+		color: #353535;
 	}
 	
 </style>
