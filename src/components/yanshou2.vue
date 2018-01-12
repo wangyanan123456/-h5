@@ -47,7 +47,7 @@
 			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin">
+						<div class="begin" @click.stop="naviTo({path: '/zhijianxiugai'})">
 							<div>查看问题</div>
 							<div>
 								<img src="../assets/img/kan.png">
@@ -63,7 +63,7 @@
 							<div>0</div>
 						</div>
 					</div>
-					<div class="isok">
+					<div class="isok" @click.stop="naviTo({path: '/yanshou'})">
 						<div>问题已解决</div>
 					</div>
 				</li>

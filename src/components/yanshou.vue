@@ -45,7 +45,7 @@
 				<li >
 					<div class="weight">
 						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+			  	 			<label @click='click'><input type="checkbox" name="items"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin">
@@ -112,6 +112,9 @@
 	      yanshou:function(){
 	      	this.isthought = true
 	      },
+	      click:function(){
+	      	console.log(8)
+	      }
 
 		}
 	}

@@ -10,6 +10,7 @@ import check from '@/components/check'
 import yanshou from '@/components/yanshou'
 import problem from '@/components/problem'
 import yanshou2 from '@/components/yanshou2'
+import zhijianxiugai from '@/components/zhijianxiugai'
 import wenlist1 from '@/components/wenlist1'
 import wenlist2 from '@/components/wenlist2'
 import xiugai from '@/components/xiugai'
@@ -99,6 +100,11 @@ export default new Router({
       path: '/yanshou2',
       name: 'yanshou2',
       component: yanshou2
+    },
+    {
+      path: '/zhijianxiugai',
+      name: 'zhijianxiugai',
+      component: zhijianxiugai
     },
     {
       path: '/wenlist2',
