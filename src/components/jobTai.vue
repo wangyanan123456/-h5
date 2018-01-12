@@ -23,7 +23,7 @@
       </li>
       <li @click="tosetting">
        <div  :class=" !img?'img2':'img5'" ></div>
-          <p :style="{color:!img ? '#008CFF' : '#999'}">订单</p>
+          <p :style="{color:!img ? '#008CFF' : '#999'}">退出</p>
       </li>
       </ul>
     </div>
@@ -64,7 +64,7 @@ export default {
 .hello{
   padding-top:0.69rem;
   width:100%;
-  min-height: 80vh;
+  min-height: 82vh;
   background: #EFEFF4;
 }
   .footer{

@@ -70,10 +70,8 @@ export default{
 	          path, query
 	        })
 	    },
-	    baidu:function(e){
-	    	 window.location.href = e
-	    }
-  }
+	    
+  	}
 }
 </script>
 <style type="text/css">
@@ -104,7 +102,7 @@ export default{
 	.zhijian4 .backto img{
 		width: 0.06rem;
 		height: 0.1rem;
-		margin-top: 0.18rem;
+		margin-top: 0.2rem;
 		margin-right: 0.05rem;
 	}
 	.zhijian4 .wrap .back{

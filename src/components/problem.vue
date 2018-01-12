@@ -11,7 +11,7 @@
 				<img src="../assets/img/name.png">
 			</div>
 			<div class="gai">整改人</div>
-			<div class="xuan" style="margin-left: 2.16rem;">
+			<div class="xuan" style="margin-left: 2.1rem;">
 				<div>请选择</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
@@ -35,13 +35,14 @@
 				<img src="../assets/img/gai.png">
 			</div>
 			<div class="gai">检查项</div>
-			<div class="xuan" style="margin-left: 2rem;">
+			<div class="xuan" style="margin-left: 2.15rem;">
 				<div> 请选择</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
 				</div>
 			</div>
 		</div>
+		
 		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
 		<div class="btn" @click.stop="naviTo({path: '/yanshou2'})">保存</div>
 	</div>
@@ -100,6 +101,7 @@
    		display: flex;
    		width: 3.6rem;
    		height: 0.54rem;
+   		line-height: 0.2rem;
    		background: #fff;
    		padding-left: 0.15rem;
    		

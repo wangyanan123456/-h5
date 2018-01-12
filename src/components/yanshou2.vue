@@ -158,6 +158,7 @@
 		margin-bottom: 0.11rem;
 		background: #fff;
 		/*border-bottom:1px solid #e5e5e5;*/
+		position: relative;
 	}
 	.yanshou2  .weight{
 		display: flex;
@@ -167,6 +168,7 @@
 		position: relative;
 		font-size: 0.16rem;
 		color: #353535;
+		margin-left: 0.2rem;
 	}
 	.yanshou2 .begin{
 		position: absolute;
@@ -224,13 +226,16 @@
 		line-height: 0.14rem;
 		font-size: 0.34rem;
 		color: #666;
-		/*margin-top:0.2rem;*/
+		position: absolute;
+		top:0.11rem;
+		left: -0.23rem;
 	}
 	.yanshou2 label input[type="checkbox"] + span{
 		width:20px;
 		height:20px;
 		display:inline-block;
 		background:url(../assets/img/dui1.png)  no-repeat;
+
 	}
 	.yanshou2 label input[type="checkbox"]:checked + span{
 		width:20px;

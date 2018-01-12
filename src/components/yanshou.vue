@@ -19,10 +19,11 @@
 	    </div>
 	    <ul>
 				<li >
+					
 					<div class="weight">
 						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
-			  			</div>
+		  	 				<label><input type="checkbox" name="items"><span></span></label><br>
+		  				</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin" @click.stop="naviTo({path: '/problem'})">
 							<div>添加问题</div>
@@ -177,6 +178,7 @@
 		/*margin-bottom: 0.11rem;*/
 		background: #fff;
 		border-bottom:1px solid #e5e5e5;
+		position: relative;
 	}
 	.yanshou  .weight{
 		display: flex;
@@ -186,6 +188,8 @@
 		position: relative;
 		font-size: 0.16rem;
 		color: #353535;
+		margin-left: 0.2rem;
+		/*background: red;*/
 	}
 	.yanshou .begin{
 		position: absolute;
@@ -209,6 +213,9 @@
 		color: #666;
 		/*margin-top: 0.05rem;*/
 		position: relative;
+	}
+	.yanshou .detail .left{
+		margin-left: 0.2rem;
 	}
 	.yanshou .detail div{
 		margin-top: 0.07rem;
@@ -244,6 +251,9 @@
 		font-size: 0.34rem;
 		color: #666;
 		/*margin-top:0.2rem;*/
+		position: absolute;
+		top:0.11rem;
+		left: -0.23rem;
 	}
 	.yanshou label input[type="checkbox"] + span{
 		width:20px;
