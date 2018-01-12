@@ -9,6 +9,7 @@ import zhijian4 from '@/components/zhijian4'
 import check from '@/components/check'
 import yanshou from '@/components/yanshou'
 import problem from '@/components/problem'
+import wenproblem from '@/components/wenproblem'
 import yanshou2 from '@/components/yanshou2'
 import zhijianxiugai from '@/components/zhijianxiugai'
 import wenlist1 from '@/components/wenlist1'
@@ -95,6 +96,11 @@ export default new Router({
       path: '/problem',
       name: 'problem',
       component: problem
+    },
+    {
+      path: '/wenproblem',
+      name: 'wenproblem',
+      component: wenproblem
     },
      {
       path: '/yanshou2',

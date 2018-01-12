@@ -24,7 +24,7 @@
 			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click.stop="naviTo({path: '/problem'})">
+						<div class="begin" @click.stop="naviTo({path: '/wenproblem'})">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
