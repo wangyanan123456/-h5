@@ -5,11 +5,11 @@
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
-			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
+			<div class="ok" @click= "backTo">通过</div>
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
-		<div class="backto" @click.stop="naviTo({path: '/zhijian4'})">
+		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
@@ -25,7 +25,7 @@
 		  	 				<label><input type="checkbox" name="items" v-model='arr' value="3"><span></span></label><br>
 		  				</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click.stop="naviTo({path: '/problem'})">
+						<div class="begin" @click="problem">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
@@ -102,7 +102,28 @@
 				apper:false
 			}
 		},
+		mounted(){
+			console.log(this.$route.params)
+		},
 		methods:{
+			backTo(){
+				 this.$router.push({
+		          path:'/zhijian4',
+		          name:'zhijian4',
+		          params:{
+		          	goods_name:this.$route.params.goods_name
+		          }
+		        })
+			},
+			problem(){
+				this.$router.push({
+		          path:'/problem',
+		          name:'problem',
+		          params:{
+		          	goods_name:this.$route.params.goods_name
+		          }
+		        })
+			},
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query

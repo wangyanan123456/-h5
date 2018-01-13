@@ -8,7 +8,7 @@
 					</div>
 					<div>返回</div>
 				</div>
-				<div class="divTitle">{{goodsTitle}}质检</div>
+				<div class="divTitle">{{this.$route.params.goods_name}}质检</div>
 			</div>
 			<ul>
 			<li v-for='item in list2' @click.stop="naviTo(item)">
@@ -44,20 +44,14 @@ export default{
 		}
 	},
 	mounted(){
-		var goods_name = this.$route.params.goods_name
-		this.goodsTitle = goods_name
-		console.log(goods_name,0)
+		
+		console.log(this.$route.params,0)
 	},
 	computed:{
 		 
 	},
 	methods:{
-		getParams () {
-        // 取到路由带过来的参数 
-        var routerParams =this.$route.params.goods_name
-        // 将数据放在当前组件的数据内
-        this.goodsTitle = routerParams
-      },
+		
       backTo(){
       	this.$router.push({
           path:'/zhijian',
@@ -70,8 +64,8 @@ export default{
           path:'/zhijian4',
           name:'zhijian4',
           params:{
-          	project_id:item.id,
-          	goods_name:this.goodsTitle
+          	process_id:item.id,
+          	goods_name:this.$route.params.goods_name
 
           }
         })

@@ -1,21 +1,21 @@
 <template>
 	<div class="yanshou2">
-	<div class="problem" v-if='isthought'>
+	<!-- <div class="problem" v-if='isthought'>
 		<div class="renwu">验收任务</div>
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
 			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
 		</div>
-	</div>
-	<div class="yanshou1" v-if='isthought'></div>
-		<div class="backto" @click.stop="naviTo({path: '/zhijian4'})">
+	</div> -->
+	<!-- <div class="yanshou1" v-if='isthought'></div> -->
+		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
 	    <div class="daiyanshou">
 	    	<div>待验收</div>
-	    	<div class="begincheck" @click='yanshou'>验收</div>
+	    	<div class="begincheck" >验收</div>
 	    </div>
 	    <ul>
 				<li >
@@ -24,7 +24,7 @@
 			  	 			<label><input type="checkbox" name="items" v-model='arr1' value="1"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click.stop="naviTo({path: '/problem'})">
+						<div class="begin" @click="addPreblem">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
@@ -47,7 +47,7 @@
 			  	 			<label></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click.stop="naviTo({path: '/zhijianxiugai'})">
+						<div class="begin" @click="lookPreblem">
 							<div>查看问题</div>
 							<div>
 								<img src="../assets/img/kan.png">
@@ -63,7 +63,7 @@
 							<div>0</div>
 						</div>
 					</div>
-					<div class="isok" @click.stop="naviTo({path: '/yanshou'})">
+					<div class="isok" @click="ok">
 						<div>问题已解决</div>
 					</div>
 				</li>
@@ -82,7 +82,49 @@
 				apper:false
 			}
 		},
+		mounted(){
+			console.log(this.$route.params.goods_name)
+		},
 		methods:{
+			backTo(){
+				 this.$router.push({
+		          path:'/zhijian4',
+		          name:'zhijian4',
+		          params:{
+		          	goods_name:this.$route.params.goods_name
+		          }
+		        })
+			},
+			lookPreblem(){
+				 this.$router.push({
+		          path:'/zhijianxiugai',
+		          name:'zhijianxiugai',
+		          params:{
+		          	goods_name:this.$route.params.goods_name
+		          }
+
+		        })
+			},
+			ok(){
+				 this.$router.push({
+		          path:'/yanshou',
+		          name:'yanshou',
+		          params:{
+		          	goods_name:this.$route.params.goods_name
+		          }
+
+		        })
+			},
+			addPreblem(){
+				 this.$router.push({
+		          path:'/problem',
+		          name:'problem',
+		          params:{
+		          	goods_name:this.$route.params.goods_name
+		          }
+
+		        })
+			},
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query

@@ -14,7 +14,7 @@ export default{
 		zhijians
 	},
 	mounted(){
-		console.log('zhijian')
+		
 	}
 }
 </script>

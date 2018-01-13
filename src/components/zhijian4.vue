@@ -11,14 +11,14 @@
 				<div class="divTitle">{{this.$route.params.goods_name}}质检/<span class='span' style='color:#008CFF'>配料</span></div>
 			</div>
 			<ul>
-				<li  v-for='list in list3'  @click.stop="naviTo">
+				<li  v-for='list in list3'  @click="naviTo(list)">
 					<div class="phone">
 						<img src="../assets/img/phone.png" class="phone1">
 						<img src="../assets/img/phone.png" class="phone2">
 					</div>
 					<div class="weight">
 						<div>{{list.project_name}}</div>
-						<div class="begin">未开始</div>
+						<div class="begin">{{list.status}}</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -50,23 +50,24 @@ export default{
             "project_name": "领料",
             "head_user":"张三",
             "plan_finish_time":"2017-10-19",
-            "problem_num":1
+            "problem_num":1,
+            'status':'未开始'
         },
         {
             "id": "157",
             "project_name": "配料",
             "head_user":"王五",
             "plan_finish_time":"2017-10-19",
-            "problem_num":0
+            "problem_num":0,
+            'status':'待验收'
         }],
 		}
 	},
 	mounted(){
-		console.log(this.$route.params.goods_name)
+		console.log(this.$route.params)
 	},
 	methods:{
 		backTo() {
-			console.log(5656)
 	        this.$router.push({
 	        	path:'/zhijian3',
 				name:'zhijian3',
@@ -76,14 +77,29 @@ export default{
 	        })
 	    },
    
-	    naviTo() {
-	        this.$router.push({
-	         path:'/check',
-			name:'check',
-			params:{
-				goods_name:this.$route.params.goods_name
-			}
-	        })
+	    naviTo(list) {
+	    	if(list.status == '未开始'){
+	    		this.$router.push({
+		         	path:'/check',
+					name:'check',
+					params:{
+						goods_name:this.$route.params.goods_name,
+						project_id:list.id
+					}
+		        })
+	    	}
+
+	    	if(list.status == '待验收'){
+	    		this.$router.push({
+		         	path:'/yanshou',
+					name:'yanshou',
+					params:{
+						goods_name:this.$route.params.goods_name,
+						project_id:list.id
+					}
+		        })
+	    	}
+	        
 	    },
 	    
   	}

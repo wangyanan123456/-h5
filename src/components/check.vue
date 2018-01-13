@@ -4,11 +4,11 @@
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
-	    <div class="begincheck" @click.stop="naviTo({path: '/yanshou'})">开始检查</div>
+	    <div class="begincheck" @click="naviTo">开始检查</div>
 	    <ul>
-				<li >
+				<li v-for='list in lists'>
 					<div class="weight">
-						<div>称重</div>
+						<div>{{list.sub_project_name}}</div>
 						<div class="begin">未开始</div>
 					</div>
 					<div class="detail">
@@ -17,25 +17,11 @@
 							<div>生产人员已经完成本项检查工作</div>
 						</div>
 						<div class="right">
-							<div>0</div>
+							<div>{{list.wait_check_num}}</div>
 						</div>
 					</div>
 				</li>
-				<li >
-					<div class="weight">
-						<div>称重</div>
-						<div class="thought">已通过</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
+				
 			</ul>
 		
 	</div>
@@ -45,8 +31,22 @@
 		name:'check',
 		data:function(){
 			return{
+				lists: [ {
+		            "id": "156",
+		            "sub_project_name": "称重结果足称",
+		            "problem_id": 0,
+		            "wait_check_num":10
+		        }, {
+		            "id": "157",
+		            "sub_project_name": "没有异物",
+		            "problem_id": 1,
+		            "wait_check_num":2
+		        }],
 
 			}
+		},
+		mounted(){
+			console.log(this.$route.params)
 		},
 		methods:{
 			backTo() {
@@ -62,10 +62,11 @@
    
 	    naviTo() {
 	        this.$router.push({
-	         path:'/check',
-			name:'check',
+	         path:'/yanshou',
+			name:'yanshou',
 			params:{
-				goods_name:this.$route.params.goods_name
+				goods_name:this.$route.params.goods_name,
+				project_id:this.$route.params.project_id
 			}
 	        })
 	    },

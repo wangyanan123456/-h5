@@ -59,7 +59,10 @@ export default{
 	        this.$router.push({
 	          path: '/zhijian3', 
 	          name:'zhijian3',
-	          params: { goods_name: list.goods_name }
+	          params: { 
+	          	goods_name: list.goods_name,
+	          	goods_id:list.id 
+	          }
 	      	 
 	        })
       }

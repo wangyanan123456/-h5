@@ -66,7 +66,7 @@ export default{
 <style type="text/css">
 	.wenlist1{
 		width:100%;
-		height: 80vh;
+		min-height: 81vh;
 		/*padding-top: 1.28rem;*/
 		background: #EFEFF4;
 		/*background: red;*/
