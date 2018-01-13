@@ -1,14 +1,14 @@
 <template>
 	<div class="yanshou2">
-	<div class="problem" v-if='isthought'>
+	<!-- <div class="problem" v-if='isthought'>
 		<div class="renwu">验收任务</div>
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
 			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
 		</div>
-	</div>
-	<div class="yanshou1" v-if='isthought'></div>
+	</div> -->
+	<!-- <div class="yanshou1" v-if='isthought'></div> -->
 		<div class="backto" @click.stop="naviTo({path: '/wenlist1'})">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
@@ -18,12 +18,12 @@
 	    	<div class="begincheck" >验收</div>
 	    </div>
 	    <ul>
-				<li >
+				<li   v-for='list in data'>
 					<div class="weight">
 						<div>
 			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
 			  			</div>
-						<div class="zhong">称重结果足秤</div>
+						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click.stop="naviTo({path: '/wenproblem'})">
 							<div>添加问题</div>
 							<div>
@@ -37,14 +37,14 @@
 							<div>生产人员已经完成本项检查工作</div>
 						</div>
 						<div class="right">
-							<div>0</div>
+							<div>{{list.wait_check_num}}</div>
 						</div>
 					</div>
 				</li>
 				<li >
 					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+						<div class="checkxuan">
+			  	 			<label></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin" @click.stop="naviTo({path: '/xiugai'})">
@@ -69,7 +69,7 @@
 				</li>
 				
 			</ul>
-		<div class="toast">请先处理有问题的任务</div>
+		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -77,10 +77,32 @@
 		name:'jilu2',
 		data:function(){
 			return{
-				isthought:false
+				isthought:false,
+				apper:false,
+				data: [{
+		            "id": "156",
+		            "sub_project_name": "称重结果足称",
+		            "problem_id": 0,
+		            "wait_check_num":10
+		        	}, 
+		        	{
+		            "id": "157",
+		            "sub_project_name": "没有异物",
+		            "problem_id": 1,
+		            "wait_check_num":2
+		        	}]
 			}
 		},
+		mounted(){
+			this.apper = true
+	      		var that = this
+	      		 setTimeout(function(){
+          			that.apper = false
+        			},1000)
+			console.log(this.$route.params)
+		},
 		methods:{
+			
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
@@ -113,6 +135,12 @@
 		position: absolute;
 		z-index: 3000;
 		opacity: 0.6;
+	}
+	.yanshou2 .checkxuan{
+		width:0.2rem;
+		height: 0.2rem;
+		background: #e5e5e5;
+		margin-left: -0.05rem;
 	}
    	.yanshou2 .backto{
 	    position: fixed;

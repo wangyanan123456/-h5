@@ -35,7 +35,7 @@
 				<img src="../assets/img/gai.png">
 			</div>
 			<div class="gai">检查项</div>
-			<div class="xuan" style="margin-left: 2rem;">
+			<div class="xuan" style="margin-left: 2.15rem;">
 				<div> 请选择</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">

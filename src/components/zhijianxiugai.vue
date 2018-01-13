@@ -199,9 +199,4 @@
 	    z-index: 4000;
 	    left: 0.6rem;
    }
-
-
-	
-
-
 </style>

@@ -6,9 +6,9 @@
 	    </div>
 		<div class="wrap">
 			<ul>
-				<li @click.stop="naviTo({path: '/wenlist2'})">
+				<li v-for='list in data' @click="todetail(list)">
 					<div class="weight">
-						<div>称重</div>
+						<div>{{list.check_item}}</div>
 						<div class="begin">待整改</div>
 					</div>
 					<div class="detail">
@@ -18,30 +18,13 @@
 							<div>待处理问题数量</div>
 						</div>
 						<div class="right">
-							<div>张三</div>
-							<div>2018-01-08</div>
-							<div>0</div>
+							<div>{{list.head_user}}</div>
+							<div>{{list.correct_time}}</div>
+							<div>{{list.problem_num}}</div>
 						</div>
 					</div>
 				</li>
-				<li @click.stop="naviTo({path: '/wenyanshou2'})">
-					<div class="weight">
-						<div>是否过期</div>
-						<div class="thought">已整改</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>操作负责人</div>
-							<div>计划完成时间</div>
-							<div>待处理问题数量</div>
-						</div>
-						<div class="right">
-							<div>张三</div>
-							<div>2018-01-08</div>
-							<div>0</div>
-						</div>
-					</div>
-				</li>
+				
 			</ul>
 		</div>
 		
@@ -50,11 +33,39 @@
 <script type="text/javascript">
 export default{
 	name:'wenlist1',
+	data:function(){
+		return{
+			data: [ {
+			    "sub_project_id": "12",
+			    "check_item": "黑眼豆豆质检/领料/称重",
+			    "correct_time": "2017-10-19",
+			    "head_user":"张三",
+			    "problem_num":10
+			},
+			{
+			    "sub_project_id": "15",
+			    "check_item": "黑眼豆豆质检/领料/是否过期",
+			    "correct_time": "2017-10-19",
+			    "head_user":"王五",
+			    "problem_num":6
+			}]
+		}
+	},
 	methods:{
    
 	    naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
+	        })
+	    },
+	    todetail(list){
+	    	 this.$router.push({
+	          path:'wenlist2',
+	          name:'wenlist2',
+	          params:{
+	          	project_id:list.sub_project_id,
+	          	check_item:list.check_item
+	          }
 	        })
 	    },
 	    baidu:function(e){
