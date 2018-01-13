@@ -20,7 +20,7 @@
 	    <ul>
 				<li >
 					<div class="weight">
-						<div>
+						<div >
 			  	 			<label><input type="checkbox" name="items" v-model='arr1' value="1"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
@@ -43,8 +43,8 @@
 				</li>
 				<li >
 					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+						<div  class="checkxuan">
+			  	 			<label></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin" @click.stop="naviTo({path: '/zhijianxiugai'})">
@@ -174,6 +174,12 @@
 		background: #fff;
 		/*border-bottom:1px solid #e5e5e5;*/
 		position: relative;
+	}
+	.yanshou2 .checkxuan{
+		width:0.2rem;
+		height: 0.2rem;
+		background: #e5e5e5;
+		margin-left: -0.2rem;
 	}
 	.yanshou2  .weight{
 		display: flex;

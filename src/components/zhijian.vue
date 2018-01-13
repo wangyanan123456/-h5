@@ -12,6 +12,9 @@ export default{
 	name:'zhijian',
 	components:{
 		zhijians
+	},
+	mounted(){
+		console.log('zhijian')
 	}
 }
 </script>

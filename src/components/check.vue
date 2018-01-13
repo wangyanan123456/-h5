@@ -1,6 +1,6 @@
 <template>
 	<div class="check">
-		<div class="backto" @click.stop="naviTo({path: '/zhijian4'})">
+		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
@@ -43,12 +43,32 @@
 <script type="text/javascript">
 	export default{
 		name:'check',
+		data:function(){
+			return{
+
+			}
+		},
 		methods:{
-			naviTo({path, query}) {
+			backTo() {
+			console.log(5656)
 	        this.$router.push({
-	          path, query
+	        	path:'/zhijian4',
+				name:'zhijian4',
+				params:{
+					goods_name:this.$route.params.goods_name
+				}
 	        })
-	      }
+	    },
+   
+	    naviTo() {
+	        this.$router.push({
+	         path:'/check',
+			name:'check',
+			params:{
+				goods_name:this.$route.params.goods_name
+			}
+	        })
+	    },
 		}
 	}
 

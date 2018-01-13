@@ -12,6 +12,9 @@
 
 export default{
 	name:'zhijians',
+	mounted(){
+		console.log(4545)
+	},
 	methods:{
 		naviTo({path, query}) {
         this.$router.push({

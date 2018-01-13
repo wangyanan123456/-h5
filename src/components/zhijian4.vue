@@ -2,22 +2,22 @@
 	<div class="zhijian4">
 		<div class="wrap">
 			<div>
-				<div class="backto" @click.stop="naviTo({path: '/zhijian3'})">
+				<div class="backto" @click="backTo">
 					<div>
 						<img src="../assets/img/back.png">
 					</div>
 					<div class="back">返回</div>
 				</div>
-				<div class="divTitle">黑眼豆豆质检/<span class='span' style='color:#008CFF'>配料</span></div>
+				<div class="divTitle">{{this.$route.params.goods_name}}质检/<span class='span' style='color:#008CFF'>配料</span></div>
 			</div>
 			<ul>
-				<li @click.stop="naviTo({path: '/check'})">
+				<li  v-for='list in list3'  @click.stop="naviTo">
 					<div class="phone">
 						<img src="../assets/img/phone.png" class="phone1">
 						<img src="../assets/img/phone.png" class="phone2">
 					</div>
 					<div class="weight">
-						<div>称重</div>
+						<div>{{list.project_name}}</div>
 						<div class="begin">未开始</div>
 					</div>
 					<div class="detail">
@@ -27,33 +27,13 @@
 							<div>待处理问题数量</div>
 						</div>
 						<div class="right">
-							<div>张三</div>
-							<div>2018-01-08</div>
-							<div>0</div>
+							<div>{{list.head_user}}</div>
+							<div>{{list.plan_finish_time}}</div>
+							<div>{{list.problem_num}}</div>
 						</div>
 					</div>
 				</li>
-				<li @click.stop="naviTo({path: '/check'})">
-				<div class="phone">
-						<img src="../assets/img/phone.png" class="phone1">
-						<img src="../assets/img/phone.png" class="phone2">
-					</div>
-					<div class="weight">
-						<div>是否过期</div>
-						<div class="thought">已通过</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>操作负责人</div>
-							<div>计划完成时间</div>
-							<div>待处理问题数量</div>
-						</div>
-						<div class="right">
-							<div>张三</div>
-							<div>2018-01-08</div>
-							<div>0</div>
-						</div>
-					</div>
+				
 				</li>
 			</ul>
 		</div>
@@ -63,11 +43,46 @@
 <script type="text/javascript">
 export default{
 	name:'zhijian4',
+	data:function(){
+		return{
+			list3:[{
+            "id": "94",
+            "project_name": "领料",
+            "head_user":"张三",
+            "plan_finish_time":"2017-10-19",
+            "problem_num":1
+        },
+        {
+            "id": "157",
+            "project_name": "配料",
+            "head_user":"王五",
+            "plan_finish_time":"2017-10-19",
+            "problem_num":0
+        }],
+		}
+	},
+	mounted(){
+		console.log(this.$route.params.goods_name)
+	},
 	methods:{
-   
-	    naviTo({path, query}) {
+		backTo() {
+			console.log(5656)
 	        this.$router.push({
-	          path, query
+	        	path:'/zhijian3',
+				name:'zhijian3',
+				params:{
+					goods_name:this.$route.params.goods_name
+				}
+	        })
+	    },
+   
+	    naviTo() {
+	        this.$router.push({
+	         path:'/check',
+			name:'check',
+			params:{
+				goods_name:this.$route.params.goods_name
+			}
 	        })
 	    },
 	    

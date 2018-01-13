@@ -1,19 +1,19 @@
 <template>
-	<div class="zhijian3"  @click.stop="naviTo({path: '/zhijian'})">
+	<div class="zhijian3"  >
 		<div class="box">
 			<div>
-				<div class="backto">
+				<div class="backto" @click='backTo'>
 					<div>
 						<img src="../assets/img/back.png">
 					</div>
 					<div>返回</div>
 				</div>
-				<div class="divTitle">黑眼豆豆质检</div>
+				<div class="divTitle">{{goodsTitle}}质检</div>
 			</div>
 			<ul>
-			<li  @click.stop="naviTo({path: '/zhijian4'})">
+			<li v-for='item in list2' @click.stop="naviTo(item)">
 				<div class="flex">
-					<div>黑眼豆豆</div>
+					<div>{{item.process_name}}</div>
 					<div class="kai">
 						<div>任务数</div>
 						<div>
@@ -23,40 +23,7 @@
 					</div>
 				</div>
 			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<div>任务数</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-						
-					</div>
-				</div>
-			</li><li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<div>任务数</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-						
-					</div>
-				</div>
-			</li><li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<div>任务数</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-						
-					</div>
-				</div>
-			</li>
+			
 		</ul>
 		</div>
 	</div>
@@ -64,14 +31,57 @@
 <script type="text/javascript">
 export default{
 	name:'zhijian3',
+	data:function(){
+		return{
+			goodsTitle:'',
+				"list2":[{
+	            "id": "94",
+	            "process_name": "领料"
+	        }, {
+	            "id": "157",
+	            "process_name": "配料"
+	        }],
+		}
+	},
+	mounted(){
+		var goods_name = this.$route.params.goods_name
+		this.goodsTitle = goods_name
+		console.log(goods_name,0)
+	},
+	computed:{
+		 
+	},
 	methods:{
-		naviTo({path, query}) {
-			console.log(9)
+		getParams () {
+        // 取到路由带过来的参数 
+        var routerParams =this.$route.params.goods_name
+        // 将数据放在当前组件的数据内
+        this.goodsTitle = routerParams
+      },
+      backTo(){
+      	this.$router.push({
+          path:'/zhijian',
+         
+        })
+      },
+		naviTo(item) {
+		
         this.$router.push({
-          path, query
+          path:'/zhijian4',
+          name:'zhijian4',
+          params:{
+          	project_id:item.id,
+          	goods_name:this.goodsTitle
+
+          }
         })
       }
-	}
+	},
+	watch: {
+    // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+      '$route': 'getParams'
+      // consle.log(7)
+    }
 }
 </script>
 <style type="text/css">

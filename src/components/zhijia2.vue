@@ -1,11 +1,11 @@
 <template>
 	<div class="two">
-	 <div class="backto" @click.stop="naviTo({path: '/'})">
+	 <div class="backto" @click="backTo">
       <img src="../assets/img/backto.png">
       <div>返回</div>
     </div>
 		<ul>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
+			<li  >
 				<div class="flex">
 					<div>黑眼豆豆</div>
 					<div class="kai">
@@ -13,67 +13,55 @@
 					</div>
 				</div>
 			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
+			<li  v-for='list in lists'   @click="naviTo(list)">
 				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/zhijian3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
+					<div>{{list.goods_name}}</div>
 					<div class="kai">
 						<img src="../assets/img/kai.png">
 					</div>
 				</div>
 			</li>
 			
+			
 
 		</ul>
+		
 	</div>
 </template>
 <script type="text/javascript">
 export default{
 	name:'zhijian2',
+	data:function(){
+		return{
+			lists: [ {
+			    "id": "156",
+			    "goods_name": "日式熏鸡堡（小）"
+			},
+			{
+			    "id": "157",
+			    "goods_name": "海苔芥末肉松"
+			}],
+		}
+	},
+	mounted(){
+		console.log('这是第一个页面')
+	},
+	
 	methods:{
-		naviTo({path, query}) {
-        this.$router.push({
-          path, query
-        })
+		backTo(){
+			 this.$router.push({
+	          path: '/' 
+	         
+	      	 
+	        })
+		},
+		naviTo(list) {
+	        this.$router.push({
+	          path: '/zhijian3', 
+	          name:'zhijian3',
+	          params: { goods_name: list.goods_name }
+	      	 
+	        })
       }
 	}
 }
