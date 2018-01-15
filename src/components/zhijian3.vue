@@ -29,28 +29,39 @@
 	</div>
 </template>
 <script type="text/javascript">
+import axios from 'axios'
 export default{
 	name:'zhijian3',
 	data:function(){
 		return{
 			goodsTitle:'',
-				"list2":[{
-	            "id": "94",
-	            "process_name": "领料"
-	        }, {
-	            "id": "157",
-	            "process_name": "配料"
-	        }],
+			"list2":[]
 		}
 	},
 	mounted(){
 		
-		console.log(this.$route.params,0)
-	},
-	computed:{
-		 
+		console.log(this.$route.params)
+		this.getList2()
 	},
 	methods:{
+		async getList2(){
+			var that  = this
+			const list = await axios({
+				method: 'POST',
+			    url: '/api/Inspection_task/goods_procedure',
+			    headers: {
+			    'Content-Type': 'text/html; charset=utf-8;',
+          		},
+          		data:{
+          			goods_id:this.$route.params.goods_id
+          		}
+        	}).then(function(res){
+        		console.log(res.data.data)
+        		that.list2 = res.data.data
+
+        	})
+		},
+	
 		
       backTo(){
       	this.$router.push({
@@ -70,12 +81,7 @@ export default{
           }
         })
       }
-	},
-	watch: {
-    // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
-      '$route': 'getParams'
-      // consle.log(7)
-    }
+	}
 }
 </script>
 <style type="text/css">

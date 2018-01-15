@@ -1,7 +1,7 @@
-$(document).ready(function(){
-   $('.backto').click(function(){
-    // window.location.href = '../../html/check.html'
-    })  
+hello(){
+	console.log("hello")
+}
 
-   
-})
+module.exports ={
+	hello
+}

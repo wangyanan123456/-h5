@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'jobTai',
   data () {
@@ -43,7 +45,41 @@ export default {
      img:true
     }
   },
+  mounted(){
+      // console.log("login")
+      this.getCode()
+      
+      
+  },
   methods:{
+    async getCode(){
+          const login = await axios({
+          method: 'POST',
+          url: '/api/weixin_user/check_login',
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8;',
+          },
+        }).then(function(res){
+          console.log(res)
+        }).catch(function(err){
+            console.log('err')
+        })
+      },
+    // getCode(){
+    //   $.ajax({
+    //   xhrFields: {
+    //        withCredentials: true
+    //    },
+    //    crossDomain: true, 
+    //     type:'POST',
+    //     url:'/api/weixin_user/check_login',
+    //     success:function(res){
+    //       console.log(res)
+    //     }
+    //   })
+    // },
+    
+
     tojobtai:function(){
       this.img = true
     },

@@ -35,12 +35,6 @@
 				<img src="../assets/img/gai.png">
 			</div>
 			<div class="gai">检查项</div>
-			<div class="xuan" style="margin-left: 2.15rem;">
-				<div> 请选择</div>
-				<div class="kai">
-					<img src="../assets/img/kai.png">
-				</div>
-			</div>
 		</div>
 		
 		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>

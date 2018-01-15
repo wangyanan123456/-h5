@@ -6,6 +6,7 @@ import router from './router'
 import store from './store/index.js'
 import './assets/css/reset.css'
 import './assets/js/rem.js'
+import $ from 'jquery'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
