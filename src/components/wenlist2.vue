@@ -24,7 +24,7 @@
 			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
 			  			</div>
 						<div class="zhong">{{list.sub_project_name}}</div>
-						<div class="begin" @click.stop="naviTo({path: '/wenproblem'})">
+						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
@@ -47,7 +47,7 @@
 			  	 			<label></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click.stop="naviTo({path: '/xiugai'})">
+						<div class="begin" @click="checkproblem(list)">
 							<div>查看问题</div>
 							<div>
 								<img src="../assets/img/kan.png">
@@ -108,6 +108,39 @@
 	          path, query
 	        })
 	      },
+	      // 查看问题
+	       checkproblem(list){
+	    	 this.$router.push({
+	          path:'/wenproblem',
+	          name:'wenproblem',
+	          params:{
+	          	problem_id:list.id,
+	          	check_item:this.$route.params.check_item
+	          }
+	        })
+	    },
+	    // 问题已解决
+	    noproblem(){
+	    	this.$router.push({
+	          path:'/wenyanshou',
+	          name:'wenyanshou',
+	          params:{
+	          	problem_id:list.id,
+	          	check_item:this.$route.params.check_item
+	          }
+	      })
+	    },
+	    // 添加问题
+	    problem(list){
+	    	this.$router.push({
+	          path:'/wenproblem',
+	          name:'wenproblem',
+	          params:{
+	          	problem_id:list.id,
+	          	check_item:this.$route.params.check_item
+	          }
+	      })
+	    },
 	      nothough:function(){
 	      	this.isthought = false
 	      },

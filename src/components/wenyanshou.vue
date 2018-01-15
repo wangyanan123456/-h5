@@ -21,7 +21,7 @@
 				<li >
 					<div class="weight">
 						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+			  	 			<label><input type="checkbox" name="items" v-model='arr' value="0"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin" @click.stop="naviTo({path: '/problem'})">
@@ -44,7 +44,7 @@
 				<li >
 					<div class="weight">
 						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+			  	 			<label><input type="checkbox" name="items"  v-model='arr' value="1"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin">
@@ -67,7 +67,7 @@
 				<li >
 					<div class="weight">
 						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+			  	 			<label><input type="checkbox" name="items"  v-model='arr' value="2"><span></span></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
 						<div class="begin">
@@ -88,7 +88,7 @@
 					</div>
 				</li>
 			</ul>
-		<!-- <div class="toast">请先处理有问题的任务</div> -->
+		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -96,8 +96,13 @@
 		name:'wenyanshou',
 		data:function(){
 			return{
-				isthought:false
+				isthought:false,
+				apper:'false',
+				arr:[]
 			}
+		},
+		mounted(){
+			console.log(this.$route.params)
 		},
 		methods:{
 			naviTo({path, query}) {
@@ -109,7 +114,17 @@
 	      	this.isthought = false
 	      },
 	      yanshou:function(){
-	      	this.isthought = true
+	      	// this.isthought = true
+	      	if(this.arr.length==3){
+	      		this.isthought = true
+	      	}
+	      	if(this.arr.length!=3){
+	      		this.apper = true
+	      		var that = this
+	      		 setTimeout(function(){
+          			that.apper = false
+        			},1000)
+	      	}
 	      },
 
 		}

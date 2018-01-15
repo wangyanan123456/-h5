@@ -5,7 +5,7 @@
 	      <div>返回</div>
 	    </div>
 		<div class="detail">问题描述</div>
-		<textarea class="text"></textarea>
+		<textarea class="text" v-model='meg'></textarea>
 		<div class="name" style="border-bottom: 1px solid #e5e5e5">
 			<div class="img">
 				<img src="../assets/img/name.png">
@@ -39,18 +39,44 @@
 		</div>
 		
 		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
-		<div class="btn" @click.stop="naviTo({path: '/wenlist2'})">保存</div>
+		<div class="btn" @click.stop="keep()">保存</div>
+		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
 </template>
 <script type="text/javascript">
 	export default{
 		name:'wenproblem',
+		data:function(){
+			return{
+				meg:'',
+				apper:false
+			}
+		},
 		methods:{
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
 	        })
-	      }
+	      },
+	      keep(){
+	      	if(3>parseInt(this.meg.length)  ||  200<parseInt(this.meg.length) || parseInt(this.meg.length) ==0){
+						this.apper = true
+			      		var that = this
+			      		setTimeout(function(){
+		          			that.apper = false
+		        		},1000)
+				}
+				if(3<=parseInt(this.meg.length) && parseInt(this.meg.length) <=200 ){
+					this.$router.push({
+		          	 path:'/wenlist2',
+		          	 name:'wenlist2',
+		          	  params:{
+			          	goods_name:this.$route.params.goods_name
+			          }
+					})
+		        
+				}
+	      },
 		}
 	}
 
@@ -145,6 +171,21 @@
    		position: fixed;
    		bottom: 0;
    	}
+   	.xiugai .toast{
+	    width:2.4rem;
+	    height:0.6rem;
+	    line-height: 0.6rem;
+	    background:#000;
+	    opacity: 0.7;
+	    color: #fff;
+	    text-align: center;
+	    font-size: 0.17rem;
+	    border-radius: 0.08rem;
+	    position: fixed;
+	    top:2.25rem;
+	    z-index: 4000;
+	    left: 0.6rem;
+   }
 
 
 	
