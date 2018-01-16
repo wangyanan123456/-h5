@@ -17,8 +17,8 @@
 						<img src="../assets/img/phone.png" class="phone2">
 					</div>
 					<div class="weight">
-						<div>{{list.project_name}}</div>
-						<div class="begin">{{list.status}}</div>
+						<div>{{list.task_name}}</div>
+						<div class="begin">{{list.status_key}}</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -45,57 +45,66 @@ export default{
 	name:'zhijian4',
 	data:function(){
 		return{
-			list3:[{
-            "id": "94",
-            "project_name": "领料",
-            "head_user":"张三",
-            "plan_finish_time":"2017-10-19",
-            "problem_num":1,
-            'status':'未开始'
-        },
-        {
-            "id": "157",
-            "project_name": "配料",
-            "head_user":"王五",
-            "plan_finish_time":"2017-10-19",
-            "problem_num":0,
-            'status':'待验收'
-        }],
+			list3:[]
+			
 		}
 	},
 	mounted(){
 		console.log(this.$route.params)
+		this.getlist3()
 	},
 	methods:{
+		getlist3(){
+			var that= this
+			$.ajax({
+				type:'POST',
+				url:'/api/Inspection_task/procedure_project',
+				data:{
+					procedure_id:that.$route.params.process_id
+				},
+				success:function(res){
+					that.list3 = JSON.parse(res).data.list
+					
+				}
+			})
+		},
 		backTo() {
 	        this.$router.push({
 	        	path:'/zhijian3',
 				name:'zhijian3',
 				params:{
-					goods_name:this.$route.params.goods_name
+					goods_name:this.$route.params.goods_name,
+					goods_id:this.$route.params.goods_id
 				}
 	        })
 	    },
    
 	    naviTo(list) {
-	    	if(list.status == '未开始'){
+	    	console.log(7878)
+	    	if(list.status == 10){
+	    		console.log(88)
 	    		this.$router.push({
+
 		         	path:'/check',
 					name:'check',
 					params:{
 						goods_name:this.$route.params.goods_name,
-						project_id:list.id
+						project_id:list.id,
+						procedure_id:this.$route.params.process_id,
+						goods_id:this.$route.params.goods_id
 					}
 		        })
 	    	}
 
-	    	if(list.status == '待验收'){
+	    	if(list.status == 20){
 	    		this.$router.push({
 		         	path:'/yanshou',
 					name:'yanshou',
 					params:{
 						goods_name:this.$route.params.goods_name,
-						project_id:list.id
+						project_id:list.id,
+						procedure_id:this.$route.params.process_id,
+						goods_id:this.$route.params.goods_id
 					}
 		        })
 	    	}

@@ -18,13 +18,13 @@
 	    	<div class="begincheck" @click='yanshou'>验收</div>
 	    </div>
 	    <ul>
-				<li >
+				<li  v-for='list in list4'>
 					
 					<div class="weight">
 						<div>
-		  	 				<label><input type="checkbox" name="items" v-model='arr' value="3"><span></span></label><br>
+		  	 				<label><input type="checkbox" name="items" v-model='arr' value="list.id"><span></span></label><br>
 		  				</div>
-						<div class="zhong">称重结果足秤</div>
+						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click="problem">
 							<div>添加问题</div>
 							<div>
@@ -42,52 +42,8 @@
 						</div>
 					</div>
 				</li>
-				<li >
-					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items" v-model='arr' value="1"><span></span></label><br>
-			  			</div>
-						<div class="zhong">称重结果足秤</div>
-						<div class="begin">
-							<div>添加问题</div>
-							<div>
-								<img src="../assets/img/jia.png">
-							</div>
-						</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
-				<li >
-					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items" v-model='arr' value="2"><span></span></label><br>
-			  			</div>
-						<div class="zhong">称重结果足秤</div>
-						<div class="begin">
-							<div>添加问题</div>
-							<div>
-								<img src="../assets/img/jia.png">
-							</div>
-						</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
+				
+				
 			</ul>
 		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
 	</div>
@@ -99,19 +55,43 @@
 			return{
 				isthought:false,
 				arr:[],
-				apper:false
+				apper:false,
+				list4:[],
+				check_project_id:'',
+				total:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
+			this.gitlists()
 		},
 		methods:{
+			gitlists(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_task/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+						procedure_id:that.$route.params.procedure_id
+					},
+					success:function(res){
+						that.list4 = JSON.parse(res).data.list
+						that.check_project_id = JSON.parse(res).data.check_project_id
+						that.total = JSON.parse(res).total
+						console.log(that.total)
+					}
+				})
+			},
 			backTo(){
 				 this.$router.push({
 		          path:'/zhijian4',
 		          name:'zhijian4',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	process_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					goods_id:this.$route.params.goods_id
 		          }
 		        })
 			},
@@ -120,7 +100,10 @@
 		          path:'/problem',
 		          name:'problem',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	process_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					goods_id:this.$route.params.goods_id
 		          }
 		        })
 			},
@@ -135,10 +118,21 @@
 	      yanshou:function(){
 	      	
 	 
-	      	if(this.arr.length==3){
-	      		this.isthought = true
+	      	if(this.arr.length==this.total){
+	      		var that = this
+	      		$.ajax({
+	      			type:"POST",
+	      			url:'/api/Inspection_task/acceptance',
+	      			data:{
+	      				check_project_id:that.check_project_id
+	      			},
+	      			success:function(){
+	      				console.log('已验证')
+	      			}
+	      		})
+	      		that.isthought = true
 	      	}
-	      	if(this.arr.length!=3){
+	      	if(this.arr.length!=this.total){
 	      		this.apper = true
 	      		var that = this
 	      		 setTimeout(function(){

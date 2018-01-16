@@ -29,7 +29,6 @@
 	</div>
 </template>
 <script type="text/javascript">
-import axios from 'axios'
 import $ from 'jquery'
 export default{
 	name:'zhijian2',
@@ -44,37 +43,16 @@ export default{
 	},
 	
 	methods:{
-
-		async getList(){
+		getList:function(){
 			var that = this
-			var toList = await axios({
-				method: 'POST',
-          		url: '/api/Inspection_task/goods_list',
-          		headers: {
-            		'Content-Type': 'text/html; charset=utf-8;',
-          		},
-			}).then(function(res){
-				that.lists = res.data.data
-				console.log(that.lists)
+			$.ajax({
+				type:'POST',
+				url:'/api/Inspection_task/goods_list',
+				success:function(res){
+					that.lists = JSON.parse(res).data
+				}
 			})
-			
 		},
-	
-
-		// getList:function(){
-
-		// 	$.ajax({
-  	
-		// 		type:'POST',
-		// 		url:'/api/Inspection_task/goods_list',
-		// 		success:function(res){
-		// 			console.log(res)
-		// 		}
-		// 	})
-
-			
-
-		// },
 		backTo(){
 			 this.$router.push({
 	          path: '/' 

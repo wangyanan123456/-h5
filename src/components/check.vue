@@ -31,44 +31,80 @@
 		name:'check',
 		data:function(){
 			return{
-				lists: [ {
-		            "id": "156",
-		            "sub_project_name": "称重结果足称",
-		            "problem_id": 0,
-		            "wait_check_num":10
-		        }, {
-		            "id": "157",
-		            "sub_project_name": "没有异物",
-		            "problem_id": 1,
-		            "wait_check_num":2
-		        }],
+				lists: [],
 
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
+			this.gitlist()
 		},
 		methods:{
+			gitlist(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_task/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+						procedure_id:that.$route.params.procedure_id
+					},
+					success:function(res){
+						that.lists = JSON.parse(res).data.list
+					}
+				})
+			},
 			backTo() {
 			console.log(5656)
 	        this.$router.push({
 	        	path:'/zhijian4',
 				name:'zhijian4',
 				params:{
-					goods_name:this.$route.params.goods_name
+					goods_name:this.$route.params.goods_name,
+					process_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					goods_id:this.$route.params.goods_id
 				}
 	        })
 	    },
    
 	    naviTo() {
-	        this.$router.push({
-	         path:'/yanshou',
-			name:'yanshou',
-			params:{
-				goods_name:this.$route.params.goods_name,
-				project_id:this.$route.params.project_id
-			}
-	        })
+	    	var that = this
+				$.ajax({
+					type:"POST",
+					url:'/api/Inspection_task/start_check',
+					data:{
+						project_id:that.$route.params.project_id
+					},
+					success:function(res){
+						console.log()
+						if(JSON.parse(res).status==1){
+							that.$router.push({
+						         path:'/yanshou',
+								name:'yanshou',
+								params:{
+									goods_name:that.$route.params.goods_name,
+									project_id:that.$route.params.project_id,
+									procedure_id:that.$route.params.procedure_id,
+									goods_id:that.$route.params.goods_id
+								}
+						    })
+						}
+						// if(JSON.parse(res).status==0){
+						// 	that.$router.push({
+						//          path:'/yanshou',
+						// 		name:'yanshou',
+						// 		params:{
+						// 			goods_name:that.$route.params.goods_name,
+						// 			project_id:that.$route.params.project_id,
+						// 			procedure_id:that.$route.params.procedure_id,
+						// 			goods_id:that.$route.params.goods_id
+						// 		}
+						//     })
+						// }
+					}
+				})
+	  //       
 	    },
 		}
 	}

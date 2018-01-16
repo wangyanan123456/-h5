@@ -15,7 +15,7 @@
 				<div class="flex">
 					<div>{{item.process_name}}</div>
 					<div class="kai">
-						<div>任务数</div>
+						<div>任务数{{item.project_numer}}</div>
 						<div>
 							<img src="../assets/img/kai.png">
 						</div>
@@ -29,7 +29,7 @@
 	</div>
 </template>
 <script type="text/javascript">
-import axios from 'axios'
+import $ from 'jquery'
 export default{
 	name:'zhijian3',
 	data:function(){
@@ -44,25 +44,21 @@ export default{
 		this.getList2()
 	},
 	methods:{
-		async getList2(){
-			var that  = this
-			const list = await axios({
-				method: 'POST',
-			    url: '/api/Inspection_task/goods_procedure',
-			    headers: {
-			    'Content-Type': 'text/html; charset=utf-8;',
-          		},
-          		data:{
-          			goods_id:this.$route.params.goods_id
-          		}
-        	}).then(function(res){
-        		console.log(res.data.data)
-        		that.list2 = res.data.data
+		getList2(){
+			var that = this
+			$.ajax({
+			type:'POST',
+			url:'/api/Inspection_task/goods_procedure',
+			data:{
+				goods_id:this.$route.params.goods_id
+			},
+			success:function(res){
+				console.log(JSON.parse(res))
+				that.list2 = JSON.parse(res).data
+			}
 
-        	})
+			})
 		},
-	
-		
       backTo(){
       	this.$router.push({
           path:'/zhijian',
@@ -76,7 +72,8 @@ export default{
           name:'zhijian4',
           params:{
           	process_id:item.id,
-          	goods_name:this.$route.params.goods_name
+          	goods_name:this.$route.params.goods_name,
+          	goods_id:this.$route.params.goods_id
 
           }
         })
