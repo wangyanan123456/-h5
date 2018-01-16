@@ -11,6 +11,9 @@
 					<div class="kai">
 						<img src="../assets/img/kai.png">
 					</div>
+					<div class="checked">
+						<img src="../assets/img/checked.png">
+					</div>
 				</div>
 			</li>
 			<li  v-for='list in lists'   @click="naviTo(list)">
@@ -75,7 +78,11 @@ export default{
 }
 </script>
 <style type="text/css">
-	
+	.two .checked{
+		position: absolute;
+		left: 1.7rem;
+		top:0.08rem;
+	}
 	.two{
 		width: 100%;
 		min-height: 81vh;
@@ -91,6 +98,7 @@ export default{
 		padding-left: 4%;
 		border-bottom:1px solid #e5e5e5;
 		line-height: 0.5rem;
+		position: relative;
 	}
 	.two .backto{
 	    position: fixed;

@@ -6,9 +6,9 @@
 	    </div>
 		<div class="wrap">
 			<ul>
-				<li v-for='list in data' @click="todetail(list)">
+				<li v-for='list in lists' @click="todetail(list)">
 					<div class="weight">
-						<div>{{list.check_item}}</div>
+						<div>{{list.item}}</div>
 						<div class="begin">待整改</div>
 					</div>
 					<div class="detail">
@@ -18,9 +18,9 @@
 							<div>待处理问题数量</div>
 						</div>
 						<div class="right">
-							<div>{{list.head_user}}</div>
-							<div>{{list.correct_time}}</div>
-							<div>{{list.problem_num}}</div>
+							<div>{{list.head_user_name}}</div>
+							<div>{{list.expect_finish_date}}</div>
+							<div>{{list.problem}}</div>
 						</div>
 					</div>
 				</li>
@@ -35,23 +35,24 @@ export default{
 	name:'wenlist1',
 	data:function(){
 		return{
-			data: [ {
-			    "sub_project_id": "12",
-			    "check_item": "黑眼豆豆质检/领料/称重",
-			    "correct_time": "2017-10-19",
-			    "head_user":"张三",
-			    "problem_num":10
-			},
-			{
-			    "sub_project_id": "15",
-			    "check_item": "黑眼豆豆质检/领料/是否过期",
-			    "correct_time": "2017-10-19",
-			    "head_user":"王五",
-			    "problem_num":6
-			}]
+			lists: []
 		}
 	},
+	mounted(){
+		this.getList()
+	},
 	methods:{
+		getList(){
+			var that = this
+			$.ajax({
+				type:'POST',
+				url:'/api/subproject_problem/lists',
+				success:function(res){
+					console.log(JSON.parse(res).data)
+					that.lists = JSON.parse(res).data
+				}
+			})
+		},
    
 	    naviTo({path, query}) {
 	        this.$router.push({

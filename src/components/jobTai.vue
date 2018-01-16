@@ -2,13 +2,13 @@
   <div class="hello">
     <div v-if='img'>
           <ul class="jobList">
-            <li @click.stop="naviTo({path: '/zhijian'})">
+            <li>
               <img src="../assets/img/kucun.png">
             </li>
-            <li @click.stop="naviTo({path: '/wenlist1'})">
+            <li  @click.stop="naviTo({path: '/zhijian'})">
                <img src="../assets/img/zhiliang.png">
             </li>
-            <li @click.stop="naviTo({path: '/jilu'})">
+            <li >
                <img src="../assets/img/boss.png">
             </li>
           </ul>
