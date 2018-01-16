@@ -57,7 +57,10 @@
 		          path:'/yanshou',
 		          name:'yanshou',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	process_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					goods_id:this.$route.params.goods_id
 		          }
 		        })
 			},
@@ -74,7 +77,10 @@
 		          	 path:'/yanshou2',
 		          	 name:'yanshou2',
 			          params:{
-			          	goods_name:this.$route.params.goods_name
+			          	goods_name:this.$route.params.goods_name,
+			          	process_id:this.$route.params.procedure_id,
+						project_id:this.$route.params.project_id,
+						goods_id:this.$route.params.goods_id
 			          }
 					})
 		        

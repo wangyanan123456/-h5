@@ -92,8 +92,8 @@
 						}
 						// if(JSON.parse(res).status==0){
 						// 	that.$router.push({
-						//          path:'/yanshou',
-						// 		name:'yanshou',
+						//          path:'/yanshou2',
+						// 		name:'yanshou2',
 						// 		params:{
 						// 			goods_name:that.$route.params.goods_name,
 						// 			project_id:that.$route.params.project_id,

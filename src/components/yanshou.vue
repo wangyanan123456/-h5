@@ -5,7 +5,7 @@
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
-			<div class="ok" @click= "backTo">通过</div>
+			<div class="ok" @click= "thought">通过</div>
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
@@ -18,11 +18,11 @@
 	    	<div class="begincheck" @click='yanshou'>验收</div>
 	    </div>
 	    <ul>
-				<li  v-for='list in list4'>
+				<li  v-for='list in list4' >
 					
 					<div class="weight">
-						<div>
-		  	 				<label><input type="checkbox" name="items" v-model='arr' value="list.id"><span></span></label><br>
+						<div >
+		  	 				<label ><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id" ><span></span></label><br>
 		  				</div>
 						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click="problem">
@@ -66,6 +66,7 @@
 			this.gitlists()
 		},
 		methods:{
+			
 			gitlists(){
 				var that = this
 				$.ajax({
@@ -79,11 +80,36 @@
 						that.list4 = JSON.parse(res).data.list
 						that.check_project_id = JSON.parse(res).data.check_project_id
 						that.total = JSON.parse(res).total
-						console.log(that.total)
+						console.log(that.arr)
 					}
 				})
 			},
 			backTo(){
+				
+				 this.$router.push({
+		          path:'/zhijian4',
+		          name:'zhijian4',
+		          params:{
+		          	goods_name:this.$route.params.goods_name,
+		          	process_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					goods_id:this.$route.params.goods_id
+		          }
+		        })
+			},
+			thought(){
+				var that = this
+				$.ajax({
+	      			type:"POST",
+	      			url:'/api/Inspection_task/acceptance',
+	      			data:{
+	      				check_project_id:that.check_project_id
+	      			},
+	      			success:function(){
+	      				console.log('已验证')
+	      				console.log(that.arr,that.total)
+	      			}
+	      		})
 				 this.$router.push({
 		          path:'/zhijian4',
 		          name:'zhijian4',
@@ -120,19 +146,11 @@
 	 
 	      	if(this.arr.length==this.total){
 	      		var that = this
-	      		$.ajax({
-	      			type:"POST",
-	      			url:'/api/Inspection_task/acceptance',
-	      			data:{
-	      				check_project_id:that.check_project_id
-	      			},
-	      			success:function(){
-	      				console.log('已验证')
-	      			}
-	      		})
-	      		that.isthought = true
+	      		
+	      		this.isthought = true
 	      	}
 	      	if(this.arr.length!=this.total){
+	      		console.log(this.arr)
 	      		this.apper = true
 	      		var that = this
 	      		 setTimeout(function(){

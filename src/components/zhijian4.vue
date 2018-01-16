@@ -80,7 +80,6 @@ export default{
 	    },
    
 	    naviTo(list) {
-	    	console.log(7878)
 	    	if(list.status == 10){
 	    		console.log(88)
 	    		this.$router.push({
