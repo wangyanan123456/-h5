@@ -18,12 +18,12 @@
 	    	<div class="begincheck" >验收</div>
 	    </div>
 	    <ul>
-				<li >
-					<div class="weight">
+				<li v-for='list in list4'>
+					<div class="weight" v-if='list.problem_id==0'>
 						<div >
-			  	 			<label><input type="checkbox" name="items" v-model='arr1' value="1"><span></span></label><br>
+			  	 			<label><input type="checkbox" name="items" v-model='arr1' v-bind:value='list.id'><span></span></label><br>
 			  			</div>
-						<div class="zhong">称重结果足秤</div>
+						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click="addPreblem">
 							<div>添加问题</div>
 							<div>
@@ -31,29 +31,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
-				<li >
-					<div class="weight">
-						<div  class="checkxuan">
+					<div class="weight" v-if='list.problem_id!==0'>
+						<div class="checkxuan">
 			  	 			<label></label><br>
 			  			</div>
 						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click="lookPreblem">
+						<div class="begin" @click="lookPreblem(list)">
 							<div>查看问题</div>
 							<div>
 								<img src="../assets/img/kan.png">
 							</div>
 						</div>
 					</div>
+
 					<div class="detail">
 						<div class="left">
 							<div>待处理问题数量</div>
@@ -63,10 +53,12 @@
 							<div>0</div>
 						</div>
 					</div>
-					<div class="isok" @click="ok">
+					<div class="isok" @click="ok(list)"  v-if='list.problem_id!==0'>
 						<div>问题已解决</div>
 					</div>
 				</li>
+				
+				
 				
 			</ul>
 		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
@@ -79,38 +71,67 @@
 			return{
 				isthought:false,
 				arr1:[],
-				apper:false
+				apper:false,
+				list4:[]
 			}
 		},
 		mounted(){
-			console.log(this.$route.params.goods_name)
+			console.log(this.$route.params)
+			this.gitlists()
 		},
 		methods:{
+			gitlists(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_task/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+						procedure_id:that.$route.params.procedure_id
+					},
+					success:function(res){
+						that.list4 = JSON.parse(res).data.list
+						that.check_project_id = JSON.parse(res).data.check_project_id
+						
+						that.total = JSON.parse(res).total
+						console.log(that.arr)
+					}
+				})
+			},
 			backTo(){
+				console.log(this.$route.params.process_id)
 				 this.$router.push({
 		          path:'/zhijian4',
 		          name:'zhijian4',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	project_id:this.$route.params.project_id,
+					process_id:this.$route.params.process_id
 		          }
 		        })
 			},
-			lookPreblem(){
+			lookPreblem(list){
 				 this.$router.push({
 		          path:'/zhijianxiugai',
 		          name:'zhijianxiugai',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	id:list.problem_id,
+		          	project_id:this.$route.params.project_id,
+					procedure_id:this.$route.params.process_id
 		          }
 
 		        })
 			},
-			ok(){
+			ok(list){
 				 this.$router.push({
 		          path:'/yanshou',
 		          name:'yanshou',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	id:list.problem_id,
+		          	project_id:this.$route.params.project_id,
+					procedure_id:this.$route.params.process_id
 		          }
 
 		        })

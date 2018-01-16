@@ -25,7 +25,7 @@
 		  	 				<label ><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id" ><span></span></label><br>
 		  				</div>
 						<div class="zhong">{{list.sub_project_name}}</div>
-						<div class="begin" @click="problem">
+						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
@@ -58,7 +58,8 @@
 				apper:false,
 				list4:[],
 				check_project_id:'',
-				total:''
+				total:'',
+				check_subproject_id:''
 			}
 		},
 		mounted(){
@@ -79,8 +80,9 @@
 					success:function(res){
 						that.list4 = JSON.parse(res).data.list
 						that.check_project_id = JSON.parse(res).data.check_project_id
+						
 						that.total = JSON.parse(res).total
-						console.log(that.arr)
+						// console.log(that.arr)
 					}
 				})
 			},
@@ -121,7 +123,7 @@
 		          }
 		        })
 			},
-			problem(){
+			problem(list){
 				this.$router.push({
 		          path:'/problem',
 		          name:'problem',
@@ -129,7 +131,10 @@
 		          	goods_name:this.$route.params.goods_name,
 		          	process_id:this.$route.params.procedure_id,
 					project_id:this.$route.params.project_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					check_project_id:this.check_project_id,
+					check_subproject_id:list.check_subproject_id,
+					procedure_id:this.$route.params.procedure_id
 		          }
 		        })
 			},

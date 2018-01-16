@@ -51,6 +51,9 @@
 				apper:false
 			}
 		},
+		mounted(){
+			console.log(this.$route.params)
+		},
 		methods:{
 			backTo(){
 				 this.$router.push({
@@ -60,7 +63,8 @@
 		          	goods_name:this.$route.params.goods_name,
 		          	process_id:this.$route.params.procedure_id,
 					project_id:this.$route.params.project_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					procedure_id:this.$route.params.procedure_id
 		          }
 		        })
 			},
@@ -73,6 +77,19 @@
 		        		},1000)
 				}
 				if(3<=parseInt(this.mesg.length) && parseInt(this.mesg.length) <=200 ){
+					var that = this
+					$.ajax({
+						type:'POST',
+						url:'/api/subproject_problem/add',
+						data:{
+							check_project_id:that.$route.params.check_project_id,
+							check_subproject_id:that.$route.params.check_subproject_id,
+							problem_desc:that.mesg
+						},
+						success:function(res){
+							console.log(that.$route.params.check_subproject_id)
+						}
+					})
 					this.$router.push({
 		          	 path:'/yanshou2',
 		          	 name:'yanshou2',

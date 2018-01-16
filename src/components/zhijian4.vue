@@ -51,6 +51,7 @@ export default{
 	},
 	mounted(){
 		console.log(this.$route.params)
+		console.log(this.$route.params.process_id)
 		this.getlist3()
 	},
 	methods:{

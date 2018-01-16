@@ -38,8 +38,8 @@
 			
 		</div>
 		
-		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
-		<div class="btn" @click="keep" >修改</div>
+		<div class="checkdetali">{{checkList}}</div>
+		<div class="btn" @click="keep()" >修改</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
 </template>
@@ -50,20 +50,42 @@
 			return{
 				mesg:'',
 				apper:false,
-				today:''
+				today:'',
+				checkList:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
 			// this.today = new Date()
+			this.getmeg()
 		},
 		methods:{
+			getmeg(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/subproject_problem/show',
+					data:{
+						id:that.$route.params.id
+					},
+					success:function(res){
+						console.log(JSON.parse(res).data)
+						that.mesg = JSON.parse(res).data.problem_desc
+						that.today = JSON.parse(res).data.correct_time
+						that.checkList = JSON.parse(res).data.check_item
+					}
+				})
+				
+			},
 			backTo(){
 				 this.$router.push({
-		          path:'/zhijian4',
-		          name:'zhijian4',
+		          path:'/yanshou2',
+		          name:'yanshou2',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+			          	process_id:this.$route.params.procedure_id,
+						project_id:this.$route.params.project_id,
+						goods_id:this.$route.params.goods_id
 		          }
 		        })
 			},
@@ -76,11 +98,30 @@
 		        		},1000)
 				}
 				if(3<=parseInt(this.mesg.length) && parseInt(this.mesg.length) <=200 ){
+					var that = this
+					$.ajax({
+						type:'POST',
+						url:'/api/subproject_problem/edit',
+						data:{
+							id:that.$route.params.id,
+							problem_desc:that.mesg
+
+						},
+						success:function(res){
+							console.log(JSON.parse(res).data.status)
+						}
+					})
 					this.$router.push({
 		          	 path:'/yanshou2',
 		          	 name:'yanshou2',
 		          	  params:{
-			          	goods_name:this.$route.params.goods_name
+			          	goods_name:this.$route.params.goods_name,
+			          	project_id:this.$route.params.project_id,
+						procedure_id:this.$route.params.procedure_id,
+		          		id:list.problem_id,
+
+
+		          	
 			          }
 					})
 		        
