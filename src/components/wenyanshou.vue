@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
-		<div class="backto" @click.stop="naviTo({path: '/wenlist2'})">
+		<div class="backto" @click="backto({path: '/wenlist2'})">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
@@ -18,13 +18,14 @@
 	    	<div class="begincheck" @click='yanshou'>验收</div>
 	    </div>
 	    <ul>
-				<li >
+				<li  v-for='list in list2' >
+					
 					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items" v-model='arr' value="0"><span></span></label><br>
-			  			</div>
-						<div class="zhong">称重结果足秤</div>
-						<div class="begin" @click.stop="naviTo({path: '/problem'})">
+						<div >
+		  	 				<label ><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id" ><span></span></label><br>
+		  				</div>
+						<div class="zhong">{{list.sub_project_name}}</div>
+						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
@@ -41,52 +42,8 @@
 						</div>
 					</div>
 				</li>
-				<li >
-					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items"  v-model='arr' value="1"><span></span></label><br>
-			  			</div>
-						<div class="zhong">称重结果足秤</div>
-						<div class="begin">
-							<div>添加问题</div>
-							<div>
-								<img src="../assets/img/jia.png">
-							</div>
-						</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
-				<li >
-					<div class="weight">
-						<div>
-			  	 			<label><input type="checkbox" name="items"  v-model='arr' value="2"><span></span></label><br>
-			  			</div>
-						<div class="zhong">称重结果足秤</div>
-						<div class="begin">
-							<div>添加问题</div>
-							<div>
-								<img src="../assets/img/jia.png">
-							</div>
-						</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
+				
+				
 			</ul>
 		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
 	</div>
@@ -97,35 +54,105 @@
 		data:function(){
 			return{
 				isthought:false,
-				apper:'false',
-				arr:[]
+				apper:false,
+				arr:[],
+				list2:[],
+				total:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
+			this.gitlists()
 		},
 		methods:{
+			gitlists(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_task/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+						
+					},
+					success:function(res){
+						that.list2= JSON.parse(res).data.list
+						that.check_project_id = JSON.parse(res).data.check_project_id
+						// that.check_project_id = JSON.parse(res).data.check_project_id
+						that.total = JSON.parse(res).total
+						// that.total = JSON.parse(res).total
+						console.log(res)
+					}
+				})
+				},
+			problem(list){
+		    	this.$router.push({
+		          path:'/wenproblem',
+		          name:'wenproblem',
+		          params:{
+		          	check_subproject_id:list.check_subproject_id,
+		          	check_project_id:this.check_project_id,
+		          	project_id:this.$route.params.project_id
+		          	// check_item:this.$route.params.check_item
+		          }
+	     	 	})
+	    	},
+			
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
 	        })
 	      },
+	      backto(){
+	      	 this.$router.push({
+		          path:'/wenlist2',
+		          name:'wenlist2',
+		          params:{
+		          	project_id:this.$route.params.project_id,
+		          }
+		        })
+	      },
 	      nothough:function(){
 	      	this.isthought = false
 	      },
 	      yanshou:function(){
-	      	// this.isthought = true
-	      	if(this.arr.length==3){
+	      	
+	 
+	      	if(this.arr.length==this.total){
+	      		var that = this
+	      		
 	      		this.isthought = true
 	      	}
-	      	if(this.arr.length!=3){
+	      	if(this.arr.length!=this.total){
+	      		console.log(this.arr)
 	      		this.apper = true
 	      		var that = this
 	      		 setTimeout(function(){
           			that.apper = false
         			},1000)
 	      	}
+
 	      },
+	      thought(){
+	      	var that = this
+				$.ajax({
+	      			type:"POST",
+	      			url:'/api/Inspection_task/acceptance',
+	      			data:{
+	      				check_project_id:that.check_project_id
+	      			},
+	      			success:function(){
+	      				console.log('已验证')
+	      				console.log(that.arr,that.total)
+	      			}
+	      		})
+				 this.$router.push({
+		          path:'/wenlist1',
+		          name:'wenlist1',
+		          params:{
+		          	
+		          }
+		        })
+	      }
 
 		}
 	}

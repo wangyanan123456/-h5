@@ -1,11 +1,11 @@
 <template>
 	<div class="xiugai">
-		<div class="backto" @click.stop="naviTo({path: '/wenlist2'})">
+		<div class="backto" @click="backto({path: '/wenlist2'})">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
 		<div class="detail">问题描述</div>
-		<textarea class="text"></textarea>
+		<textarea class="text" v-model='mesg'></textarea>
 		<div class="name" style="border-bottom: 1px solid #e5e5e5">
 			<div class="img">
 				<img src="../assets/img/name.png">
@@ -44,13 +44,85 @@
 		</div>
 		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
 
-		<div class="btn" @click.stop="naviTo({path: '/wenlist2'})">修改</div>
+		<div class="btn" @click="keep">修改</div>
 	</div>
 </template>
 <script type="text/javascript">
 	export default{
 		name:'xiugai',
+		data:function(){
+			return{
+				mesg:'',
+			}
+		},
+		mounted(){
+			console.log(this.$route.params)
+			this.getmeg()
+		},
 		methods:{
+
+			getmeg(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/subproject_problem/show',
+					data:{
+						id:that.$route.params.problem_id
+					},
+					success:function(res){
+						console.log(JSON.parse(res).data)
+						that.mesg = JSON.parse(res).data.problem_desc
+						that.today = JSON.parse(res).data.correct_time
+						that.checkList = JSON.parse(res).data.check_item
+					}
+				})
+				
+			},
+
+			backto(){
+				this.$router.push({
+		          path:'/wenlist2',
+		          name:'wenlist2',
+		          params:{
+		          	project_id:this.$route.params.project_id,
+		          }
+		        })
+			},
+			keep() {
+				if(3>parseInt(this.mesg.length)  ||  200<parseInt(this.mesg.length) || parseInt(this.mesg.length) ==0){
+						this.apper = true
+			      		var that = this
+			      		setTimeout(function(){
+		          			that.apper = false
+		        		},1000)
+				}
+				if(3<=parseInt(this.mesg.length) && parseInt(this.mesg.length) <=200 ){
+					var that = this
+					$.ajax({
+						type:'POST',
+						url:'/api/subproject_problem/edit',
+						data:{
+							problem_id:this.$route.params.problem_id,
+							problem_desc:that.mesg
+
+						},
+						success:function(res){
+							console.log(JSON.parse(res).data.status)
+						}
+					})
+					this.$router.push({
+		          	 path:'/wenlist2',
+		          	 name:'wenlist2',
+		          	  params:{
+			          	
+			          project_id:that.$route.params.project_id
+						
+			          }
+					})
+		        
+				}
+		        
+	      },
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query

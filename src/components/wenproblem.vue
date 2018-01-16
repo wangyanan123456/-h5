@@ -1,11 +1,11 @@
 <template>
 	<div class="xiugai">
-		<div class="backto" @click.stop="naviTo({path: '/wenlist2'})">
+		<div class="backto" @click="backTo()">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
 		<div class="detail">问题描述</div>
-		<textarea class="text" v-model='meg'></textarea>
+		<textarea class="text" v-model='mesg'></textarea>
 		<div class="name" style="border-bottom: 1px solid #e5e5e5">
 			<div class="img">
 				<img src="../assets/img/name.png">
@@ -39,7 +39,7 @@
 		</div>
 		
 		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
-		<div class="btn" @click.stop="keep()">保存</div>
+		<div class="btn" @click="keep()">保存</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
 </template>
@@ -48,9 +48,12 @@
 		name:'wenproblem',
 		data:function(){
 			return{
-				meg:'',
+				mesg:'',
 				apper:false
 			}
+		},
+		mounted(){
+			console.log(this.$route.params)
 		},
 		methods:{
 			naviTo({path, query}) {
@@ -58,25 +61,71 @@
 	          path, query
 	        })
 	      },
-	      keep(){
-	      	if(3>parseInt(this.meg.length)  ||  200<parseInt(this.meg.length) || parseInt(this.meg.length) ==0){
+	      backTo(){
+				console.log(this.$route.params.process_id)
+				 this.$router.push({
+		          path:'/wenlist2',
+		          name:'wenlist2',
+		          params:{
+		          	project_id:this.$route.params.project_id
+		          }
+		        })
+			},
+	      keep() {
+				if(3>parseInt(this.mesg.length)  ||  200<parseInt(this.mesg.length) || parseInt(this.mesg.length) ==0){
 						this.apper = true
 			      		var that = this
 			      		setTimeout(function(){
 		          			that.apper = false
 		        		},1000)
 				}
-				if(3<=parseInt(this.meg.length) && parseInt(this.meg.length) <=200 ){
+				if(3<=parseInt(this.mesg.length) && parseInt(this.mesg.length) <=200 ){
+					var that = this
+					$.ajax({
+						type:'POST',
+						url:'/api/subproject_problem/add',
+						data:{
+							check_project_id:that.$route.params.check_project_id,
+							check_subproject_id:that.$route.params.check_subproject_id,
+							problem_desc:that.mesg
+						},
+						success:function(res){
+							console.log(that.$route.params.check_subproject_id)
+						}
+					})
 					this.$router.push({
 		          	 path:'/wenlist2',
 		          	 name:'wenlist2',
-		          	  params:{
-			          	goods_name:this.$route.params.goods_name
+			          params:{
+			          	project_id:that.$route.params.project_id
+			   //        	process_id:this.$route.params.procedure_id,
+						// project_id:this.$route.params.project_id,
+						// goods_id:this.$route.params.goods_id
 			          }
 					})
 		        
 				}
+		        
 	      },
+	   //    keep(){
+	   //    	if(3>parseInt(this.meg.length)  ||  200<parseInt(this.meg.length) || parseInt(this.meg.length) ==0){
+				// 		this.apper = true
+			 //      		var that = this
+			 //      		setTimeout(function(){
+		  //         			that.apper = false
+		  //       		},1000)
+				// }
+				// if(3<=parseInt(this.meg.length) && parseInt(this.meg.length) <=200 ){
+				// 	this.$router.push({
+		  //         	 path:'/wenlist2',
+		  //         	 name:'wenlist2',
+		  //         	  params:{
+			 //          	goods_name:this.$route.params.goods_name
+			 //          }
+				// 	})
+		        
+				// }
+	   //    },
 		}
 	}
 

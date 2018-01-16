@@ -39,7 +39,7 @@
 		</div>
 		
 		<div class="checkdetali">{{checkList}}</div>
-		<div class="btn" @click="keep()" >修改</div>
+		<div class="btn" @click="keep" >修改</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
 </template>
@@ -118,7 +118,9 @@
 			          	goods_name:this.$route.params.goods_name,
 			          	project_id:this.$route.params.project_id,
 						procedure_id:this.$route.params.procedure_id,
-		          		id:list.problem_id,
+						process_id:this.$route.params.procedure_id,
+						goods_id:this.$route.params.goods_id
+		          		// id:list.problem_id,
 
 
 		          	

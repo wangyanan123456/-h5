@@ -15,7 +15,7 @@
 	    </div>
 	    <div class="daiyanshou">
 	    	<div>待验收</div>
-	    	<div class="begincheck" >验收</div>
+	    	<div class="begincheck">验收</div>
 	    </div>
 	    <ul>
 				<li v-for='list in list4'>
@@ -131,7 +131,8 @@
 		          	goods_name:this.$route.params.goods_name,
 		          	id:list.problem_id,
 		          	project_id:this.$route.params.project_id,
-					procedure_id:this.$route.params.process_id
+					procedure_id:this.$route.params.process_id,
+					goods_id:this.$route.params.goods_id
 		          }
 
 		        })

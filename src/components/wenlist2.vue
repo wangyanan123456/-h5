@@ -18,8 +18,8 @@
 	    	<div class="begincheck" >验收</div>
 	    </div>
 	    <ul>
-				<li   v-for='list in data'>
-					<div class="weight">
+				<li   v-for='list in list2' >
+					<div class="weight" v-if='list.problem_id==0'>
 						<div>
 			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
 			  			</div>
@@ -31,18 +31,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>{{list.wait_check_num}}</div>
-						</div>
-					</div>
-				</li>
-				<li >
-					<div class="weight">
+					<div class="weight" v-if='list.problem_id!==0'>
 						<div class="checkxuan">
 			  	 			<label></label><br>
 			  			</div>
@@ -60,14 +49,15 @@
 							<div>生产人员已经完成本项检查工作</div>
 						</div>
 						<div class="right">
-							<div>0</div>
+							<div>{{list.wait_check_num}}</div>
 						</div>
 					</div>
-					<div class="isok" @click.stop="naviTo({path: '/wenyanshou'})">
+					<div class="isok" @click="noproblem(list)"  v-if='list.problem_id!==0'>
 						<div>问题已解决</div>
 					</div>
 				</li>
 				
+				 
 			</ul>
 		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
 	</div>
@@ -79,18 +69,8 @@
 			return{
 				isthought:false,
 				apper:false,
-				data: [{
-		            "id": "156",
-		            "sub_project_name": "称重结果足称",
-		            "problem_id": 0,
-		            "wait_check_num":10
-		        	}, 
-		        	{
-		            "id": "157",
-		            "sub_project_name": "没有异物",
-		            "problem_id": 1,
-		            "wait_check_num":2
-		        	}]
+				list2: [],
+				check_project_id:''
 			}
 		},
 		mounted(){
@@ -100,8 +80,30 @@
           			that.apper = false
         			},1000)
 			console.log(this.$route.params)
+			this.gitlists()
 		},
 		methods:{
+			
+				gitlists(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_task/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+						
+					},
+					success:function(res){
+						that.list2= JSON.parse(res).data.list
+						that.check_project_id = JSON.parse(res).data.check_project_id
+						// that.check_project_id = JSON.parse(res).data.check_project_id
+						
+						// that.total = JSON.parse(res).total
+						console.log(res)
+					}
+				})
+				},
+			
 			
 			naviTo({path, query}) {
 	        this.$router.push({
@@ -111,21 +113,23 @@
 	      // 查看问题
 	       checkproblem(list){
 	    	 this.$router.push({
-	          path:'/wenproblem',
-	          name:'wenproblem',
+	          path:'/xiugai',
+	          name:'xiugai',
 	          params:{
-	          	problem_id:list.id,
-	          	check_item:this.$route.params.check_item
+	          	problem_id:list.problem_id,
+	          	project_id:this.$route.params.project_id,
+	          	// check_item:this.$route.params.check_item
 	          }
 	        })
 	    },
 	    // 问题已解决
-	    noproblem(){
+	    noproblem(list){
 	    	this.$router.push({
 	          path:'/wenyanshou',
 	          name:'wenyanshou',
 	          params:{
-	          	problem_id:list.id,
+	          	problem_id:list.problem_id,
+	          	project_id:this.$route.params.project_id,
 	          	check_item:this.$route.params.check_item
 	          }
 	      })
@@ -136,8 +140,10 @@
 	          path:'/wenproblem',
 	          name:'wenproblem',
 	          params:{
-	          	problem_id:list.id,
-	          	check_item:this.$route.params.check_item
+	          	check_subproject_id:list.check_subproject_id,
+	          	check_project_id:this.check_project_id,
+	          	project_id:this.$route.params.project_id
+	          	// check_item:this.$route.params.check_item
 	          }
 	      })
 	    },

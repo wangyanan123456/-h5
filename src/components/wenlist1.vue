@@ -64,11 +64,7 @@ export default{
 	          path:'wenlist2',
 	          name:'wenlist2',
 	          params:{
-	          	project_id:list.sub_project_id,
-	          	check_item:list.check_item,
-	          	subproject_id:list.sub_project_id
-	          	// problem_desc:list.problem_desc
-
+	          	project_id:list.task_id
 	          }
 	        })
 	    },
