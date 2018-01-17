@@ -161,8 +161,8 @@
 					success:function(res){
 						if(JSON.parse(res).status ==1){
 							that.$router.push({
-					          path:'/wenyanshou2',
-					          name:'wenyanshou2',
+					          path:'/wenlist1',
+					          name:'wenlist1',
 					          params:{
 					          	problem_id:list.problem_id,
 					          	project_id:that.$route.params.project_id
@@ -261,6 +261,12 @@
 		/*margin-bottom: 0.11rem;*/
 		background: #fff;
 		border-bottom:1px solid #e5e5e5;
+	}
+	.yanshou .checkxuan{
+		width:0.2rem;
+		height: 0.2rem;
+		background: #e5e5e5;
+		/*margin-left: -0.05rem;*/
 	}
 	.yanshou  .weight{
 		display: flex;
@@ -394,6 +400,24 @@
 	.yanshou .sure .ok{
 		background: #008CFF;
 		color: #fff;
+	}
+	.yanshou .isok{
+		width:100%;
+		height: 0.52rem;
+		background: #fff;
+		border-top:1px solid #e5e5e5;
+		
+	}
+	.yanshou .isok div{
+		width: 1rem;
+		height: 0.32rem;
+		line-height: 0.32rem;
+		background: #008CFF;
+		color: #fff;
+		font-size: 0.16rem;
+		margin: 0 auto;
+		margin-top: 0.1rem;
+		border-radius: 3px ;
 	}
 
 

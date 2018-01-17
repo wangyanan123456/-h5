@@ -102,25 +102,26 @@
 						type:'POST',
 						url:'/api/subproject_problem/edit',
 						data:{
-							problem_id:that.$route.params.problem_id,
+							id:that.$route.params.problem_id,
 							problem_desc:that.mesg
 
 						},
 						success:function(res){
-							console.log(JSON.parse(res).data.status)
+							if(JSON.parse(res).status==1){
+								that.$router.push({
+					          	 path:'/wenlist2',
+					          	 name:'wenlist2',
+					          	  params:{
+						          project_id:that.$route.params.project_id,
+			          			 problem_id:that.$route.params.problem_id,
+								 problem_desc:that.mesg
+									
+						          }
+								})
+							}
 						}
 					})
-					this.$router.push({
-		          	 path:'/wenlist2',
-		          	 name:'wenlist2',
-		          	  params:{
-			          	
-			          project_id:that.$route.params.project_id,
-			          problem_id:this.$route.params.problem_id,
-						problem_desc:that.mesg
-						
-			          }
-					})
+					
 		        
 				}
 		        

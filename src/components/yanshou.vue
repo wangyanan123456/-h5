@@ -120,7 +120,8 @@
 	      			type:"POST",
 	      			url:'/api/Inspection_task/acceptance',
 	      			data:{
-	      				check_project_id:that.check_project_id
+	      				check_project_id:that.check_project_id,
+	      				procedure_id:that.$route.params.procedure_id
 	      			},
 	      			success:function(){
 	      				console.log('已验证')

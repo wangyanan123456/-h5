@@ -92,19 +92,22 @@
 						},
 						success:function(res){
 							// console.log(that.$route.params.check_subproject_id)
+							if(JSON.parse(res).status==1){
+								that.$router.push({
+					          	 path:'/yanshou2',
+					          	 name:'yanshou2',
+						          params:{
+						          	goods_name:that.$route.params.goods_name,
+						          	procedure_id:that.$route.params.procedure_id,
+									project_id:that.$route.params.project_id,
+									goods_id:that.$route.params.goods_id,
+
+						          }
+								})
+							}
 						}
 					})
-					this.$router.push({
-		          	 path:'/yanshou2',
-		          	 name:'yanshou2',
-			          params:{
-			          	goods_name:this.$route.params.goods_name,
-			          	procedure_id:this.$route.params.procedure_id,
-						project_id:this.$route.params.project_id,
-						goods_id:this.$route.params.goods_id,
-
-			          }
-					})
+					
 		        
 				}
 		        

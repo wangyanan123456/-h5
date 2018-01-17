@@ -94,19 +94,22 @@
 							problem_desc:that.mesg
 						},
 						success:function(res){
-							console.log(that.$route.params.check_subproject_id)
+							// console.log(that.$route.params.check_subproject_id)
+							if(JSON.parse(res).status ==1){
+								that.$router.push({
+					          	 path:'/wenlist2',
+					          	 name:'wenlist2',
+						          params:{
+						          	project_id:that.$route.params.project_id
+						   //        	process_id:this.$route.params.procedure_id,
+									// project_id:this.$route.params.project_id,
+									// goods_id:this.$route.params.goods_id
+						          }
+								})
+							}
 						}
 					})
-					this.$router.push({
-		          	 path:'/wenlist2',
-		          	 name:'wenlist2',
-			          params:{
-			          	project_id:that.$route.params.project_id
-			   //        	process_id:this.$route.params.procedure_id,
-						// project_id:this.$route.params.project_id,
-						// goods_id:this.$route.params.goods_id
-			          }
-					})
+					
 		        
 				}
 		        

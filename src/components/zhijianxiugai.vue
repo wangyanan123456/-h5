@@ -108,24 +108,23 @@
 
 						},
 						success:function(res){
-							console.log(JSON.parse(res).data.status)
+							if(JSON.parse(res).status==1){
+								that.$router.push({
+						          	 path:'/yanshou2',
+						          	 name:'yanshou2',
+						          	  params:{
+							          	goods_name:that.$route.params.goods_name,
+							          	project_id:that.$route.params.project_id,
+										procedure_id:that.$route.params.procedure_id,
+										process_id:that.$route.params.procedure_id,
+										goods_id:that.$route.params.goods_id
+						          		// id:list.problem_id,
+			         				 }
+					})
+							}
 						}
 					})
-					this.$router.push({
-		          	 path:'/yanshou2',
-		          	 name:'yanshou2',
-		          	  params:{
-			          	goods_name:this.$route.params.goods_name,
-			          	project_id:this.$route.params.project_id,
-						procedure_id:this.$route.params.procedure_id,
-						process_id:this.$route.params.procedure_id,
-						goods_id:this.$route.params.goods_id
-		          		// id:list.problem_id,
-
-
-		          	
-			          }
-					})
+					
 		        
 				}
 		        

@@ -74,7 +74,8 @@
 					type:"POST",
 					url:'/api/Inspection_task/start_check',
 					data:{
-						project_id:that.$route.params.project_id
+						project_id:that.$route.params.project_id,
+						procedure_id:that.$route.params.procedure_id
 					},
 					success:function(res){
 						console.log()

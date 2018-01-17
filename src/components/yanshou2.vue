@@ -5,7 +5,7 @@
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
-			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
+			<div class="ok" @click= "thought">通过</div>
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
@@ -197,6 +197,31 @@
 	      	}
 
 	      },
+	      thought(){
+				var that = this
+				$.ajax({
+	      			type:"POST",
+	      			url:'/api/Inspection_task/acceptance',
+	      			data:{
+	      				check_project_id:that.check_project_id,
+	      				procedure_id:that.$route.params.procedure_id
+	      			},
+	      			success:function(){
+	      				console.log('已验证')
+	      				console.log(that.arr,that.total)
+	      			}
+	      		})
+				 this.$router.push({
+		          path:'/zhijian4',
+		          name:'zhijian4',
+		          params:{
+		          	goods_name:this.$route.params.goods_name,
+		          	procedure_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					goods_id:this.$route.params.goods_id
+		          }
+		        })
+			},
 	      
 	      
 

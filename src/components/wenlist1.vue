@@ -8,8 +8,9 @@
 			<ul>
 				<li v-for='list in lists' @click="todetail(list)">
 					<div class="weight">
-						<div>{{list.item}}</div>
-						<div class="begin">待整改</div>
+						<div>{{list.project_name}}</div>
+						<div class="begin" v-if='list.problem!==0'>待整改</div>
+						<div class="begin" v-if='list.problem==0' @click = "list">已整改</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -18,7 +19,7 @@
 							<div>待处理问题数量</div>
 						</div>
 						<div class="right">
-							<div>{{list.head_user_name}}</div>
+							<div>{{list.head_user}}</div>
 							<div>{{list.expect_finish_date}}</div>
 							<div>{{list.problem}}</div>
 						</div>
@@ -64,12 +65,18 @@ export default{
 	          path:'wenlist2',
 	          name:'wenlist2',
 	          params:{
-	          	project_id:list.task_id
+	          	project_id:list.id
 	          }
 	        })
 	    },
-	    baidu:function(e){
-	    	 window.location.href = e
+	    list(){
+	    	this.$router.push({
+	          path:'/wenyanshou2',
+	          name:'wenyanshou2',
+	          params:{
+	          	project_id:list.id
+	          }
+	        })
 	    }
   }
 }

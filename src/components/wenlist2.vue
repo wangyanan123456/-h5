@@ -5,7 +5,7 @@
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
-			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
+			<div class="ok" @click= "though">通过</div>
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
@@ -127,15 +127,28 @@
 	    },
 	    // 问题已解决
 	    noproblem(list){
-	    	this.$router.push({
-	          path:'/wenyanshou',
-	          name:'wenyanshou',
-	          params:{
-	          	problem_id:list.problem_id,
-	          	project_id:this.$route.params.project_id,
-	          	check_item:this.$route.params.check_item
-	          }
-	      })
+	    	var that = this
+	    	$.ajax({
+	    		type:'POST',
+				url:'/api/subproject_problem/edit_status',
+				data:{
+			          id:list.problem_id
+				},
+				success:function(res){
+					if(JSON.parse(res).status ==1){
+						that.$router.push({
+				          path:'/wenyanshou',
+				          name:'wenyanshou',
+				          params:{
+				          	problem_id:list.problem_id,
+				          	project_id:that.$route.params.project_id,
+				          	check_item:that.$route.params.check_item
+				          }
+				      })
+					}
+				}
+	    	})
+	    	
 	    },
 	    // 添加问题
 	    problem(list){
@@ -149,6 +162,31 @@
 	          	// check_item:this.$route.params.check_item
 	          }
 	      })
+	    },
+	    though(){
+	    	var that = this
+				$.ajax({
+	      			type:"POST",
+	      			url:'/api/Inspection_task/acceptance',
+	      			data:{
+	      				check_project_id:that.check_project_id,
+	      				procedure_id:that.$route.params.procedure_id
+	      			},
+	      			success:function(){
+	      				console.log('已验证')
+	      				console.log(that.arr,that.total)
+	      			}
+	      		})
+				 this.$router.push({
+		          path:'/wenlist1',
+		          name:'wenlist1',
+		          params:{
+		          	
+		          	procedure_id:this.$route.params.procedure_id,
+					project_id:this.$route.params.project_id,
+					
+		          }
+		        })
 	    },
 	      nothough:function(){
 	      	this.isthought = false
