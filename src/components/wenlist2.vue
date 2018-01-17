@@ -1,27 +1,27 @@
 <template>
 	<div class="yanshou2">
-	<!-- <div class="problem" v-if='isthought'>
+	<div class="problem" v-if='isthought'>
 		<div class="renwu">验收任务</div>
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
 			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
 		</div>
-	</div> -->
-	<!-- <div class="yanshou1" v-if='isthought'></div> -->
+	</div>
+	<div class="yanshou1" v-if='isthought'></div>
 		<div class="backto" @click.stop="naviTo({path: '/wenlist1'})">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
 	    <div class="daiyanshou">
 	    	<div>待整改</div>
-	    	<div class="begincheck" >验收</div>
+	    	<div class="begincheck"  @click='yanshou'>验收</div>
 	    </div>
 	    <ul>
 				<li   v-for='list in list2' >
 					<div class="weight" v-if='list.problem_id==0'>
 						<div>
-			  	 			<label><input type="checkbox" name="items"><span></span></label><br>
+			  	 			<label><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id"><span></span></label><br>
 			  			</div>
 						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click="problem(list)">
@@ -70,7 +70,9 @@
 				isthought:false,
 				apper:false,
 				list2: [],
-				check_project_id:''
+				check_project_id:'',
+				arr:[],
+				total:''
 			}
 		},
 		mounted(){
@@ -79,8 +81,8 @@
 	      		 setTimeout(function(){
           			that.apper = false
         			},1000)
-			console.log(this.$route.params)
-			this.gitlists()
+				console.log(this.$route.params)
+				this.gitlists()
 		},
 		methods:{
 			
@@ -95,10 +97,11 @@
 					},
 					success:function(res){
 						that.list2= JSON.parse(res).data.list
-						that.check_project_id = JSON.parse(res).data.check_project_id
+						that.check_project_id = JSON.parse(res).data.check_project_id,
+
 						// that.check_project_id = JSON.parse(res).data.check_project_id
 						
-						// that.total = JSON.parse(res).total
+						that.total = JSON.parse(res).total
 						console.log(res)
 					}
 				})
@@ -151,7 +154,19 @@
 	      	this.isthought = false
 	      },
 	      yanshou:function(){
-	      	this.isthought = true
+	      	if(this.arr.length==this.total){
+	      		var that = this
+	      		
+	      		this.isthought = true
+	      	}
+	      	if(this.arr.length!=this.total){
+	      		console.log(this.arr)
+	      		this.apper = true
+	      		var that = this
+	      		 setTimeout(function(){
+          			that.apper = false
+        			},1000)
+	      	}
 	      },
 
 		}
@@ -179,7 +194,7 @@
 		width:0.2rem;
 		height: 0.2rem;
 		background: #e5e5e5;
-		margin-left: -0.05rem;
+		/*margin-left: -0.05rem;*/
 	}
    	.yanshou2 .backto{
 	    position: fixed;

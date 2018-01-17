@@ -23,8 +23,8 @@
 				<img src="../assets/img/data.png">
 			</div>
 			<div class="gai">整改时间</div>
-			<div class="xuan" style="margin-left: 2rem;">
-				<div> 请选择</div>
+			<div class="xuan" style="margin-left: 1.7rem;">
+				<div> {{today}}</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
 				</div>
@@ -49,11 +49,15 @@
 		data:function(){
 			return{
 				mesg:'',
-				apper:false
+				apper:false,
+				today:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
+			var d = new Date();
+			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			console.log(this.today)
 		},
 		methods:{
 			naviTo({path, query}) {

@@ -102,7 +102,7 @@
 						type:'POST',
 						url:'/api/subproject_problem/edit',
 						data:{
-							problem_id:this.$route.params.problem_id,
+							problem_id:that.$route.params.problem_id,
 							problem_desc:that.mesg
 
 						},
@@ -115,7 +115,9 @@
 		          	 name:'wenlist2',
 		          	  params:{
 			          	
-			          project_id:that.$route.params.project_id
+			          project_id:that.$route.params.project_id,
+			          problem_id:this.$route.params.problem_id,
+						problem_desc:that.mesg
 						
 			          }
 					})
