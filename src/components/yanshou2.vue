@@ -8,7 +8,16 @@
 			<div class="ok" @click= "thought">通过</div>
 		</div>
 	</div>
+	<div class="problem2"  >
+		<!-- <div class="renwu">验收任务</div> -->
+		<div class="isthought" style="margin-top:1.5rem">问题是否解决</div>
+		<div class="sure">
+			<div class="no" @click='nothough'>不通过</div>
+			<div class="ok" @click= "thought">通过</div>
+		</div>
+	</div>
 	<div class="yanshou1" v-if='isthought'></div>
+	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
@@ -74,7 +83,8 @@
 				apper:false,
 				list4:[],
 				check_project_id:'',
-				check_subproject_id:''
+				check_subproject_id:'',
+				sure:false
 			}
 		},
 		mounted(){
@@ -129,30 +139,31 @@
 			},
 			ok(list){
 				var that = this
-				$.ajax({
+				console.log('ok')
+				// $.ajax({
 
-					type:'POST',
-					url:'/api/subproject_problem/edit_status',
-					data:{
-				          id:list.problem_id
-					},
-					success:function(res){
-						if(JSON.parse(res).status ==1){
-							that.$router.push({
-					          path:'/yanshou',
-					          name:'yanshou',
-					          params:{
-					          	goods_name:that.$route.params.goods_name,
-					          	problem_id:list.problem_id,
-					          	project_id:that.$route.params.project_id,
-								procedure_id:that.$route.params.procedure_id,
-								goods_id:that.$route.params.goods_id
-					          }
+				// 	type:'POST',
+				// 	url:'/api/subproject_problem/edit_status',
+				// 	data:{
+				//           id:list.problem_id
+				// 	},
+				// 	success:function(res){
+				// 		if(JSON.parse(res).status ==1){
+				// 			that.$router.push({
+				// 	          path:'/yanshou',
+				// 	          name:'yanshou',
+				// 	          params:{
+				// 	          	goods_name:that.$route.params.goods_name,
+				// 	          	problem_id:list.problem_id,
+				// 	          	project_id:that.$route.params.project_id,
+				// 				procedure_id:that.$route.params.procedure_id,
+				// 				goods_id:that.$route.params.goods_id
+				// 	          }
 
-					        })
-						}
-					}
-				})
+				// 	        })
+				// 		}
+				// 	}
+				// })
 				 
 			},
 			addPreblem(list){
@@ -404,6 +415,15 @@
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		position: absolute;
+		z-index: 4000;
+		top:1.26rem;
+		left: 0.45rem;
+	}
+	.yanshou2 .problem2{
+		width:2.85rem;
+		height: 3.26rem;
+		background: url('../assets/img/problem2.png') no-repeat;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;
