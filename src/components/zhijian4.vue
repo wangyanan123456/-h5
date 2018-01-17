@@ -98,8 +98,8 @@ export default{
 
 	    	if(list.status == 20){
 	    		this.$router.push({
-		         	path:'/yanshou',
-					name:'yanshou',
+		         	path:'/yanshou2',
+					name:'yanshou2',
 					params:{
 						goods_name:this.$route.params.goods_name,
 						project_id:list.id,

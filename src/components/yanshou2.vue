@@ -1,21 +1,21 @@
 <template>
 	<div class="yanshou2">
-	<!-- <div class="problem" v-if='isthought'>
+	<div class="problem" v-if='isthought'>
 		<div class="renwu">验收任务</div>
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
 			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
 		</div>
-	</div> -->
-	<!-- <div class="yanshou1" v-if='isthought'></div> -->
+	</div>
+	<div class="yanshou1" v-if='isthought'></div>
 		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
 	    <div class="daiyanshou">
 	    	<div>待验收</div>
-	    	<div class="begincheck">验收</div>
+	    	<div class="begincheck"  @click='yanshou'>验收</div>
 	    </div>
 	    <ul>
 				<li v-for='list in list4'>
@@ -179,13 +179,16 @@
 	      nothough:function(){
 	      	this.isthought = false
 	      },
-	       yanshou:function(){
+	      yanshou:function(){
 	      	
 	 
-	      	if(this.arr1.length==1){
+	      	if(this.arr1.length==this.total){
+	      		var that = this
+	      		
 	      		this.isthought = true
 	      	}
-	      	if(this.arr1.length!=1){
+	      	if(this.arr1.length!=this.total){
+	      		console.log(this.arr1)
 	      		this.apper = true
 	      		var that = this
 	      		 setTimeout(function(){
@@ -194,6 +197,7 @@
 	      	}
 
 	      },
+	      
 	      
 
 		}

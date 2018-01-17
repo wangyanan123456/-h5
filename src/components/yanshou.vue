@@ -20,7 +20,7 @@
 	    <ul>
 				<li  v-for='list in list4' >
 					
-					<div class="weight"  v-if='list.problem_id==0'>
+					<div class="weight"   v-if='list.problem_id==0'>
 						<div >
 		  	 				<label ><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id" ><span></span></label><br>
 		  				</div>
@@ -32,10 +32,10 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="weight"  v-if='list.problem_id!==0'>
-						<div >
-		  	 				<label ><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id" ><span></span></label><br>
-		  				</div>
+					<div class="weight"  v-if='list.problem_id!==0'>
+						<div class="checkxuan">
+			  	 			<label></label><br>
+			  			</div>
 						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click="lookPreblem(list)">
 							<div>查看问题</div>
@@ -43,7 +43,7 @@
 								<img src="../assets/img/kan.png">
 							</div>
 						</div>
-					</div> -->
+					</div>
 					<div class="detail">
 						<div class="left">
 							<div>待处理问题数量</div>
@@ -53,9 +53,9 @@
 							<div>0</div>
 						</div>
 					</div>
-					<!-- <div class="isok" @click="ok(list)"  v-if='list.problem_id!==0'>
+					<div class="isok" @click="ok(list)"  v-if='list.problem_id!==0'>
 						<div>问题已解决</div>
-					</div> -->
+					</div>
 				</li>
 				
 				
@@ -153,48 +153,48 @@
 		          }
 		        })
 			},
-			// lookPreblem(list){
-			// 	 this.$router.push({
-		 //          path:'/zhijianxiugai',
-		 //          name:'zhijianxiugai',
-		 //          params:{
-		 //          	goods_name:this.$route.params.goods_name,
-		 //          	problem_id:list.problem_id,
-		 //          	project_id:this.$route.params.project_id,
-			// 		procedure_id:this.$route.params.procedure_id,
-			// 		goods_id:this.$route.params.goods_id
-		 //          }
+			lookPreblem(list){
+				 this.$router.push({
+		          path:'/zhijianxiugai',
+		          name:'zhijianxiugai',
+		          params:{
+		          	goods_name:this.$route.params.goods_name,
+		          	problem_id:list.problem_id,
+		          	project_id:this.$route.params.project_id,
+					procedure_id:this.$route.params.procedure_id,
+					goods_id:this.$route.params.goods_id
+		          }
 
-		 //        })
-			// },
-			// ok(list){
-			// 	var that = this
-			// 	$.ajax({
+		        })
+			},
+			ok(list){
+				var that = this
+				$.ajax({
 
-			// 		type:'POST',
-			// 		url:'/api/subproject_problem/edit_status',
-			// 		data:{
-			// 	          id:list.problem_id
-			// 		},
-			// 		success:function(res){
-			// 			if(JSON.parse(res).status ==1){
-			// 				that.$router.push({
-			// 		          path:'/yanshou2',
-			// 		          name:'yanshou2',
-			// 		          params:{
-			// 		          	goods_name:that.$route.params.goods_name,
-			// 		          	problem_id:list.problem_id,
-			// 		          	project_id:that.$route.params.project_id,
-			// 					procedure_id:that.$route.params.procedure_id,
-			// 					goods_id:that.$route.params.goods_id
-			// 		          }
+					type:'POST',
+					url:'/api/subproject_problem/edit_status',
+					data:{
+				          id:list.problem_id
+					},
+					success:function(res){
+						if(JSON.parse(res).status ==1){
+							that.$router.push({
+					          path:'/yanshou2',
+					          name:'yanshou2',
+					          params:{
+					          	goods_name:that.$route.params.goods_name,
+					          	problem_id:list.problem_id,
+					          	project_id:that.$route.params.project_id,
+								procedure_id:that.$route.params.procedure_id,
+								goods_id:that.$route.params.goods_id
+					          }
 
-			// 		        })
-			// 			}
-			// 		}
-			// 	})
+					        })
+						}
+					}
+				})
 				 
-			// },
+			},
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
@@ -289,6 +289,12 @@
 		background: #fff;
 		border-bottom:1px solid #e5e5e5;
 		position: relative;
+	}
+	.yanshou .checkxuan{
+		width:0.2rem;
+		height: 0.2rem;
+		background: #e5e5e5;
+		margin-left: -0.2rem;
 	}
 	.yanshou  .weight{
 		display: flex;
