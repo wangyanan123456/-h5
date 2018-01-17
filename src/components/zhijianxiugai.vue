@@ -23,7 +23,7 @@
 				<img src="../assets/img/data.png">
 			</div>
 			<div class="gai">整改时间</div>
-			<div class="xuan" style="margin-left: 2rem;">
+			<div class="xuan" style="margin-left: 1.7rem;">
 				<div> {{today}}</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
@@ -56,7 +56,8 @@
 		},
 		mounted(){
 			console.log(this.$route.params)
-			// this.today = new Date()
+			var d = new Date();
+			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 			this.getmeg()
 		},
 		methods:{
@@ -66,12 +67,11 @@
 					type:'POST',
 					url:'/api/subproject_problem/show',
 					data:{
-						id:that.$route.params.id
+						id:this.$route.params.problem_id
 					},
 					success:function(res){
 						console.log(JSON.parse(res).data)
 						that.mesg = JSON.parse(res).data.problem_desc
-						that.today = JSON.parse(res).data.correct_time
 						that.checkList = JSON.parse(res).data.check_item
 					}
 				})
@@ -83,7 +83,7 @@
 		          name:'yanshou2',
 		          params:{
 		          	goods_name:this.$route.params.goods_name,
-			          	process_id:this.$route.params.procedure_id,
+			          	procedure_id:this.$route.params.procedure_id,
 						project_id:this.$route.params.project_id,
 						goods_id:this.$route.params.goods_id
 		          }
@@ -103,7 +103,7 @@
 						type:'POST',
 						url:'/api/subproject_problem/edit',
 						data:{
-							id:that.$route.params.id,
+							id:that.$route.params.problem_id,
 							problem_desc:that.mesg
 
 						},

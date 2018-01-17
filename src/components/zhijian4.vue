@@ -61,7 +61,7 @@ export default{
 				type:'POST',
 				url:'/api/Inspection_task/procedure_project',
 				data:{
-					procedure_id:that.$route.params.process_id
+					procedure_id:that.$route.params.procedure_id
 				},
 				success:function(res){
 					that.list3 = JSON.parse(res).data.list
@@ -90,7 +90,7 @@ export default{
 					params:{
 						goods_name:this.$route.params.goods_name,
 						project_id:list.id,
-						procedure_id:this.$route.params.process_id,
+						procedure_id:this.$route.params.procedure_id,
 						goods_id:this.$route.params.goods_id
 					}
 		        })
@@ -103,7 +103,7 @@ export default{
 					params:{
 						goods_name:this.$route.params.goods_name,
 						project_id:list.id,
-						procedure_id:this.$route.params.process_id,
+						procedure_id:this.$route.params.procedure_id,
 						goods_id:this.$route.params.goods_id
 					}
 		        })

@@ -24,7 +24,7 @@
 			  	 			<label><input type="checkbox" name="items" v-model='arr1' v-bind:value='list.id'><span></span></label><br>
 			  			</div>
 						<div class="zhong">{{list.sub_project_name}}</div>
-						<div class="begin" @click="addPreblem">
+						<div class="begin" @click="addPreblem(list)">
 							<div>添加问题</div>
 							<div>
 								<img src="../assets/img/jia.png">
@@ -35,7 +35,7 @@
 						<div class="checkxuan">
 			  	 			<label></label><br>
 			  			</div>
-						<div class="zhong">称重结果足秤</div>
+						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin" @click="lookPreblem(list)">
 							<div>查看问题</div>
 							<div>
@@ -72,7 +72,9 @@
 				isthought:false,
 				arr1:[],
 				apper:false,
-				list4:[]
+				list4:[],
+				check_project_id:'',
+				check_subproject_id:''
 			}
 		},
 		mounted(){
@@ -106,7 +108,8 @@
 		          params:{
 		          	goods_name:this.$route.params.goods_name,
 		          	project_id:this.$route.params.project_id,
-					process_id:this.$route.params.process_id
+					procedure_id:this.$route.params.procedure_id,
+					goods_id:this.$route.params.goods_id
 		          }
 		        })
 			},
@@ -116,33 +119,54 @@
 		          name:'zhijianxiugai',
 		          params:{
 		          	goods_name:this.$route.params.goods_name,
-		          	id:list.problem_id,
+		          	problem_id:list.problem_id,
 		          	project_id:this.$route.params.project_id,
-					procedure_id:this.$route.params.process_id
-		          }
-
-		        })
-			},
-			ok(list){
-				 this.$router.push({
-		          path:'/yanshou',
-		          name:'yanshou',
-		          params:{
-		          	goods_name:this.$route.params.goods_name,
-		          	id:list.problem_id,
-		          	project_id:this.$route.params.project_id,
-					procedure_id:this.$route.params.process_id,
+					procedure_id:this.$route.params.procedure_id,
 					goods_id:this.$route.params.goods_id
 		          }
 
 		        })
 			},
-			addPreblem(){
+			ok(list){
+				var that = this
+				$.ajax({
+
+					type:'POST',
+					url:'/api/subproject_problem/edit_status',
+					data:{
+				          id:list.problem_id
+					},
+					success:function(res){
+						if(JSON.parse(res).status ==1){
+							that.$router.push({
+					          path:'/yanshou',
+					          name:'yanshou',
+					          params:{
+					          	goods_name:that.$route.params.goods_name,
+					          	problem_id:list.problem_id,
+					          	project_id:that.$route.params.project_id,
+								procedure_id:that.$route.params.procedure_id,
+								goods_id:that.$route.params.goods_id
+					          }
+
+					        })
+						}
+					}
+				})
+				 
+			},
+			addPreblem(list){
 				 this.$router.push({
 		          path:'/problem',
 		          name:'problem',
 		          params:{
-		          	goods_name:this.$route.params.goods_name
+		          	goods_name:this.$route.params.goods_name,
+		          	project_id:this.$route.params.project_id,
+					procedure_id:this.$route.params.procedure_id,
+					goods_id:this.$route.params.goods_id,
+					check_project_id:this.check_project_id,
+					check_subproject_id:list.check_subproject_id,
+
 		          }
 
 		        })

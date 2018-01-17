@@ -71,7 +71,7 @@ export default{
           path:'/zhijian4',
           name:'zhijian4',
           params:{
-          	process_id:item.id,
+          	procedure_id:item.id,
           	goods_name:this.$route.params.goods_name,
           	goods_id:this.$route.params.goods_id
 

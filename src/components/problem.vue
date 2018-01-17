@@ -23,8 +23,8 @@
 				<img src="../assets/img/data.png">
 			</div>
 			<div class="gai">整改时间</div>
-			<div class="xuan" style="margin-left: 2rem;">
-				<div> 请选择</div>
+			<div class="xuan" style="margin-left: 1.72rem;">
+				<div> {{today}}</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
 				</div>
@@ -48,11 +48,16 @@
 		data:function(){
 			return{
 				mesg:'',
-				apper:false
+				apper:false,
+				today:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
+			
+			var d = new Date();
+			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			console.log(this.today)
 		},
 		methods:{
 			backTo(){
@@ -61,7 +66,6 @@
 		          name:'yanshou',
 		          params:{
 		          	goods_name:this.$route.params.goods_name,
-		          	process_id:this.$route.params.procedure_id,
 					project_id:this.$route.params.project_id,
 					goods_id:this.$route.params.goods_id,
 					procedure_id:this.$route.params.procedure_id
@@ -87,7 +91,7 @@
 							problem_desc:that.mesg
 						},
 						success:function(res){
-							console.log(that.$route.params.check_subproject_id)
+							// console.log(that.$route.params.check_subproject_id)
 						}
 					})
 					this.$router.push({
@@ -95,9 +99,10 @@
 		          	 name:'yanshou2',
 			          params:{
 			          	goods_name:this.$route.params.goods_name,
-			          	process_id:this.$route.params.procedure_id,
+			          	procedure_id:this.$route.params.procedure_id,
 						project_id:this.$route.params.project_id,
-						goods_id:this.$route.params.goods_id
+						goods_id:this.$route.params.goods_id,
+
 			          }
 					})
 		        
