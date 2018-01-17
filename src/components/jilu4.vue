@@ -1,13 +1,13 @@
 <template>
 	<div class="jilu4">
-		<div class="backto" @click.stop="naviTo({path: '/jilu3'})">
+		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
 	    <ul>
-				<li >
+				<li  v-for='list in lists'>
 					<div class="weight">
-						<div>称重</div>
+						<div>{{list.sub_project_name}}</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -15,24 +15,11 @@
 							<div>生产人员已经完成本项检查工作</div>
 						</div>
 						<div class="right">
-							<div>0</div>
+							<div>{{list.wait_check_num}}</div>
 						</div>
 					</div>
 				</li>
-				<li >
-					<div class="weight">
-						<div>称重</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-				</li>
+				
 			</ul>
 		
 	</div>
@@ -40,12 +27,50 @@
 <script type="text/javascript">
 	export default{
 		name:'jilu4',
+		data:function(){
+			return{
+				lists:[]
+			}
+		},
+		mounted(){
+			console.log(this.$route.params)
+			this.gitlist()
+		},
 		methods:{
+			gitlist(){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_record/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+						procedure_id:that.$route.params.procedure_id
+					},
+					success:function(res){
+						if(JSON.parse(res).status == 1){
+							that.lists = JSON.parse(res).data.list
+						}
+						
+					}
+				})
+			},
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
 	        })
-	      }
+	      },
+	      backTo(){
+			
+			 this.$router.push({
+	          path:'/jilu3',
+	          name:'jilu3',
+	          params:{
+	          	goods_name:this.$route.params.goods_name,
+				goods_id:this.$route.params.goods_id,
+				procedure_id:this.$route.params.procedure_id
+	          }
+	        })
+		},
 		}
 	}
 
@@ -54,7 +79,7 @@
 	.jilu4{
 		/*padding-top: 0.05rem;*/
 		width:100%;
-		min-height: 90vh;
+		min-height: 81vh;
 		background: #EFEFF4;
 	}
    	.jilu4 .backto{

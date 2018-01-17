@@ -59,7 +59,7 @@
 				
 				 
 			</ul>
-		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
+		<div class="toast" v-if='apper'>请选择验收的任务</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -132,7 +132,8 @@
 	    		type:'POST',
 				url:'/api/subproject_problem/edit_status',
 				data:{
-			          id:list.problem_id
+			          id:list.problem_id,
+			          project_id:that.$route.params.project_id
 				},
 				success:function(res){
 					if(JSON.parse(res).status ==1){
@@ -158,7 +159,8 @@
 	          params:{
 	          	check_subproject_id:list.check_subproject_id,
 	          	check_project_id:this.check_project_id,
-	          	project_id:this.$route.params.project_id
+	          	project_id:this.$route.params.project_id,
+	          	project_name:this.$route.params.project_name
 	          	// check_item:this.$route.params.check_item
 	          }
 	      })
@@ -175,18 +177,28 @@
 	      			success:function(){
 	      				console.log('已验证')
 	      				console.log(that.arr,that.total)
+	      				if(JSON.parse(res).status == 1){
+			      			that.$router.push({
+					          path:'/wenlist1',
+					          name:'wenlist1',
+					          params:{
+					          procedure_id:this.$route.params.procedure_id,
+								project_id:this.$route.params.project_id
+					          }
+					        })
+		      			}
 	      			}
 	      		})
-				 this.$router.push({
-		          path:'/wenlist1',
-		          name:'wenlist1',
-		          params:{
+				 // this.$router.push({
+		   //        path:'/wenlist1',
+		   //        name:'wenlist1',
+		   //        params:{
 		          	
-		          	procedure_id:this.$route.params.procedure_id,
-					project_id:this.$route.params.project_id,
+		   //        	procedure_id:this.$route.params.procedure_id,
+					// project_id:this.$route.params.project_id,
 					
-		          }
-		        })
+		   //        }
+		   //      })
 	    },
 	      nothough:function(){
 	      	this.isthought = false

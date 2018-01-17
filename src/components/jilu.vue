@@ -6,62 +6,17 @@
     </div>
     	
 		<ul>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
+			<li v-for='list in lists' @click="torenwu(list)">
 				<div class="flex">
-					<div>黑眼豆豆</div>
+					<div>{{list.goods_name}}</div>
 					<div class="kai">
 						<img src="../assets/img/kai.png">
 					</div>
 				</div>
 			</li>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
-			<li  @click.stop="naviTo({path: '/jilu2'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-				</div>
-			</li>
+			
+			
+			
 			
 
 		</ul>
@@ -70,10 +25,43 @@
 <script type="text/javascript">
 export default{
 	name:'zhijian2',
+	data:function(){
+		return{
+			lists:[]
+		}
+	},
+	mounted(){
+		this.getList()
+	},
 	methods:{
+		getList(){
+			var that = this
+			$.ajax({
+				type:'POST',
+				url:'/api/Inspection_record/goods_list',
+				success:function(res){
+					if(JSON.parse(res).status==1){
+						that.lists = JSON.parse(res).data
+						console.log(that.lists)
+					}
+					
+				}
+			})
+		},
 		naviTo({path, query}) {
         this.$router.push({
           path, query
+        })
+      },
+      torenwu(item){
+
+      	this.$router.push({
+          path:'/jilu2',
+          name:'jilu2',
+          params:{
+          	goods_id:item.id,
+          	goods_name:item.goods_name
+          }
         })
       }
 	}

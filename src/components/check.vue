@@ -50,7 +50,10 @@
 						procedure_id:that.$route.params.procedure_id
 					},
 					success:function(res){
-						that.lists = JSON.parse(res).data.list
+						if(JSON.parse(res).status == 1){
+							that.lists = JSON.parse(res).data.list
+						}
+						
 					}
 				})
 			},

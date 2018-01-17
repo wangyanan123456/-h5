@@ -9,8 +9,8 @@
 				<li v-for='list in lists' @click="todetail(list)">
 					<div class="weight">
 						<div>{{list.project_name}}</div>
-						<div class="begin" v-if='list.problem!==0'>待整改</div>
-						<div class="begin" v-if='list.problem==0' @click = "list">已整改</div>
+						<div class="begin" v-if='list.problem!=2' >待整改</div>
+						<div class="begin" v-if='list.problem==2'>已整改</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -61,23 +61,29 @@ export default{
 	        })
 	    },
 	    todetail(list){
-	    	 this.$router.push({
-	          path:'wenlist2',
-	          name:'wenlist2',
-	          params:{
-	          	project_id:list.id
-	          }
-	        })
+	    	if(list.problem==2){
+	    		this.$router.push({
+		          path:'/wenyanshou2',
+		          name:'wenyanshou2',
+		          params:{
+		          	project_id:list.project_id
+		          }
+	        	})
+	    	}else{
+	    		 this.$router.push({
+		          path:'wenlist2',
+		          name:'wenlist2',
+		          params:{
+		          	project_id:list.id,
+		          	project_name:list.project_name
+		          }
+		        })
+	    	}
+
+
+	    	
 	    },
-	    list(){
-	    	this.$router.push({
-	          path:'/wenyanshou2',
-	          name:'wenyanshou2',
-	          params:{
-	          	project_id:list.id
-	          }
-	        })
-	    }
+
   }
 }
 </script>

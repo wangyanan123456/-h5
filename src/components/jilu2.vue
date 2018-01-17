@@ -1,5 +1,5 @@
 <template>
-	<div class="zhijian3"  @click.stop="naviTo({path: '/jilu'})">
+	<div class="zhijian3"  >
 	<div class="today">
 			<div>
 				<img src="../assets/img/data.png">
@@ -10,21 +10,21 @@
 	</div>
 		<div class="box">
 		
-			<div>
+			<div >
 				<div class="backto">
-					<div>
+					<div @click.stop="naviTo({path: '/jilu'})">
 						<img src="../assets/img/back.png">
 					</div>
 					<div>返回</div>
 				</div>
-				<div class="divTitle">黑眼豆豆质检</div>
+				<div class="divTitle">{{this.$route.params.goods_name}}质检</div>
 			</div>
 			<ul>
-			<li  @click.stop="naviTo({path: '/jilu3'})">
+			<li v-for= 'list in list2' @click="next(list)">
 				<div class="flex">
-					<div>黑眼豆豆</div>
+					<div>{{list.process_name}}</div>
 					<div class="kai">
-						<div>任务数</div>
+						<div>任务数{{list.project_numer}}</div>
 						<div>
 							<img src="../assets/img/kai.png">
 						</div>
@@ -32,40 +32,7 @@
 					</div>
 				</div>
 			</li>
-			<li  @click.stop="naviTo({path: '/jilu3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<div>任务数</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-						
-					</div>
-				</div>
-			</li><li  @click.stop="naviTo({path: '/jilu3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<div>任务数</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-						
-					</div>
-				</div>
-			</li><li  @click.stop="naviTo({path: '/jilu3'})">
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<div>任务数</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-						
-					</div>
-				</div>
-			</li>
+			
 		</ul>
 		</div>
 	</div>
@@ -73,11 +40,50 @@
 <script type="text/javascript">
 export default{
 	name:'zhijian3',
+	data:function(){
+		return{
+			list2:[]
+		}
+	},
+	mounted(){
+		this.getList2()
+		console.log(this.$route.params)
+	},
 	methods:{
+		getList2(){
+			var that = this
+			$.ajax({
+			type:'POST',
+			url:'/api/Inspection_record/goods_procedure',
+			data:{
+				goods_id:that.$route.params.goods_id
+			},
+			success:function(res){
+				if(JSON.parse(res).status == 1){
+					that.list2 = JSON.parse(res).data
+				}
+				
+			}
+
+			})
+		},
 		naviTo({path, query}) {
 			console.log(9)
         this.$router.push({
           path, query
+        })
+      },
+      next(item){
+      	
+        this.$router.push({
+          path:'/jilu3',
+          name:'jilu3',
+          params:{
+          	procedure_id:item.id,
+          	goods_name:this.$route.params.goods_name,
+          	goods_id:this.$route.params.goods_id
+
+          }
         })
       }
 	}

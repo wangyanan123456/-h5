@@ -15,10 +15,10 @@
 	    </div>
 	    
 	    <ul>
-				<li >
+				<li v-for='list in lists'>
 					<div class="weight">
 						
-						<div class="zhong">称重结果足秤</div>
+						<div class="zhong">{{list.sub_project_name}}</div>
 						<div class="begin">
 							<div>已验收</div>
 							
@@ -34,26 +34,7 @@
 						</div>
 					</div>
 				</li>
-				<li >
-					<div class="weight">
-						
-						<div class="zhong">称重结果足秤</div>
-						<div class="begin">
-							<div>已验收</div>
-							
-						</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>待处理问题数量</div>
-							<div>生产人员已经完成本项检查工作</div>
-						</div>
-						<div class="right">
-							<div>0</div>
-						</div>
-					</div>
-					
-				</li>
+				
 				
 			</ul>
 		<!-- <div class="toast">请先处理有问题的任务</div> -->
@@ -64,10 +45,32 @@
 		name:'wenyanshou2',
 		data:function(){
 			return{
-				isthought:false
+				isthought:false,
+				lists:[]
 			}
 		},
+		mounted(){
+			console.log(this.$route.params)
+			this.gitlist()
+		},
 		methods:{
+			gitlist(list){
+				var that = this
+				$.ajax({
+					type:'POST',
+					url:'/api/Inspection_record/sub_project',
+					data:{
+						project_id:that.$route.params.project_id,
+	
+					},
+					success:function(res){
+						if(JSON.parse(res).status == 1){
+							that.lists = JSON.parse(res).data.list
+						}
+						
+					}
+				})
+			},
 			naviTo({path, query}) {
 	        this.$router.push({
 	          path, query

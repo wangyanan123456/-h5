@@ -60,7 +60,7 @@
 				
 				
 			</ul>
-		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
+		<div class="toast" v-if='apper'>请选择验收的任务</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -161,8 +161,8 @@
 					success:function(res){
 						if(JSON.parse(res).status ==1){
 							that.$router.push({
-					          path:'/wenlist1',
-					          name:'wenlist1',
+					          path:'/wenlist2',
+					          name:'wenlist2',
 					          params:{
 					          	problem_id:list.problem_id,
 					          	project_id:that.$route.params.project_id
@@ -180,20 +180,21 @@
 	      			type:"POST",
 	      			url:'/api/Inspection_task/acceptance',
 	      			data:{
-	      				check_project_id:that.check_project_id
+	      				project_id:that.check_project_id
 	      			},
-	      			success:function(){
-	      				console.log('已验证')
-	      				console.log(that.arr,that.total)
+	      			success:function(res){
+	      				if(JSON.parse(res).status==1){
+				      		that.$router.push({
+					          path:'/wenlist1',
+					          name:'wenlist1',
+					          params:{
+					          	
+					          }
+					        })
+	      				}
 	      			}
 	      		})
-				 this.$router.push({
-		          path:'/wenlist1',
-		          name:'wenlist1',
-		          params:{
-		          	
-		          }
-		        })
+				 
 	      }
 
 		}

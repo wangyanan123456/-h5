@@ -61,7 +61,7 @@
 				
 				
 			</ul>
-		<div class="toast" v-if='apper'>请先处理有问题的任务</div>
+		<div class="toast" v-if='apper'>请选择验收的任务</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -203,24 +203,27 @@
 	      			type:"POST",
 	      			url:'/api/Inspection_task/acceptance',
 	      			data:{
-	      				check_project_id:that.check_project_id,
+	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
 	      			},
 	      			success:function(){
 	      				console.log('已验证')
 	      				console.log(that.arr,that.total)
+	      				if(JSON.parse(res).status == 1){
+			      			that.$router.push({
+					          path:'/zhijian4',
+					          name:'zhijian4',
+					          params:{
+					          	goods_name:that.$route.params.goods_name,
+					          	procedure_id:that.$route.params.procedure_id,
+								project_id:that.$route.params.project_id,
+								goods_id:that.$route.params.goods_id
+					          }
+					        })
+		      			}
 	      			}
 	      		})
-				 this.$router.push({
-		          path:'/zhijian4',
-		          name:'zhijian4',
-		          params:{
-		          	goods_name:this.$route.params.goods_name,
-		          	procedure_id:this.$route.params.procedure_id,
-					project_id:this.$route.params.project_id,
-					goods_id:this.$route.params.goods_id
-		          }
-		        })
+				 
 			},
 	      
 	      

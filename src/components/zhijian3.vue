@@ -19,8 +19,13 @@
 						<div>
 							<img src="../assets/img/kai.png">
 						</div>
+
 						
 					</div>
+					<div class="checked"  v-if='item.status==100'>
+						<img src="../assets/img/checked.png">
+					</div>
+
 				</div>
 			</li>
 			
@@ -53,8 +58,10 @@ export default{
 				goods_id:this.$route.params.goods_id
 			},
 			success:function(res){
-				console.log(JSON.parse(res))
-				that.list2 = JSON.parse(res).data
+				if(JSON.parse(res).status == 1){
+					that.list2 = JSON.parse(res).data
+				}
+				
 			}
 
 			})
@@ -111,6 +118,11 @@ export default{
 		height: 0.1rem;
 		margin-top: 0.21rem;
 		margin-right: 0.05rem;
+	}
+	.zhijian3 .checked{
+		position: absolute;
+		left: 1.7rem;
+		top:0.08rem;
 	}
 	.zhijian3 ul{
 		width:3.30rem;

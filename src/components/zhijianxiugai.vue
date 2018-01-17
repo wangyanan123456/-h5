@@ -70,9 +70,11 @@
 						id:this.$route.params.problem_id
 					},
 					success:function(res){
-						console.log(JSON.parse(res).data)
-						that.mesg = JSON.parse(res).data.problem_desc
-						that.checkList = JSON.parse(res).data.check_item
+						if(JSON.parse(res).status==1){
+							that.mesg = JSON.parse(res).data.problem_desc
+							that.checkList = JSON.parse(res).data.check_item
+						}
+						
 					}
 				})
 				

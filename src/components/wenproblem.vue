@@ -38,7 +38,7 @@
 			
 		</div>
 		
-		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
+		<div class="checkdetali">{{check_item}}</div>
 		<div class="btn" @click="keep()">保存</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
@@ -50,7 +50,9 @@
 			return{
 				mesg:'',
 				apper:false,
-				today:''
+				today:'',
+				check_item:'',
+				name:''
 			}
 		},
 		mounted(){
@@ -58,6 +60,7 @@
 			var d = new Date();
 			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 			console.log(this.today)
+			this.check_item  = this.$route.params.project_name
 		},
 		methods:{
 			naviTo({path, query}) {
@@ -94,16 +97,13 @@
 							problem_desc:that.mesg
 						},
 						success:function(res){
-							// console.log(that.$route.params.check_subproject_id)
 							if(JSON.parse(res).status ==1){
 								that.$router.push({
 					          	 path:'/wenlist2',
 					          	 name:'wenlist2',
 						          params:{
 						          	project_id:that.$route.params.project_id
-						   //        	process_id:this.$route.params.procedure_id,
-									// project_id:this.$route.params.project_id,
-									// goods_id:this.$route.params.goods_id
+						        
 						          }
 								})
 							}
@@ -114,25 +114,7 @@
 				}
 		        
 	      },
-	   //    keep(){
-	   //    	if(3>parseInt(this.meg.length)  ||  200<parseInt(this.meg.length) || parseInt(this.meg.length) ==0){
-				// 		this.apper = true
-			 //      		var that = this
-			 //      		setTimeout(function(){
-		  //         			that.apper = false
-		  //       		},1000)
-				// }
-				// if(3<=parseInt(this.meg.length) && parseInt(this.meg.length) <=200 ){
-				// 	this.$router.push({
-		  //         	 path:'/wenlist2',
-		  //         	 name:'wenlist2',
-		  //         	  params:{
-			 //          	goods_name:this.$route.params.goods_name
-			 //          }
-				// 	})
-		        
-				// }
-	   //    },
+	   
 		}
 	}
 

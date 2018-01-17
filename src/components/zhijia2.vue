@@ -5,23 +5,13 @@
       <div>返回</div>
     </div>
 		<ul>
-			<li  >
-				<div class="flex">
-					<div>黑眼豆豆</div>
-					<div class="kai">
-						<img src="../assets/img/kai.png">
-					</div>
-					<div class="checked">
-						<img src="../assets/img/checked.png">
-					</div>
-				</div>
-			</li>
 			<li  v-for='list in lists'   @click="naviTo(list)">
 				<div class="flex">
 					<div>{{list.goods_name}}</div>
 					<div class="kai">
 						<img src="../assets/img/kai.png">
 					</div>
+					
 				</div>
 			</li>
 			
@@ -52,7 +42,10 @@ export default{
 				type:'POST',
 				url:'/api/Inspection_task/goods_list',
 				success:function(res){
-					that.lists = JSON.parse(res).data
+					if(JSON.parse(res).status==1){
+						that.lists = JSON.parse(res).data
+					}
+					
 				}
 			})
 		},
@@ -78,11 +71,7 @@ export default{
 }
 </script>
 <style type="text/css">
-	.two .checked{
-		position: absolute;
-		left: 1.7rem;
-		top:0.08rem;
-	}
+	
 	.two{
 		width: 100%;
 		min-height: 81vh;

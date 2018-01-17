@@ -11,8 +11,8 @@
 				<img src="../assets/img/name.png">
 			</div>
 			<div class="gai">整改人</div>
-			<div class="xuan" style="margin-left: 2.16rem;">
-				<div>请选择</div>
+			<div class="xuan" style="margin-left: 2.05rem;">
+				<div>{{name}}</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
 				</div>
@@ -23,8 +23,8 @@
 				<img src="../assets/img/data.png">
 			</div>
 			<div class="gai">整改时间</div>
-			<div class="xuan" style="margin-left: 2rem;">
-				<div> 请选择</div>
+			<div class="xuan" style="margin-left: 1.7rem;">
+				<div> {{today}}</div>
 				<div class="kai">
 					<img src="../assets/img/kai.png">
 				</div>
@@ -35,14 +35,8 @@
 				<img src="../assets/img/gai.png">
 			</div>
 			<div class="gai">检查项</div>
-			<div class="xuan" style="margin-left: 2.15rem;">
-				<div> 请选择</div>
-				<div class="kai">
-					<img src="../assets/img/kai.png">
-				</div>
-			</div>
 		</div>
-		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
+		<div class="checkdetali">{{check_item}}</div>
 
 		<div class="btn" @click="keep">修改</div>
 	</div>
@@ -53,11 +47,17 @@
 		data:function(){
 			return{
 				mesg:'',
+				today:'',
+				check_item:'',
+				name:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
 			this.getmeg()
+			var d = new Date();
+			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			// console.log(this.today)
 		},
 		methods:{
 
@@ -72,8 +72,8 @@
 					success:function(res){
 						console.log(JSON.parse(res).data)
 						that.mesg = JSON.parse(res).data.problem_desc
-						that.today = JSON.parse(res).data.correct_time
-						that.checkList = JSON.parse(res).data.check_item
+						that.check_item = JSON.parse(res).data.check_item
+						that.name = JSON.parse(res).data.head_user
 					}
 				})
 				

@@ -64,7 +64,10 @@ export default{
 					procedure_id:that.$route.params.procedure_id
 				},
 				success:function(res){
-					that.list3 = JSON.parse(res).data.list
+					if(JSON.parse(res).status == 1){
+						that.list3 = JSON.parse(res).data.list
+					}
+					
 					
 				}
 			})

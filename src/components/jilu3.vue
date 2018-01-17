@@ -10,22 +10,22 @@
 	</div>
 		<div class="wrap">
 			<div>
-				<div class="backto" @click.stop="naviTo({path: '/jilu2'})">
+				<div class="backto" @click="backTo">
 					<div>
 						<img src="../assets/img/back.png">
 					</div>
 					<div class="back">返回</div>
 				</div>
-				<div class="divTitle">黑眼豆豆质检/<span class='span' style='color:#008CFF'>配料</span></div>
+				<div class="divTitle">{{this.$route.params.goods_name}}质检/<span class='span' style='color:#008CFF'>配料</span></div>
 			</div>
 			<ul>
-				<li @click.stop="naviTo({path: '/jilu4'})">
+				<li v-for='list in list3' @click="next(list)"  >
 					<div class="phone">
 						<img src="../assets/img/phone.png" class="phone1">
 						<img src="../assets/img/phone.png" class="phone2">
 					</div>
 					<div class="weight">
-						<div>称重</div>
+						<div>{{list.task_name}}</div>
 						<div class="begin">已验收</div>
 					</div>
 					<div class="detail">
@@ -35,34 +35,13 @@
 							<div>待处理问题数量</div>
 						</div>
 						<div class="right">
-							<div>张三</div>
-							<div>2018-01-08</div>
-							<div>0</div>
+							<div>{{list.head_user}}</div>
+							<div>{{list.plan_finish_time}}</div>
+							<div>{{list.problem_num}}</div>
 						</div>
 					</div>
 				</li>
-				<li @click.stop="naviTo({path: '/jilu4'})">
-				<div class="phone">
-						<img src="../assets/img/phone.png" class="phone1">
-						<img src="../assets/img/phone.png" class="phone2">
-					</div>
-					<div class="weight">
-						<div>是否过期</div>
-						<div class="thought">已验收</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>操作负责人</div>
-							<div>计划完成时间</div>
-							<div>待处理问题数量</div>
-						</div>
-						<div class="right">
-							<div>张三</div>
-							<div>2018-01-08</div>
-							<div>0</div>
-						</div>
-					</div>
-				</li>
+				
 			</ul>
 		</div>
 		
@@ -71,16 +50,63 @@
 <script type="text/javascript">
 export default{
 	name:'jilu3',
+	data:function(){
+		return{
+			list3:[]
+		}
+	},
+	mounted(){
+		console.log(this.$route.params)
+		this.getlist3()
+	},
 	methods:{
-   
+		getlist3(){
+			var that= this
+			$.ajax({
+				type:'POST',
+				url:'/api/Inspection_record/procedure_project',
+				data:{
+					procedure_id:that.$route.params.procedure_id
+				},
+				success:function(res){
+					if(JSON.parse(res).status == 1){
+						that.list3 = JSON.parse(res).data.list
+					}
+					
+					
+				}
+			})
+		},
+		backTo(){
+			
+			 this.$router.push({
+	          path:'/jilu2',
+	          name:'jilu2',
+	          params:{
+	          	goods_name:this.$route.params.goods_name,
+				goods_id:this.$route.params.goods_id
+	          }
+	        })
+		},
+		next(list){
+			this.$router.push({
+	          path:'/jilu4',
+	          name:'jilu4',
+	          params:{
+	          	goods_name:this.$route.params.goods_name,
+				goods_id:this.$route.params.goods_id,
+				project_id:list.id,
+				procedure_id:this.$route.params.procedure_id
+	          }
+	        })
+		},
+
 	    naviTo({path, query}) {
 	        this.$router.push({
 	          path, query
 	        })
 	    },
-	    baidu:function(e){
-	    	 window.location.href = e
-	    }
+	    
   }
 }
 </script>
