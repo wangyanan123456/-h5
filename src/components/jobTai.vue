@@ -50,13 +50,33 @@ export default {
   methods:{
     
     getCode(){
-      $.ajax({
-        type:'POST',
-        url:'/api/weixin_user/check_login',
-        success:function(res){
-          // console.log(res)
-        }
-      })
+      var url = location.href;
+      var code = url.split("code=")[1];
+      if(code){
+        var data = "code="+code;
+        $.ajax({
+          type:'POST',
+          url:'/wio/weixin_user/login',
+          data:data,
+          success:function(res){
+            console.log(res)
+            if(JSON.parse(res).data.status==0){
+              window.location.href = JSON.parse(res).redirect_url
+            }
+          }
+        })
+      }else{
+        $.ajax({
+          type:'POST',
+          url:'/wio/weixin_user/check_login',
+          success:function(res){
+            console.log(res)
+            if(JSON.parse(res).data.status==0){
+              window.location.href = JSON.parse(res).redirect_url
+            }
+          }
+        })
+      }
     },
     tojobtai:function(){
       this.img = true

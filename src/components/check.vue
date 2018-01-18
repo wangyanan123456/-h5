@@ -28,6 +28,7 @@
 </template>
 <script type="text/javascript">
 import { mapState } from 'vuex'
+import $ from 'jquery'
 	export default{
 		name:'check',
 		data:function(){
