@@ -23,6 +23,8 @@
 	</div>
 </template>
 <script type="text/javascript">
+import $ from 'jquery'
+// var config = require('../assets/js/common.js')
 export default{
 	name:'zhijian2',
 	data:function(){

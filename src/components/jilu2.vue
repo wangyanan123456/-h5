@@ -4,9 +4,12 @@
 			<div>
 				<img src="../assets/img/data.png">
 			</div>
-			<div>
-				<!-- <input value="请选择日期" /> -->
-				<div @click="open('picker1')" size="large">日期选择</div>
+			<div >
+				<!-- <input   v-model='today'  v-if="sure"> -->
+				<div @click="open('picker1')" size="large">
+					<input   v-model='today'  v-if="sure">
+					<div  v-if= "!sure" style="margin-top: 0.1rem">日期选择</div>
+				</div>
     <br>
     <mt-datetime-picker
       ref="picker1"
@@ -59,7 +62,9 @@ export default{
 			value: null,
       		value1: null,
       		startDate: new Date('2018'),
-      		endDate: new Date()
+      		endDate: new Date(),
+      		today:'请选择日期',
+      		sure:false
 		}
 	},
 	mounted(){
@@ -80,12 +85,11 @@ export default{
 	  },
       handleChange(value) {
         this.date1 = value.toString();
-        console.log(this.formatDate( this.date1))
-        // //this.show = true;
-        // Toast({
-        //   message: '已选择 ' + value.toString(),
-        //   position: 'bottom'
-        // });
+       	var d = new Date(this.date1);
+          var  nowd = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() 
+          console.log(nowd)
+          this.sure = true
+          this.today = nowd
       },
 		getList2(){
 			var that = this
