@@ -68,7 +68,10 @@
 		          	goods_name:this.$route.params.goods_name,
 					project_id:this.$route.params.project_id,
 					goods_id:this.$route.params.goods_id,
-					procedure_id:this.$route.params.procedure_id
+					procedure_id:this.$route.params.procedure_id,
+					goods_id:this.$route.params.goods_id,
+					task_name:this.$route.params.task_name,
+					process_name:this.$route.params.process_name
 		          }
 		        })
 			},
@@ -101,6 +104,8 @@
 						          	procedure_id:that.$route.params.procedure_id,
 									project_id:that.$route.params.project_id,
 									goods_id:that.$route.params.goods_id,
+									goods_id:that.$route.params.goods_id,
+									task_name:that.$route.params.task_name
 
 						          }
 								})

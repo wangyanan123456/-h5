@@ -23,6 +23,7 @@
 </template>
 <script type="text/javascript">
 import $ from 'jquery'
+import { mapState } from 'vuex'
 export default{
 	name:'zhijian2',
 	data:function(){
@@ -32,7 +33,7 @@ export default{
 	},
 	mounted(){
 		this.getList()
-		
+		this.$store.state.count = '质检任务 '
 	},
 	
 	methods:{

@@ -32,6 +32,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 export default{
 	name:'wenlist1',
 	data:function(){
@@ -41,6 +42,7 @@ export default{
 	},
 	mounted(){
 		this.getList()
+		this.$store.state.count = '问题清单'
 	},
 	methods:{
 		getList(){
@@ -66,7 +68,9 @@ export default{
 		          path:'/wenyanshou2',
 		          name:'wenyanshou2',
 		          params:{
-		          	project_id:list.project_id
+		          	project_id:list.project_id,
+		          	project_name:list.project_name,
+		          	procedure_id:list.check_procedure_id
 		          }
 	        	})
 	    	}else{
@@ -75,7 +79,8 @@ export default{
 		          name:'wenlist2',
 		          params:{
 		          	project_id:list.id,
-		          	project_name:list.project_name
+		          	project_name:list.project_name,
+		          	procedure_id:list.check_procedure_id
 		          }
 		        })
 	    	}

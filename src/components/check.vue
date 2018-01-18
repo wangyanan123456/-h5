@@ -27,6 +27,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'check',
 		data:function(){
@@ -38,6 +39,7 @@
 		mounted(){
 			console.log(this.$route.params)
 			this.gitlist()
+			this.$store.state.count = this.$route.params.goods_name+'质检/'+this.$route.params.process_name+"/"+this.$route.params.task_name
 		},
 		methods:{
 			gitlist(){
@@ -66,7 +68,8 @@
 					goods_name:this.$route.params.goods_name,
 					procedure_id:this.$route.params.procedure_id,
 					project_id:this.$route.params.project_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					task_name:this.$route.params.task_name
 				}
 	        })
 	    },
@@ -90,7 +93,9 @@
 									goods_name:that.$route.params.goods_name,
 									project_id:that.$route.params.project_id,
 									procedure_id:that.$route.params.procedure_id,
-									goods_id:that.$route.params.goods_id
+									goods_id:that.$route.params.goods_id,
+									task_name:that.$route.params.task_name,
+									process_name:that.$route.params.process_name
 								}
 						    })
 						}

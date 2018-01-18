@@ -5,7 +5,20 @@
 				<img src="../assets/img/data.png">
 			</div>
 			<div>
-				<input value="请选择日期" />
+				<!-- <input value="请选择日期" /> -->
+				<div @click="open('picker1')" size="large">日期选择</div>
+    <br>
+    <mt-datetime-picker
+      ref="picker1"
+      type="date"
+      v-model="value1"
+      year-format="{value} 年"
+      month-format="{value} 月"
+      date-format="{value} 日"
+      :startDate="startDate"
+      :endDate="endDate"
+      @confirm="handleChange">
+    </mt-datetime-picker>
 			</div>
 	</div>
 		<div class="box">
@@ -42,7 +55,11 @@ export default{
 	name:'zhijian3',
 	data:function(){
 		return{
-			list2:[]
+			list2:[],
+			value: null,
+      		value1: null,
+      		startDate: new Date('2018'),
+      		endDate: new Date()
 		}
 	},
 	mounted(){
@@ -50,6 +67,26 @@ export default{
 		console.log(this.$route.params)
 	},
 	methods:{
+		open(picker) {
+        this.$refs[picker].open();
+      },
+      formatDate(date) {
+	    const y = date.getFullYear()
+	    let m = date.getMonth() + 1
+	    m = m < 10 ? '0' + m : m
+	    let d = date.getDate()
+	    d = d < 10 ? ('0' + d) : d
+	    return y + ' ' + m + ' ' + d
+	  },
+      handleChange(value) {
+        this.date1 = value.toString();
+        console.log(this.formatDate( this.date1))
+        // //this.show = true;
+        // Toast({
+        //   message: '已选择 ' + value.toString(),
+        //   position: 'bottom'
+        // });
+      },
 		getList2(){
 			var that = this
 			$.ajax({

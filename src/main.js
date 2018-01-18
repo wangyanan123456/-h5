@@ -7,6 +7,9 @@ import store from './store/index.js'
 import './assets/css/reset.css'
 import './assets/js/rem.js'
 import $ from 'jquery'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

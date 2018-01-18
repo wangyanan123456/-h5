@@ -8,6 +8,13 @@
 			<div class="ok" @click= "though">通过</div>
 		</div>
 	</div>
+	<div class="problem2"  v-if='sure'>
+		<div class="isthought" style="margin-top:1.6rem" >问题是否解决</div>
+		<div class="sure">
+			<div class="no" @click='no'>否</div>
+			<div class="ok"  @click='yes'>是</div>
+		</div>
+	</div>
 	<div class="yanshou1" v-if='isthought'></div>
 		<div class="backto" @click.stop="naviTo({path: '/wenlist1'})">
 	      <img src="../assets/img/backto.png">
@@ -63,6 +70,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'jilu2',
 		data:function(){
@@ -72,17 +80,23 @@
 				list2: [],
 				check_project_id:'',
 				arr:[],
-				total:''
+				total:'',
+				sure:false,
+				problem_id:''
+
 			}
 		},
 		mounted(){
-			this.apper = true
+			setTimeout(function(){
+          			that.apper = true
+        			},1000)
 	      		var that = this
 	      		 setTimeout(function(){
           			that.apper = false
         			},1000)
 				console.log(this.$route.params)
 				this.gitlists()
+				this.$store.state.count = '问题清单'
 		},
 		methods:{
 			
@@ -101,7 +115,8 @@
 
 						// that.check_project_id = JSON.parse(res).data.check_project_id
 						
-						that.total = JSON.parse(res).total
+						that.total = JSON.parse(res).total,
+						// this.problem_id = list.problem_id
 						console.log(res)
 					}
 				})
@@ -127,12 +142,18 @@
 	    },
 	    // 问题已解决
 	    noproblem(list){
+	    	this.sure = true
+	    	this.problem_id = list.problem_id
+	    	
+	    	
+	    },
+	    yes(){
 	    	var that = this
 	    	$.ajax({
 	    		type:'POST',
 				url:'/api/subproject_problem/edit_status',
 				data:{
-			          id:list.problem_id,
+			          id:that.problem_id,
 			          project_id:that.$route.params.project_id
 				},
 				success:function(res){
@@ -141,15 +162,19 @@
 				          path:'/wenyanshou',
 				          name:'wenyanshou',
 				          params:{
-				          	problem_id:list.problem_id,
+				          	problem_id:that.problem_id,
 				          	project_id:that.$route.params.project_id,
-				          	check_item:that.$route.params.check_item
+				          	check_item:that.$route.params.check_item,
+				          	procedure_id:that.$route.params.procedure_id,
 				          }
 				      })
 					}
 				}
 	    	})
 	    	
+	    },
+	    no(){
+	    	this.sure = false
 	    },
 	    // 添加问题
 	    problem(list){
@@ -160,7 +185,8 @@
 	          	check_subproject_id:list.check_subproject_id,
 	          	check_project_id:this.check_project_id,
 	          	project_id:this.$route.params.project_id,
-	          	project_name:this.$route.params.project_name
+	          	project_name:this.$route.params.project_name,
+	          	procedure_id:this.$route.params.procedure_id,
 	          	// check_item:this.$route.params.check_item
 	          }
 	      })
@@ -171,10 +197,10 @@
 	      			type:"POST",
 	      			url:'/api/Inspection_task/acceptance',
 	      			data:{
-	      				check_project_id:that.check_project_id,
+	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
 	      			},
-	      			success:function(){
+	      			success:function(res){
 	      				console.log('已验证')
 	      				console.log(that.arr,that.total)
 	      				if(JSON.parse(res).status == 1){
@@ -182,23 +208,14 @@
 					          path:'/wenlist1',
 					          name:'wenlist1',
 					          params:{
-					          procedure_id:this.$route.params.procedure_id,
-								project_id:this.$route.params.project_id
+					          procedure_id:that.$route.params.procedure_id,
+								project_id:that.$route.params.project_id
 					          }
 					        })
 		      			}
 	      			}
 	      		})
-				 // this.$router.push({
-		   //        path:'/wenlist1',
-		   //        name:'wenlist1',
-		   //        params:{
-		          	
-		   //        	procedure_id:this.$route.params.procedure_id,
-					// project_id:this.$route.params.project_id,
-					
-		   //        }
-		   //      })
+				
 	    },
 	      nothough:function(){
 	      	this.isthought = false
@@ -390,6 +407,15 @@
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		position: absolute;
+		z-index: 4000;
+		top:1.26rem;
+		left: 0.45rem;
+	}
+	.yanshou2 .problem2{
+		width:2.85rem;
+		height: 3.26rem;
+		background: url('../assets/img/problem2.png') no-repeat;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;

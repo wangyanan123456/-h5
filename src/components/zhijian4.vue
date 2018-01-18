@@ -8,7 +8,7 @@
 					</div>
 					<div class="back">返回</div>
 				</div>
-				<div class="divTitle">{{this.$route.params.goods_name}}质检/<span class='span' style='color:#008CFF'>配料</span></div>
+				<div class="divTitle">{{this.$route.params.goods_name}}/<span class='span' style='color:#008CFF'>质检</span>/<span class='span' style='color:#008CFF'>{{this.$route.params.process_name ||this.$route.params.task_name }}</span></div>
 			</div>
 			<ul>
 				<li  v-for='list in list3'  @click="naviTo(list)">
@@ -41,6 +41,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 export default{
 	name:'zhijian4',
 	data:function(){
@@ -53,6 +54,7 @@ export default{
 		console.log(this.$route.params)
 		console.log(this.$route.params.process_id)
 		this.getlist3()
+		this.$store.state.count = '质检任务'
 	},
 	methods:{
 		getlist3(){
@@ -94,7 +96,10 @@ export default{
 						goods_name:this.$route.params.goods_name,
 						project_id:list.id,
 						procedure_id:this.$route.params.procedure_id,
-						goods_id:this.$route.params.goods_id
+						goods_id:this.$route.params.goods_id,
+						task_name:list.task_name,
+						process_name:this.$route.params.process_name
+
 					}
 		        })
 	    	}
@@ -107,7 +112,10 @@ export default{
 						goods_name:this.$route.params.goods_name,
 						project_id:list.id,
 						procedure_id:this.$route.params.procedure_id,
-						goods_id:this.$route.params.goods_id
+						goods_id:this.$route.params.goods_id,
+						task_name:list.task_name,
+						process_name:this.$route.params.process_name
+
 					}
 		        })
 	    	}
@@ -130,7 +138,7 @@ export default{
 	}
 	.zhijian4 .wrap>div{
 		display: flex;
-		width:3.30rem;
+		width:3.2rem;
 		height: 0.66rem;
 		background: #fff;
 		line-height: 0.46rem;

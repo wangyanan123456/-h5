@@ -64,6 +64,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'yanshou',
 		data:function(){
@@ -80,6 +81,7 @@
 		mounted(){
 			console.log(this.$route.params)
 			this.gitlists()
+			this.$store.state.count = this.$route.params.goods_name+'质检/'+this.$route.params.process_name+"/"+this.$route.params.task_name
 		},
 		methods:{
 			
@@ -110,7 +112,9 @@
 		          	goods_name:this.$route.params.goods_name,
 		          	procedure_id:this.$route.params.procedure_id,
 					project_id:this.$route.params.project_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					process_name:this.$route.params.process_name,
+					task_name:this.$route.params.task_name
 		          }
 		        })
 			},
@@ -127,14 +131,17 @@
 	      				// console.log('已验证')
 	      				// console.log(that.arr,that.total)
 	      				if(JSON.parse(res).status ==1){
-	      						 this.$router.push({
+	      						 that.$router.push({
 						          path:'/zhijian4',
 						          name:'zhijian4',
 						          params:{
 						          	goods_name:that.$route.params.goods_name,
 						          	procedure_id:that.$route.params.procedure_id,
 									project_id:that.$route.params.project_id,
-									goods_id:that.$route.params.goods_id
+									goods_id:that.$route.params.goods_id,
+									process_name:that.$route.params.process_name,
+									task_name:that.$route.params.task_name
+
 						          }
 						        })
 	      				}
@@ -153,7 +160,8 @@
 					check_project_id:this.check_project_id,
 					check_subproject_id:list.check_subproject_id,
 					procedure_id:this.$route.params.procedure_id,
-					goods_id:this.$route.params.goods_id
+					process_name:this.$route.params.process_name,
+					task_name:this.$route.params.task_name
 		          }
 		        })
 			},
@@ -166,7 +174,9 @@
 		          	problem_id:list.problem_id,
 		          	project_id:this.$route.params.project_id,
 					procedure_id:this.$route.params.procedure_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					process_name:this.$route.params.process_name,
+					task_name:this.$route.params.task_name
 		          }
 
 		        })
@@ -190,7 +200,9 @@
 					          	problem_id:list.problem_id,
 					          	project_id:that.$route.params.project_id,
 								procedure_id:that.$route.params.procedure_id,
-								goods_id:that.$route.params.goods_id
+								goods_id:that.$route.params.goods_id,
+								process_name:that.$route.params.process_name,
+								task_name:that.$route.params.task_name
 					          }
 
 					        })

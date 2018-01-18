@@ -8,14 +8,15 @@
 			<div class="ok" @click= "thought">通过</div>
 		</div>
 	</div>
-	<div class="problem2"  >
-		<!-- <div class="renwu">验收任务</div> -->
+	<div class="problem2"  v-if='sure' >
+<!-- <div class="renwu">验收任务</div> -->
 		<div class="isthought" style="margin-top:1.5rem">问题是否解决</div>
 		<div class="sure">
-			<div class="no" @click='nothough'>不通过</div>
-			<div class="ok" @click= "thought">通过</div>
+			<div class="no" @click='no'>否</div>
+			<div class="ok" @click= "yes">是</div>
 		</div>
 	</div>
+	
 	<div class="yanshou1" v-if='isthought'></div>
 	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click="backTo">
@@ -51,6 +52,8 @@
 								<img src="../assets/img/kan.png">
 							</div>
 						</div>
+
+						
 					</div>
 
 					<div class="detail">
@@ -74,6 +77,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'yanshou2',
 		data:function(){
@@ -84,13 +88,21 @@
 				list4:[],
 				check_project_id:'',
 				check_subproject_id:'',
-				sure:false
+				sure:false,
+				problem_id:'',
+				process_name:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
 			this.gitlists()
+		          	
+			
+			console.log(this.process_name)
 		},
+		computed:{
+				
+			},
 		methods:{
 			gitlists(){
 				var that = this
@@ -102,14 +114,19 @@
 						procedure_id:that.$route.params.procedure_id
 					},
 					success:function(res){
-						that.list4 = JSON.parse(res).data.list
-						that.check_project_id = JSON.parse(res).data.check_project_id
+						if(JSON.parse(res).status ==1){
+							that.list4 = JSON.parse(res).data.list
+							that.check_project_id = JSON.parse(res).data.check_project_id
+							that.process_name =JSON.parse(res).data.process_name
+							that.total = JSON.parse(res).total
+							console.log(JSON.parse(res).data.process_name)
+							that.$store.state.count = that.$route.params.goods_name+'质检/'+that.process_name+"/"+that.$route.params.task_name
+						}
 						
-						that.total = JSON.parse(res).total
-						console.log(that.arr)
 					}
 				})
 			},
+
 			backTo(){
 				console.log(this.$route.params.process_id)
 				 this.$router.push({
@@ -119,7 +136,9 @@
 		          	goods_name:this.$route.params.goods_name,
 		          	project_id:this.$route.params.project_id,
 					procedure_id:this.$route.params.procedure_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					task_name:this.$route.params.task_name,
+					process_name:this.process_name
 		          }
 		        })
 			},
@@ -132,38 +151,51 @@
 		          	problem_id:list.problem_id,
 		          	project_id:this.$route.params.project_id,
 					procedure_id:this.$route.params.procedure_id,
-					goods_id:this.$route.params.goods_id
+					goods_id:this.$route.params.goods_id,
+					task_name:this.$route.params.task_name,
+					process_name:this.process_name
 		          }
 
 		        })
 			},
-			ok(list){
+			yes(){
+				// console.log(this.problem_id)
 				var that = this
-				console.log('ok')
-				// $.ajax({
+				$.ajax({
 
-				// 	type:'POST',
-				// 	url:'/api/subproject_problem/edit_status',
-				// 	data:{
-				//           id:list.problem_id
-				// 	},
-				// 	success:function(res){
-				// 		if(JSON.parse(res).status ==1){
-				// 			that.$router.push({
-				// 	          path:'/yanshou',
-				// 	          name:'yanshou',
-				// 	          params:{
-				// 	          	goods_name:that.$route.params.goods_name,
-				// 	          	problem_id:list.problem_id,
-				// 	          	project_id:that.$route.params.project_id,
-				// 				procedure_id:that.$route.params.procedure_id,
-				// 				goods_id:that.$route.params.goods_id
-				// 	          }
+					type:'POST',
+					url:'/api/subproject_problem/edit_status',
+					data:{
+				          id:that.problem_id
+					},
+					success:function(res){
+						if(JSON.parse(res).status ==1){
+							that.$router.push({
+					          path:'/yanshou',
+					          name:'yanshou',
+					          params:{
+					          	goods_name:that.$route.params.goods_name,
+					          	problem_id:that.problem_id,
+					          	project_id:that.$route.params.project_id,
+								procedure_id:that.$route.params.procedure_id,
+								process_name:that.process_name,
+								task_name:that.$route.params.task_name
+					          }
 
-				// 	        })
-				// 		}
-				// 	}
-				// })
+					        })
+						}
+					}
+				})
+	    },
+	    no(){
+	    	this.sure = false
+	    },
+			ok(list){
+				this.sure = true
+				var that = this
+				this.problem_id = list.problem_id
+				console.log(this.problem_id)
+				
 				 
 			},
 			addPreblem(list){
@@ -177,6 +209,8 @@
 					goods_id:this.$route.params.goods_id,
 					check_project_id:this.check_project_id,
 					check_subproject_id:list.check_subproject_id,
+					task_name:this.$route.params.task_name,
+					process_name:this.process_name
 
 		          }
 
@@ -217,7 +251,7 @@
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
 	      			},
-	      			success:function(){
+	      			success:function(res){
 	      				console.log('已验证')
 	      				console.log(that.arr,that.total)
 	      				if(JSON.parse(res).status == 1){
@@ -228,7 +262,10 @@
 					          	goods_name:that.$route.params.goods_name,
 					          	procedure_id:that.$route.params.procedure_id,
 								project_id:that.$route.params.project_id,
-								goods_id:that.$route.params.goods_id
+								goods_id:that.$route.params.goods_id,
+								process_name:that.process_name,
+								task_name:that.$route.params.task_name
+
 					          }
 					        })
 		      			}

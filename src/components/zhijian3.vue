@@ -8,7 +8,7 @@
 					</div>
 					<div>返回</div>
 				</div>
-				<div class="divTitle">{{this.$route.params.goods_name}}质检</div>
+				<div class="divTitle">{{this.$route.params.goods_name}}/<span class='span' style='color:#008CFF'>质检</span></div>
 			</div>
 			<ul>
 			<li v-for='item in list2' @click.stop="naviTo(item)">
@@ -35,6 +35,7 @@
 </template>
 <script type="text/javascript">
 import $ from 'jquery'
+import { mapState } from 'vuex'
 export default{
 	name:'zhijian3',
 	data:function(){
@@ -47,6 +48,7 @@ export default{
 		
 		console.log(this.$route.params)
 		this.getList2()
+		this.$store.state.count = '质检任务'
 	},
 	methods:{
 		getList2(){
@@ -80,7 +82,8 @@ export default{
           params:{
           	procedure_id:item.id,
           	goods_name:this.$route.params.goods_name,
-          	goods_id:this.$route.params.goods_id
+          	goods_id:this.$route.params.goods_id,
+          	process_name:item.process_name,
 
           }
         })
@@ -96,7 +99,7 @@ export default{
 		background: #EFEFF4;
 	}
 	.box>div{
-		width:3.45rem;
+		width:2.45rem;
 		margin: 0 auto;
 	}
 	.box>div{
