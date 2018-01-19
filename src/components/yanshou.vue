@@ -391,6 +391,7 @@ import { mapState } from 'vuex'
 		height:20px;
 		display:inline-block;
 		background:url(../assets/img/dui1.png)  no-repeat;
+		
 	}
 	.yanshou label input[type="checkbox"]:checked + span{
 		width:20px;

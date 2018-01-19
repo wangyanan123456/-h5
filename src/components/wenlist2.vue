@@ -407,6 +407,8 @@ import { mapState } from 'vuex'
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;
@@ -416,6 +418,8 @@ import { mapState } from 'vuex'
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem2.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;

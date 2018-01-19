@@ -382,12 +382,14 @@
 		height:20px;
 		display:inline-block;
 		background:url(../assets/img/dui1.png)  no-repeat;
+		
 	}
 	.yanshou label input[type="checkbox"]:checked + span{
 		width:20px;
 		height:20px;
 		display:inline-block;
 		background:url(../assets/img/dui.png)  no-repeat;
+		
 	}
 	
 	.yanshou .toast{
@@ -409,6 +411,8 @@
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;
@@ -418,6 +422,8 @@
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem2.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;
