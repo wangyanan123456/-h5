@@ -62,7 +62,7 @@ export default{
 			var that= this
 			$.ajax({
 				type:'POST',
-				url:'/api/wio/Inspection_task/procedure_project',
+				url:'/wio/Inspection_task/procedure_project',
 				data:{
 					procedure_id:that.$route.params.procedure_id
 				},
