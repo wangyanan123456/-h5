@@ -90,7 +90,7 @@
 					var that = this
 					$.ajax({
 						type:'POST',
-						url:'/api/subproject_problem/add',
+						url:'/wio/subproject_problem/add',
 						data:{
 							check_project_id:that.$route.params.check_project_id,
 							check_subproject_id:that.$route.params.check_subproject_id,

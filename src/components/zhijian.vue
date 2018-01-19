@@ -20,6 +20,6 @@ export default{
 </script>
 <style type="text/css">
 	.zhijian{
-		padding-top: 1.26rem;
+		padding-top: 0.9rem;
 	}
 </style>

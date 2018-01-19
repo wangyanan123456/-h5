@@ -108,7 +108,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/api/Inspection_task/sub_project',
+					url:'/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -164,7 +164,7 @@ import { mapState } from 'vuex'
 				$.ajax({
 
 					type:'POST',
-					url:'/api/subproject_problem/edit_status',
+					url:'/wio/subproject_problem/edit_status',
 					data:{
 				          id:that.problem_id
 					},
@@ -246,7 +246,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 	      			type:"POST",
-	      			url:'/api/Inspection_task/acceptance',
+	      			url:'/wio/Inspection_task/acceptance',
 	      			data:{
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id

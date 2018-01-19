@@ -1,5 +1,6 @@
 <template>
-	<div class="zhijian3"  >
+	<div class="jilu2"  >
+	<div class="hui"></div>
 	<div class="today">
 			<div>
 				<img src="../assets/img/data.png">
@@ -10,20 +11,20 @@
 					<input   v-model='today'  v-if="sure">
 					<div  v-if= "!sure" style="margin-top: 0.1rem">日期选择</div>
 				</div>
-    <br>
-    <mt-datetime-picker
-      ref="picker1"
-      type="date"
-      v-model="value1"
-      year-format="{value} 年"
-      month-format="{value} 月"
-      date-format="{value} 日"
-      :startDate="startDate"
-      :endDate="endDate"
-      @confirm="handleChange">
-    </mt-datetime-picker>
+			<br>
+			<mt-datetime-picker
+			  ref="picker1"
+			  type="date"
+			  v-model="value1"
+			  year-format="{value} 年"
+			  month-format="{value} 月"
+			  date-format="{value} 日"
+			  :startDate="startDate"
+			  :endDate="endDate"
+			  @confirm="handleChange">
+			</mt-datetime-picker>
+					</div>
 			</div>
-	</div>
 		<div class="box">
 		
 			<div >
@@ -95,7 +96,7 @@ export default{
 			var that = this
 			$.ajax({
 			type:'POST',
-			url:'/api/Inspection_record/goods_procedure',
+			url:'/wio/Inspection_record/goods_procedure',
 			data:{
 				goods_id:that.$route.params.goods_id
 			},
@@ -131,41 +132,48 @@ export default{
 }
 </script>
 <style type="text/css">
-	.zhijian3{
+	.jilu2{
 		/*padding-top: 0.5rem;*/
 		width:100%;
-		height: 81vh;
+		height: 86.3vh;
 		background: #EFEFF4;
 	}
-	.box>div{
+	.jilu2 .box{
+		margin-top: 0.5rem;
+	}
+	/*.zhijian3 .box>div{
 		width:3.45rem;
 		margin: 0 auto;
-	}
-	.box>div{
+	}*/
+	.jilu2 .box>div{
+		margin: 0 auto;
 		display: flex;
 		width:3.30rem;
 		height: 0.52rem;
 		background: url('../assets/img/run1.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		line-height: 0.52rem;
 		padding-left: 0.15rem;
+		/*background: red;*/
 	}
-	.zhijian3 .backto{
+	.jilu2 .backto{
 		display: flex;
 		margin-right: 0.71rem;
 		font-size: 0.14rem;
 		color: #008CFF;
 	}
-	.zhijian3 .backto img{
+	.jilu2 .backto img{
 		width: 0.06rem;
 		height: 0.1rem;
 		margin-top: 0.21rem;
 		margin-right: 0.05rem;
 	}
-	.zhijian3 ul{
+	.jilu2 ul{
 		width:3.30rem;
 		padding-left: 0.15rem;
 	}
-	.zhijian3 li{
+	.jilu2 li{
 		height: 0.51rem;
 		background: #fff;
 		padding-left: 0.2rem;
@@ -174,39 +182,52 @@ export default{
 		/*padding-left: 4%;*/
 		border-bottom:1px solid #e5e5e5;
 		line-height: 0.51rem;
+		background: red;
 	}
-	.zhijian3 li:first-child{
+	.jilu2 li:first-child{
 		background: url('../assets/img/run2.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		height: 0.51rem;
 	}
-	.flex{
+	.jilu2 li:last-child{
+		background: url('../assets/img/lastli.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
+		height: 0.51rem;
+	}
+	.jilu2 .flex{
 		display: flex;
 		position: relative;
 	}
-	.zhijian3 .kai{
+	.jilu2 .kai{
 		display: flex;
 		position: absolute;
 		right: 0.2rem;	
 	}
-	.zhijian3 .kai img{
+	.jilu2 .kai img{
 		width: 0.06rem;
 		height: 0.1rem;
 		margin-top:0.2rem;
 		margin-left: 0.05rem;	
 	}
-	.zhijian3 li:last-child{
+	.jilu2 li:last-child{
 		border: none;
 	}
-	.today {
+	.jilu2 .today {
 		width:3.45rem;
 		height: 0.35rem;
 		background: #fff;
-		margin: 0 auto;
 		margin-bottom: 0.15rem;
 		border-radius: 0.24rem;
 		display: flex;
+		position: fixed;
+		top:1.05rem;
+		left: 0.15rem;
+		color: #999;
+		z-index: 2000;
 	}
-	.today  input{
+	.jilu2 .today  input{
 		border:none;
 		height: 0.25rem;
 		line-height: 0.25rem;
@@ -214,7 +235,7 @@ export default{
 		color: #999;
 		margin-top: 0.05rem;
 	}
-	.today img{
+	.jilu2 .today img{
 		width:0.17rem;
 		height: 0.16rem;
 		margin-left:0.17rem;

@@ -49,7 +49,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/api/subproject_problem/lists',
+				url:'/wio/subproject_problem/lists',
 				success:function(res){
 					console.log(JSON.parse(res).data)
 					that.lists = JSON.parse(res).data
@@ -95,7 +95,7 @@ export default{
 <style type="text/css">
 	.wenlist1{
 		width:100%;
-		min-height: 81vh;
+		min-height: 86.3vh;
 		/*padding-top: 1.28rem;*/
 		background: #EFEFF4;
 		/*background: red;*/
@@ -107,11 +107,11 @@ export default{
 	
 	.wenlist1 .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
 	   }
    	.wenlist1 .backto img{
 		width: 0.1rem;

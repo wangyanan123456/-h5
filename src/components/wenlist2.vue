@@ -104,7 +104,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/api/Inspection_task/sub_project',
+					url:'/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						
@@ -151,7 +151,7 @@ import { mapState } from 'vuex'
 	    	var that = this
 	    	$.ajax({
 	    		type:'POST',
-				url:'/api/subproject_problem/edit_status',
+				url:'/wio/subproject_problem/edit_status',
 				data:{
 			          id:that.problem_id,
 			          project_id:that.$route.params.project_id
@@ -195,7 +195,7 @@ import { mapState } from 'vuex'
 	    	var that = this
 				$.ajax({
 	      			type:"POST",
-	      			url:'/api/Inspection_task/acceptance',
+	      			url:'/wio/Inspection_task/acceptance',
 	      			data:{
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
@@ -242,7 +242,7 @@ import { mapState } from 'vuex'
 </script>
 <style type="text/css">
 	.yanshou2{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
 		min-height: 80vh;
 		background: #EFEFF4;
@@ -265,11 +265,11 @@ import { mapState } from 'vuex'
 	}
    	.yanshou2 .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
 	   }
    	.yanshou2 .backto img{
 		width: 0.1rem;
