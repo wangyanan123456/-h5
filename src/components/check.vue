@@ -79,7 +79,7 @@ import $ from 'jquery'
 	    	var that = this
 				$.ajax({
 					type:"POST",
-					url:'/api/wio/Inspection_task/start_check',
+					url:'/wio/Inspection_task/start_check',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id

@@ -40,7 +40,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/api/wio/Inspection_record/goods_list',
+				url:'/wio/Inspection_record/goods_list',
 				success:function(res){
 					if(JSON.parse(res).status==1){
 						that.lists = JSON.parse(res).data
