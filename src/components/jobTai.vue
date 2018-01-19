@@ -61,7 +61,7 @@ export default {
           success:function(res){
             console.log(res)
             if(JSON.parse(res).data.status==0){
-              window.location.href = JSON.parse(res).redirect_url
+ 
             }
           }
         })
@@ -72,7 +72,7 @@ export default {
           success:function(res){
             console.log(res)
             if(JSON.parse(res).data.status==0){
-              window.location.href = JSON.parse(res).redirect_url
+              window.location.href = JSON.parse(res).data.redirect_url
             }
           }
         })
