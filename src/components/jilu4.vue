@@ -84,11 +84,11 @@
 	}
    	.jilu4 .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
 	   }
    	.jilu4 .backto img{
 		width: 0.1rem;
