@@ -8,19 +8,19 @@
 		<textarea class="text" v-model='mesg'></textarea>
 		<div class="name" style="border-bottom: 1px solid #e5e5e5">
 			<div class="img">
-				<img src="../assets/img/name.png">
+				<img src="../assets/img/name.png"  style="width:0.24rem;height0.24rem">
 			</div>
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.1rem;">
 				<div>请选择</div>
 				<div class="kai">
-					<img src="../assets/img/kai.png">
+					<img src="../assets/img/kai.png" >
 				</div>
 			</div>
 		</div>
 		<div class="name" >
 			<div class="img">
-				<img src="../assets/img/data.png">
+				<img src="../assets/img/data.png" style="width:0.24rem;height0.24rem">
 			</div>
 			<div class="gai">整改时间</div>
 			<div class="xuan" style="margin-left: 1.72rem;">
@@ -32,7 +32,7 @@
 		</div>
 		<div class="name" style="margin-top:0.1rem;border-bottom: 1px solid #e5e5e5">
 			<div class="img">
-				<img src="../assets/img/gai.png">
+				<img src="../assets/img/gai.png" style="width:0.24rem;height0.24rem">
 			</div>
 			<div class="gai">检查项</div>
 		</div>
@@ -87,7 +87,7 @@
 					var that = this
 					$.ajax({
 						type:'POST',
-						url:'/api/subproject_problem/add',
+						url:'/api/wio/subproject_problem/add',
 						data:{
 							check_project_id:that.$route.params.check_project_id,
 							check_subproject_id:that.$route.params.check_subproject_id,
@@ -123,7 +123,7 @@
 </script>
 <style type="text/css">
 	.xiugai{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
 		min-height: 90vh;
 		background: #EFEFF4;
@@ -131,11 +131,11 @@
 	}
 	.xiugai .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
    }
    	.xiugai .backto img{
 		width: 0.1rem;

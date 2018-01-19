@@ -65,7 +65,7 @@
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/api/subproject_problem/show',
+					url:'/wio/subproject_problem/show',
 					data:{
 						id:this.$route.params.problem_id
 					},
@@ -105,7 +105,7 @@
 					var that = this
 					$.ajax({
 						type:'POST',
-						url:'/api/subproject_problem/edit',
+						url:'/wio/subproject_problem/edit',
 						data:{
 							id:that.$route.params.problem_id,
 							problem_desc:that.mesg

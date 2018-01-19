@@ -1,5 +1,6 @@
 <template>
 	<div class="zhijian3"  >
+	<div class="hui"></div>
 		<div class="box">
 			<div>
 				<div class="backto" @click='backTo'>
@@ -28,7 +29,39 @@
 
 				</div>
 			</li>
-			
+			<li v-for='item in list2' @click.stop="naviTo(item)">
+				<div class="flex">
+					<div>{{item.process_name}}</div>
+					<div class="kai">
+						<div>任务数{{item.project_numer}}</div>
+						<div>
+							<img src="../assets/img/kai.png">
+						</div>
+
+						
+					</div>
+					<div class="checked"  v-if='item.status==100'>
+						<img src="../assets/img/checked.png">
+					</div>
+
+				</div>
+			</li><li v-for='item in list2' @click.stop="naviTo(item)">
+				<div class="flex">
+					<div>{{item.process_name}}</div>
+					<div class="kai">
+						<div>任务数{{item.project_numer}}</div>
+						<div>
+							<img src="../assets/img/kai.png">
+						</div>
+
+						
+					</div>
+					<div class="checked"  v-if='item.status==100'>
+						<img src="../assets/img/checked.png">
+					</div>
+
+				</div>
+			</li>
 		</ul>
 		</div>
 	</div>
@@ -55,7 +88,7 @@ export default{
 			var that = this
 			$.ajax({
 			type:'POST',
-			url:'/api/Inspection_task/goods_procedure',
+			url:'/api/wio/Inspection_task/goods_procedure',
 			data:{
 				goods_id:this.$route.params.goods_id
 			},
@@ -93,9 +126,9 @@ export default{
 </script>
 <style type="text/css">
 	.zhijian3{
-		/*padding-top: 0.5rem;*/
+		/*padding-top: 0.1rem;*/
 		width:100%;
-		height: 81vh;
+		height: 86.5vh;
 		background: #EFEFF4;
 	}
 	.box>div{
@@ -107,12 +140,15 @@ export default{
 		width:3.30rem;
 		height: 0.52rem;
 		background: url('../assets/img/run1.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
+		/*background: red;*/
 		line-height: 0.52rem;
 		padding-left: 0.15rem;
 	}
 	.zhijian3 .backto{
 		display: flex;
-		margin-right: 0.71rem;
+		margin-right: 0.45rem;
 		font-size: 0.14rem;
 		color: #008CFF;
 	}
@@ -124,8 +160,12 @@ export default{
 	}
 	.zhijian3 .checked{
 		position: absolute;
-		left: 1.7rem;
+		left: 1.2rem;
 		top:0.08rem;
+	}
+	.zhijian3 .checked img{
+		width: 0.54rem;
+		height: 0.36rem;
 	}
 	.zhijian3 ul{
 		width:3.30rem;
@@ -143,6 +183,14 @@ export default{
 	}
 	.zhijian3 li:first-child{
 		background: url('../assets/img/run2.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
+		height: 0.51rem;
+	}
+	.zhijian3 li:last-child{
+		background: url('../assets/img/lastli.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		height: 0.51rem;
 	}
 	.flex{

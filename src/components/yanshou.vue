@@ -89,7 +89,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/api/Inspection_task/sub_project',
+					url:'/api/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -122,7 +122,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 	      			type:"POST",
-	      			url:'/api/Inspection_task/acceptance',
+	      			url:'/wio/Inspection_task/acceptance',
 	      			data:{
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
@@ -186,7 +186,7 @@ import { mapState } from 'vuex'
 				$.ajax({
 
 					type:'POST',
-					url:'/api/subproject_problem/edit_status',
+					url:'/wio/subproject_problem/edit_status',
 					data:{
 				          id:list.problem_id
 					},
@@ -245,16 +245,16 @@ import { mapState } from 'vuex'
 </script>
 <style type="text/css">
 	.yanshou{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
-		min-height: 90vh;
+		min-height: 93.4vh;
 		background: #EFEFF4;
 		position: relative;
 	}
 	.yanshou .yanshou1{
-		top: 0.64rem;
+		top: 0.44rem;
 		width:100%;
-		height: 90vh;
+		height: 93.4vh;
 		background: #000;
 		position: absolute;
 		z-index: 3000;
@@ -262,11 +262,11 @@ import { mapState } from 'vuex'
 	}
    	.yanshou .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
 	   }
    	.yanshou .backto img{
 		width: 0.1rem;
@@ -285,13 +285,11 @@ import { mapState } from 'vuex'
    	.yanshou .begincheck{
    		width:0.84rem;
    		height: 0.32rem;
-   		
    		color: #fff;
    		font-size: 0.16rem;
    		background: #008CFF;
    		border-radius: 0.03rem;
-   		
-   		margin-left: 2.17rem;
+   		margin-left: 2.14rem;
    	}
    	.yanshou  ul{
    		width:3.45rem;
@@ -364,6 +362,7 @@ import { mapState } from 'vuex'
 		right:0.15rem;
 		font-size: 0.14rem;
 		color: #1AAD19;
+
 	}
 	.yanshou .zhong{
 		margin-left: 0.05rem;
@@ -419,6 +418,8 @@ import { mapState } from 'vuex'
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
 		position: absolute;
 		z-index: 4000;
 		top:1.26rem;
@@ -448,10 +449,12 @@ import { mapState } from 'vuex'
 	.yanshou .sure .no{
 		background: #E7E7E7;
 		color: #999;
+		border-radius: 0.05rem;
 	}
 	.yanshou .sure .ok{
 		background: #008CFF;
 		color: #fff;
+		border-radius: 0.05rem;
 	}
 	.yanshou .isok{
 		width:100%;

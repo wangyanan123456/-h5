@@ -18,7 +18,7 @@ import { mapState } from 'vuex'
 <style scoped>
 .head{
 	width:100%;
-	height: 0.64rem;
+	height: 0.44rem;
 	position: fixed;
 	top:0;
 	z-index: 1000;
@@ -26,10 +26,10 @@ import { mapState } from 'vuex'
 .title{
 	
 	width:100%;
-	height: 0.64rem;
+	height: 0.44rem;
 	text-align: center;
-	line-height: 0.8rem;
-	font-size:0.18rem;
+	line-height: 0.44rem;
+	font-size:0.16rem;
 	color: #fff;
 	background: -webkit-linear-gradient(top, #2C2D31, #101013);
 	opacity: 0.9;

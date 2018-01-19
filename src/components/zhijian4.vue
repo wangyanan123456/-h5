@@ -1,5 +1,6 @@
 <template>
 	<div class="zhijian4">
+	<div class="hui"></div>
 		<div class="wrap">
 			<div>
 				<div class="backto" @click="backTo">
@@ -61,7 +62,7 @@ export default{
 			var that= this
 			$.ajax({
 				type:'POST',
-				url:'/api/Inspection_task/procedure_project',
+				url:'/api/wio/Inspection_task/procedure_project',
 				data:{
 					procedure_id:that.$route.params.procedure_id
 				},
@@ -128,7 +129,7 @@ export default{
 <style type="text/css">
 	.zhijian4{
 		width:100%;
-		height: 81vh;
+		height: 86.3vh;
 		/*padding-top: 1.28rem;*/
 		background: #EFEFF4;
 	}
@@ -138,27 +139,36 @@ export default{
 	}
 	.zhijian4 .wrap>div{
 		display: flex;
-		width:3.2rem;
+		width:3.3rem;
 		height: 0.66rem;
 		background: #fff;
 		line-height: 0.46rem;
 		padding-left: 0.15rem;
+		/*background: red;*/
+		border-radius: 0.05rem;
+		text-align: center;
+
 	}
 	.zhijian4 .backto{
 		display: flex;
-		margin-right: 0.71rem;
+		margin-right: 0.31rem;
 		font-size: 0.14rem;
 		color: #008CFF;
 	}
 	.zhijian4 .backto img{
 		width: 0.06rem;
 		height: 0.1rem;
-		margin-top: 0.2rem;
+		margin-top: 0.23rem;
 		margin-right: 0.05rem;
 	}
 	.zhijian4 .wrap .back{
 		color: #008CFF;
 		font-size: 0.14rem;
+		margin-top: 0.04rem;
+
+	}
+	.zhijian4 .divTitle{
+		margin-top: 0.05rem;
 	}
 	.zhijian4 .wrap ul{
 		
@@ -169,10 +179,11 @@ export default{
 		margin-bottom: 0.11rem;
 		background: #fff;
 		position: relative;
+		border-radius: 0.05rem;
 	}
 	.phone1{
 		position: absolute;
-		top:-0.3rem;
+		top:-0.29rem;
 		left: 0.2rem;
 	}
 	.phone2{
@@ -187,7 +198,7 @@ export default{
 	.zhijian4 .wrap  .weight{
 		display: flex;
 		height: 0.32rem;
-		padding-top: 0.34rem;
+		padding-top: 0.29rem;
 		border-bottom: 1px solid #e5e5e5;
 		position: relative;
 		font-size: 0.16rem;

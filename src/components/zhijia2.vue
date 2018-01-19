@@ -3,7 +3,8 @@
 	 <div class="backto" @click="backTo">
       <img src="../assets/img/backto.png">
       <div>返回</div>
-    </div>
+     </div>
+     <div class="hui"></div>
 		<ul>
 			<li  v-for='list in lists'   @click="naviTo(list)">
 				<div class="flex">
@@ -14,9 +15,6 @@
 					
 				</div>
 			</li>
-			
-			
-
 		</ul>
 		
 	</div>
@@ -41,7 +39,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/api/Inspection_task/goods_list',
+				url:'/api/wio/Inspection_task/goods_list',
 				success:function(res){
 					if(JSON.parse(res).status==1){
 						that.lists = JSON.parse(res).data
@@ -75,7 +73,7 @@ export default{
 	
 	.two{
 		width: 100%;
-		min-height: 81vh;
+		min-height: 86.5vh;
 		background:#EFEFF4;
 	}
 	.two ul{
@@ -92,11 +90,12 @@ export default{
 	}
 	.two .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
+	    /*color:red;*/
 	   }
    	.two .backto img{
 		width: 0.1rem;

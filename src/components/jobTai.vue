@@ -8,7 +8,7 @@
             <li  @click.stop="naviTo({path: '/zhijian'})">
                <img src="../assets/img/zhiliang.png">
             </li>
-            <li @click.stop="naviTo({path: '/jilu2'})">
+            <li @click.stop="naviTo({path: '/jilu4'})">
                <img src="../assets/img/boss.png">
             </li>
           </ul>
@@ -59,10 +59,7 @@ export default {
           url:'/wio/weixin_user/login',
           data:data,
           success:function(res){
-            console.log(res)
-            if(JSON.parse(res).data.status==0){
-              window.location.href = JSON.parse(res).redirect_url
-            }
+            console.log('login success');
           }
         })
       }else{
@@ -72,7 +69,7 @@ export default {
           success:function(res){
             console.log(res)
             if(JSON.parse(res).data.status==0){
-              window.location.href = JSON.parse(res).redirect_url
+              window.location.href = JSON.parse(res).data.redirect_url
             }
           }
         })
@@ -96,10 +93,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello{
-  padding-top:0.69rem;
+  padding-top:0.49rem;
   width:100%;
-  min-height: 82vh;
+  min-height: 86vh;
   background: #EFEFF4;
+}
+.hello li img{
+  width: 3.73rem;
+  height: 1.3rem;
 }
   .footer{
       position: fixed;

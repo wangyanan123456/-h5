@@ -41,7 +41,7 @@
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/api/Inspection_record/sub_project',
+					url:'/wio/Inspection_record/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id

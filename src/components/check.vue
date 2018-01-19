@@ -47,7 +47,7 @@ import $ from 'jquery'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/api/Inspection_task/sub_project',
+					url:'api/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -79,7 +79,7 @@ import $ from 'jquery'
 	    	var that = this
 				$.ajax({
 					type:"POST",
-					url:'/api/Inspection_task/start_check',
+					url:'/api/wio/Inspection_task/start_check',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -122,18 +122,18 @@ import $ from 'jquery'
 </script>
 <style type="text/css">
 	.check{
-		padding-top: 0.64rem;
+		padding-top: 0.39rem;
 		width:100%;
-		min-height: 110vh;
+		min-height: 94vh;
 		background: #EFEFF4;
 	}
    	.check .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
 	   }
    	.check .backto img{
 		width: 0.1rem;
@@ -149,7 +149,7 @@ import $ from 'jquery'
    		background: #008CFF;
    		border-radius: 0.03rem;
    		margin-top: 0.15rem;
-   		margin-left: 2.80rem;
+   		margin-left: 2.76rem;
    	}
    	.check  ul{
    		width:3.45rem;
@@ -161,6 +161,7 @@ import $ from 'jquery'
 		padding-left: 0.15rem;
 		margin-bottom: 0.11rem;
 		background: #fff;
+		border-radius: 0.05rem;
 	}
 	.check  .weight{
 		display: flex;

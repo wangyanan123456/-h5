@@ -40,7 +40,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/api/Inspection_record/goods_list',
+				url:'/api/wio/Inspection_record/goods_list',
 				success:function(res){
 					if(JSON.parse(res).status==1){
 						that.lists = JSON.parse(res).data
@@ -73,7 +73,7 @@ export default{
 	
 	.two{
 		width: 100%;
-		min-height: 81vh;
+		min-height: 86.3vh;
 		background:#EFEFF4;
 	}
 	.two ul{
@@ -89,11 +89,11 @@ export default{
 	}
 	.two .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.12rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
 	   }
    	.two .backto img{
 		width: 0.1rem;
