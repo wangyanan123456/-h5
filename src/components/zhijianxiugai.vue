@@ -12,7 +12,7 @@
 			</div>
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.1rem;">
-				<div>请选择</div>
+				<div>{{name}}</div>
 				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
 				</div> -->
@@ -51,7 +51,8 @@
 				mesg:'',
 				apper:false,
 				today:'',
-				checkList:''
+				checkList:'',
+				name:''
 			}
 		},
 		mounted(){
@@ -61,6 +62,7 @@
 			this.getmeg()
 		},
 		methods:{
+
 			getmeg(){
 				var that = this
 				$.ajax({
@@ -73,6 +75,7 @@
 						if(JSON.parse(res).status==1){
 							that.mesg = JSON.parse(res).data.problem_desc
 							that.checkList = JSON.parse(res).data.check_item
+							that.name = that.name = JSON.parse(res).data.head_user
 						}
 						
 					}

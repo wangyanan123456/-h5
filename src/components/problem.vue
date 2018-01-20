@@ -12,7 +12,7 @@
 			</div>
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.1rem;">
-				<div>请选择</div>
+				<div>{{name}}</div>
 				<!-- <div class="kai">
 					<img src="../assets/img/kai.png" >
 				</div> -->
@@ -49,17 +49,36 @@
 			return{
 				mesg:'',
 				apper:false,
-				today:''
+				today:'',
+				name:''
 			}
 		},
 		mounted(){
 			console.log(this.$route.params)
+
 			
 			var d = new Date();
 			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 			console.log(this.today)
+			this.getname()
 		},
 		methods:{
+			getname:function(){
+			var that = this
+			$.ajax({
+				type:'POST',
+				url:'/wio/subproject_problem/problem_info',
+				data:{
+					project_id:this.$route.params.project_id,
+				},
+				success:function(res){
+					if(JSON.parse(res).status==1){
+						that.name = JSON.parse(res).data.head_user
+					}
+					
+				}
+			})
+		},
 			backTo(){
 				 this.$router.push({
 		          path:'/yanshou',
