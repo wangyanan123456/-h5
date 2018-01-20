@@ -405,7 +405,7 @@ import { mapState } from 'vuex'
    }
 	.wenlist2 .problem{
 		width:2.85rem;
-		height: 3.26rem;
+		height: 2.69rem;
 		background: url('../assets/img/problem.png') no-repeat;
 		background-image: 100% 100%;
 		background-size: 100% 100%;

@@ -135,6 +135,9 @@ import $ from 'jquery'
 	    display: flex;
 	    left: 0.1rem;
 	   }
+	   .check .backto div{
+	   	margin-top: -0.05rem;
+	   }
    	.check .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
