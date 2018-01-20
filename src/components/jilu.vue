@@ -98,7 +98,7 @@ export default{
 		margin-right: 0.05rem;
    	}
    	.jilu .backto div{
-   		margin-top: -0.06rem;
+   		margin-top: -0.05rem;
    	}
 	.jilu .flex{
 		display: flex;

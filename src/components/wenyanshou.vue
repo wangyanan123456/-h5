@@ -274,6 +274,9 @@
 		margin-right: 0.1rem;
 		
    	}
+   	.yanshou .backto div{
+   		margin-top: -0.05rem;
+   	}
    	.yanshou .daiyanshou{
    		display: flex;
    		padding-left: 0.15rem;
