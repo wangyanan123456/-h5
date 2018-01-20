@@ -8,7 +8,7 @@
             <li  @click.stop="naviTo({path: '/zhijian'})">
                <img src="../assets/img/zhiliang.png">
             </li>
-            <li @click.stop="naviTo({path: '/zhijian2'})">
+            <li @click.stop="naviTo({path: '/yanshou2'})">
                <img src="../assets/img/boss.png">
             </li>
           </ul>

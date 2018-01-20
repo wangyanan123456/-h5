@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	
-	<div class="yanshou1" v-if='isthought'></div>
+	<div class="yanshou1" ></div>
 	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
@@ -289,7 +289,7 @@ import { mapState } from 'vuex'
 	.yanshou2 .yanshou1{
 		top: 0.44rem;
 		width:100%;
-		height: 90vh;
+		min-height:93.3vh;
 		background: #000;
 		position: absolute;
 		z-index: 3000;

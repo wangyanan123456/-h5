@@ -44,10 +44,9 @@ export default{
 		/*margin-right: 0.42rem;*/
 		height: 0.47rem;
 		font-size: 0.16rem;
-		width:0.6rem;
+		width:0.64rem;
 		line-height: 0.47rem;
-		/*padding-bottom: -0.2rem;*/
-		/*background: red;*/
+		
 	}
 	.tab li:first-child{
 		margin-left: 0.47rem;

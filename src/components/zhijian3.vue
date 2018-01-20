@@ -29,39 +29,7 @@
 
 				</div>
 			</li>
-			<li v-for='item in list2' @click.stop="naviTo(item)">
-				<div class="flex">
-					<div>{{item.process_name}}</div>
-					<div class="kai">
-						<div>任务数{{item.project_numer}}</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-
-						
-					</div>
-					<div class="checked"  v-if='item.status==100'>
-						<img src="../assets/img/checked.png">
-					</div>
-
-				</div>
-			</li><li v-for='item in list2' @click.stop="naviTo(item)">
-				<div class="flex">
-					<div>{{item.process_name}}</div>
-					<div class="kai">
-						<div>任务数{{item.project_numer}}</div>
-						<div>
-							<img src="../assets/img/kai.png">
-						</div>
-
-						
-					</div>
-					<div class="checked"  v-if='item.status==100'>
-						<img src="../assets/img/checked.png">
-					</div>
-
-				</div>
-			</li>
+			
 		</ul>
 		</div>
 	</div>
