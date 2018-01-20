@@ -8,7 +8,17 @@
 			<div class="ok" @click= "thought">通过</div>
 		</div>
 	</div>
-	<div class="yanshou1" v-if='isthought'></div>
+	<div class="problem2"   v-if='sure'>
+<div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
+		<!-- <div class="isthought" style="margin-top:1.5rem">问题是否解决</div> -->
+		<div class="sure">
+			<div class="no" @click='no'>否</div>
+			<div class="ok" @click= "yes">是</div>
+		</div>
+	</div>
+	
+	<div class="yanshou1"  v-if='isthought'></div>
+	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
@@ -181,27 +191,27 @@ import { mapState } from 'vuex'
 
 		        })
 			},
-			ok(list){
+			yes(){
+				// console.log(this.problem_id)
 				var that = this
 				$.ajax({
 
 					type:'POST',
 					url:'/wio/subproject_problem/edit_status',
 					data:{
-				          id:list.problem_id
+				          id:that.problem_id
 					},
 					success:function(res){
 						if(JSON.parse(res).status ==1){
 							that.$router.push({
-					          path:'/yanshou2',
-					          name:'yanshou2',
+					          path:'/yanshou',
+					          name:'yanshou',
 					          params:{
 					          	goods_name:that.$route.params.goods_name,
-					          	problem_id:list.problem_id,
+					          	problem_id:that.problem_id,
 					          	project_id:that.$route.params.project_id,
 								procedure_id:that.$route.params.procedure_id,
-								goods_id:that.$route.params.goods_id,
-								process_name:that.$route.params.process_name,
+								process_name:that.process_name,
 								task_name:that.$route.params.task_name
 					          }
 
@@ -209,6 +219,16 @@ import { mapState } from 'vuex'
 						}
 					}
 				})
+	    },
+	    no(){
+	    	this.sure = false
+	    },
+			ok(list){
+				this.sure = true
+				var that = this
+				this.problem_id = list.problem_id
+				console.log(this.problem_id)
+				
 				 
 			},
 			naviTo({path, query}) {
@@ -419,6 +439,17 @@ import { mapState } from 'vuex'
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		background-image: 100% 100%;
+		background-size: 100% 100%;
+		position: absolute;
+		z-index: 4000;
+		top:1.26rem;
+		left: 0.45rem;
+	}
+	.yanshou2 .problem2{
+		width:2.85rem;
+		height: 2.69rem;
+		background: url('../assets/img/problem2.png') no-repeat;
 		background-image: 100% 100%;
 		background-size: 100% 100%;
 		position: absolute;

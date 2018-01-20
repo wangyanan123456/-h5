@@ -421,7 +421,7 @@
 	}
 	.yanshou .problem2{
 		width:2.85rem;
-		height: 2.69rem;
+		height: 2.6rem;
 		background: url('../assets/img/problem2.png') no-repeat;
 		background-image: 100% 100%;
 		background-size: 100% 100%;
