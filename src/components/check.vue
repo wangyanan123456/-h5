@@ -136,7 +136,7 @@ import $ from 'jquery'
 	    left: 0.1rem;
 	   }
 	   .check .backto div{
-	   	margin-top: -0.08rem;
+	   	margin-top: -0.06rem;
 	   }
    	.check .backto img{
 		width: 0.1rem;

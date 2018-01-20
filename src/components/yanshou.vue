@@ -85,7 +85,8 @@ import { mapState } from 'vuex'
 				list4:[],
 				check_project_id:'',
 				total:'',
-				check_subproject_id:''
+				check_subproject_id:'',
+				sure:false
 			}
 		},
 		mounted(){
@@ -295,7 +296,7 @@ import { mapState } from 'vuex'
 		
    	}
    	.yanshou .backto div{
-   		margin-top: -0.08rem;
+   		margin-top: -0.06rem;
    	}
    	.yanshou .daiyanshou{
    		display: flex;

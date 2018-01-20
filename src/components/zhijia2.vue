@@ -103,7 +103,7 @@ export default{
 		margin-right: 0.05rem;
    	}
    	.two .backto div{
-   		margin-top: -0.08rem;
+   		margin-top: -0.06rem;
    	}
 	.two .flex{
 		display: flex;

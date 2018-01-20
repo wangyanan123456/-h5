@@ -4,6 +4,8 @@
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
 	    </div>
+
+	    <div class="hui"></div>
 		<div class="wrap">
 			<ul>
 				<li v-for='list in lists' @click="todetail(list)">
@@ -120,7 +122,7 @@ export default{
 		
    	}
    	.wenlist1 .backto div{
-   		margin-top: -0.08rem;
+   		margin-top: -0.06rem;
    	}
 	.wenlist1 .wrap ul{
 		

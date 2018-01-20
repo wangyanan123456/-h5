@@ -310,7 +310,7 @@ import { mapState } from 'vuex'
 		
    	}
    	.yanshou2 .backto div{
-   		margin-top: -0.08rem;
+   		margin-top: -0.06rem;
    	}
    	.two .backto div{
    		margin-top: -0.05rem;

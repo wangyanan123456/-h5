@@ -142,7 +142,7 @@
 		
    	}
    	.xiugai .backto div{
-   		margin-top: -0.08rem;
+   		margin-top: -0.06rem;
    	}
    	.xiugai .detail{
    		margin-top: 0.1rem;
