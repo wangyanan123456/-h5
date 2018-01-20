@@ -136,7 +136,8 @@ import { mapState } from 'vuex'
 					procedure_id:this.$route.params.procedure_id,
 					goods_id:this.$route.params.goods_id,
 					task_name:this.$route.params.task_name,
-					process_name:this.process_name
+					process_name:this.process_name,
+					goods_id:this.$route.params.goods_id,
 		          }
 		        })
 			},
@@ -178,7 +179,7 @@ import { mapState } from 'vuex'
 								procedure_id:that.$route.params.procedure_id,
 								process_name:that.process_name,
 								task_name:that.$route.params.task_name,
-								goods_id:this.$route.params.goods_id,
+								goods_id:that.$route.params.goods_id,
 					          }
 
 					        })

@@ -213,7 +213,8 @@ import { mapState } from 'vuex'
 					          	project_id:that.$route.params.project_id,
 								procedure_id:that.$route.params.procedure_id,
 								process_name:that.process_name,
-								task_name:that.$route.params.task_name
+								task_name:that.$route.params.task_name,
+								goods_id:that.$route.params.goods_id,
 					          }
 
 					        })
