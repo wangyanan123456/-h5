@@ -309,6 +309,12 @@ import { mapState } from 'vuex'
 		margin-right: 0.1rem;
 		
    	}
+   	.yanshou2 .backto div{
+   		margin-top: -0.05rem;
+   	}
+   	.two .backto div{
+   		margin-top: -0.05rem;
+   	}
    	.yanshou2 .daiyanshou{
    		display: flex;
    		padding-left: 0.15rem;

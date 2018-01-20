@@ -144,6 +144,9 @@
 		margin-right: 0.05rem;
 		
    	}
+   	.xiugai .backto div{
+   		margin-top: -0.05rem;
+   	}
    	.xiugai .detail{
    		margin-top: 0.1rem;
    		margin-left: 0.15rem;

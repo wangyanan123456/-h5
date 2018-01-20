@@ -100,6 +100,9 @@ export default{
 		height: 0.18rem;
 		margin-right: 0.05rem;
    	}
+   	.two .backto div{
+   		margin-top: -0.05rem;
+   	}
 	.two .flex{
 		display: flex;
 		position: relative;

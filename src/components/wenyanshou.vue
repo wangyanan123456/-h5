@@ -334,6 +334,9 @@
 		margin-left: 0.05rem;
 
 	}
+	.yanshou .backto div{
+   		margin-top: -0.05rem;
+   	}
 	.yanshou .detail{
 		height: 0.67rem;
 		display: flex;

@@ -119,6 +119,9 @@ export default{
 		margin-right: 0.05rem;
 		
    	}
+   	.wenlist1 .backto div{
+   		margin-top: -0.05rem;
+   	}
 	.wenlist1 .wrap ul{
 		
 		/*margin-top: 0.1rem;*/

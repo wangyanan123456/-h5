@@ -118,6 +118,9 @@
 		margin-right: 0.1rem;
 		
    	}
+   	.wenyanshou2 .backto div{
+   		margin-top: -0.05rem;
+   	}
    	.wenyanshou2 .daiyanshou{
    		display: flex;
    		padding-left: 0.15rem;

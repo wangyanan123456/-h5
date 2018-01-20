@@ -294,6 +294,9 @@ import { mapState } from 'vuex'
 		margin-right: 0.05rem;
 		
    	}
+   	.yanshou .backto div{
+   		margin-top: -0.05rem;
+   	}
    	.yanshou .daiyanshou{
    		display: flex;
    		padding-left: 0.15rem;
@@ -355,6 +358,9 @@ import { mapState } from 'vuex'
 		margin-left: 0.05rem;
 
 	}
+	.two .backto div{
+   		margin-top: -0.05rem;
+   	}
 	.yanshou .detail{
 		height: 0.67rem;
 		display: flex;
