@@ -17,6 +17,7 @@
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
+	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click="backto({path: '/wenlist2'})">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
@@ -253,7 +254,7 @@
 	.yanshou .yanshou1{
 		top: 0.44rem;
 		width:100%;
-		height: 90vh;
+		min-height: 93.3vh;
 		background: #000;
 		position: absolute;
 		z-index: 3000;
