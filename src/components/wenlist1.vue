@@ -98,7 +98,7 @@ export default{
 	.wenlist1{
 		width:100%;
 		min-height: 86.5vh;
-		padding-top: 0.9rem;
+		padding-top: 0.15rem;
 		background: #EFEFF4;
 		/*background: red;*/
 	}

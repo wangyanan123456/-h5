@@ -8,7 +8,7 @@
 				<!-- <input   v-model='today'  v-if="sure"> -->
 				<div @click="open('picker1')" size="large">
 					<input   v-model='today'  v-if="sure">
-					<div  v-if= "!sure" style="margin-top: 0.1rem">日期选择</div>
+					<div  v-if= "!sure" style="margin-top: 0.05rem">日期选择</div>
 				</div>
 			<br>
 			<mt-datetime-picker
