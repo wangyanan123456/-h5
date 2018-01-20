@@ -51,7 +51,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/api/wio/subproject_problem/lists',
+				url:'/wio/subproject_problem/lists',
 				success:function(res){
 					console.log(JSON.parse(res).data)
 					that.lists = JSON.parse(res).data
