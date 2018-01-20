@@ -16,6 +16,7 @@
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
+	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click.stop="naviTo({path: '/wenlist1'})">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
@@ -249,7 +250,7 @@ import { mapState } from 'vuex'
 		position: relative;
 	}
 	.wenlist2 .yanshou1{
-		top: 0.64rem;
+		top: 0.44rem;
 		width:100%;
 		min-height: 93.4vh;
 		background: #000;
