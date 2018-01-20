@@ -31,7 +31,7 @@
       
      
     </ul>
-   
+   <div class="toast" v-if='apper'>{{info}}</div>
   </div>
 </template>
 
@@ -42,7 +42,9 @@ export default {
   name: 'jobTai',
   data () {
     return {
-     img:true
+     img:true,
+     apper:false,
+     info:''
     }
   },
   mounted(){
@@ -52,6 +54,7 @@ export default {
   methods:{
     
     getCode(){
+      var that = this
       var url = location.href;
       var code = url.split("code=")[1];
       if(code){
@@ -61,7 +64,10 @@ export default {
           url:'/wio/weixin_user/login',
           data:data,
           success:function(res){
-            console.log('login success');
+            if(JSON.parse(res).status == 0){
+              that.apper = true
+              that.info= JSON.parse(res).message
+            }
           }
         })
       }else{
@@ -70,9 +76,15 @@ export default {
           url:'/wio/weixin_user/check_login',
           success:function(res){
             console.log(res)
-            if(JSON.parse(res).data.status==0){
-              window.location.href = JSON.parse(res).data.redirect_url
+            if(JSON.parse(res).status == 0){
+              that.apper = true
+              that.info= JSON.parse(res).message
+            }else{
+              if(JSON.parse(res).data.status==0){
+                window.location.href = JSON.parse(res).data.redirect_url
+              }              
             }
+
           }
         })
       }
@@ -164,6 +176,22 @@ export default {
     height: 1.3rem;
     margin-top: 0.1rem;
   }
+
+  .hello .toast{
+      width:2.4rem;
+      height:0.6rem;
+      line-height: 0.6rem;
+      background:#000;
+      opacity: 0.7;
+      color: #fff;
+      text-align: center;
+      font-size: 0.17rem;
+      border-radius: 0.08rem;
+      position: fixed;
+      top:2.25rem;
+      z-index: 4000;
+      left: 0.6rem;
+   }
 
   
   

@@ -360,7 +360,7 @@ import { mapState } from 'vuex'
 		margin-left: 0.05rem;
 
 	}
-	.two .backto div{
+	.yanshou .backto div{
    		margin-top: -0.05rem;
    	}
 	.yanshou .detail{

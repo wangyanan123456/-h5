@@ -75,7 +75,7 @@
 						if(JSON.parse(res).status==1){
 							that.mesg = JSON.parse(res).data.problem_desc
 							that.checkList = JSON.parse(res).data.check_item
-							that.name = that.name = JSON.parse(res).data.head_user
+							that.name = JSON.parse(res).data.head_user
 						}
 						
 					}

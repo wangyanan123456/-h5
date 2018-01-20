@@ -190,12 +190,12 @@ export default{
 		background-size: 100% 100%;
 		height: 0.51rem;
 	}
-	.jilu2 li:last-child{
+	/*.jilu2 li:last-child{
 		background: url('../assets/img/lastli.png') no-repeat;
 		background-image: 100% 100%;
 		background-size: 100% 100%;
 		height: 0.51rem;
-	}
+	}*/
 	.jilu2 .flex{
 		display: flex;
 		position: relative;
