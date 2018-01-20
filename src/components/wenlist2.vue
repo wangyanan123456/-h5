@@ -1,5 +1,5 @@
 <template>
-	<div class="yanshou2">
+	<div class="wenlist2">
 	<div class="problem" v-if='isthought'>
 		<div class="renwu">验收任务</div>
 		<div class="isthought">是否通过验收任务</div>
@@ -241,14 +241,14 @@ import { mapState } from 'vuex'
 
 </script>
 <style type="text/css">
-	.yanshou2{
+	.wenlist2{
 		padding-top: 0.44rem;
 		width:100%;
-		min-height: 80vh;
+		min-height: 93.4vh;
 		background: #EFEFF4;
 		position: relative;
 	}
-	.yanshou2 .yanshou1{
+	.wenlist2 .yanshou1{
 		top: 0.64rem;
 		width:100%;
 		height: 90vh;
@@ -257,13 +257,13 @@ import { mapState } from 'vuex'
 		z-index: 3000;
 		opacity: 0.6;
 	}
-	.yanshou2 .checkxuan{
+	.wenlist2 .checkxuan{
 		width:0.2rem;
 		height: 0.2rem;
 		background: #e5e5e5;
 		/*margin-left: -0.05rem;*/
 	}
-   	.yanshou2 .backto{
+   	.wenlist2 .backto{
 	    position: fixed;
 	    top:0.12rem;
 	    z-index: 1200;
@@ -271,21 +271,21 @@ import { mapState } from 'vuex'
 	    display: flex;
 	    left: 0.1rem;
 	   }
-   	.yanshou2 .backto img{
+   	.wenlist2 .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
 		margin-right: 0.05rem;
 		
    	}
-   	.yanshou2 .daiyanshou{
+   	.wenlist2 .daiyanshou{
    		display: flex;
    		padding-left: 0.15rem;
    	}
-   	.yanshou2 .daiyanshou  div{
+   	.wenlist2 .daiyanshou  div{
    		margin-top: 0.15rem;
    		line-height: 0.32rem;
    	}
-   	.yanshou2 .begincheck{
+   	.wenlist2 .begincheck{
    		width:0.84rem;
    		height: 0.32rem;
    		
@@ -296,19 +296,19 @@ import { mapState } from 'vuex'
    		
    		margin-left: 2.17rem;
    	}
-   	.yanshou2  ul{
+   	.wenlist2  ul{
    		width:3.45rem;
    		margin:0 auto;
 		
 		margin-top: 0.1rem;
 	}
-	.yanshou2 ul li{
+	.wenlist2 ul li{
 		padding-left: 0.15rem;
 		margin-bottom: 0.11rem;
 		background: #fff;
 		/*border-bottom:1px solid #e5e5e5;*/
 	}
-	.yanshou2  .weight{
+	.wenlist2  .weight{
 		display: flex;
 		height: 0.31rem;
 		padding-top: 0.11rem;
@@ -317,7 +317,7 @@ import { mapState } from 'vuex'
 		font-size: 0.16rem;
 		color: #353535;
 	}
-	.yanshou2 .begin{
+	.wenlist2 .begin{
 		position: absolute;
 		top:0.15rem;
 		right:0.15rem;
@@ -325,13 +325,13 @@ import { mapState } from 'vuex'
 		color: #008CFF;
 		display: flex;
 	}
-	.yanshou2 .begin img{
+	.wenlist2 .begin img{
 		width:0.15rem;
 		height: 0.15rem;
 		margin-left: 0.05rem;
 
 	}
-	.yanshou2 .detail{
+	.wenlist2 .detail{
 		height: 0.67rem;
 		display: flex;
 		text-align: left;
@@ -340,32 +340,32 @@ import { mapState } from 'vuex'
 		/*margin-top: 0.05rem;*/
 		position: relative;
 	}
-	.yanshou2 .detail div{
+	.wenlist2 .detail div{
 		margin-top: 0.07rem;
 		
 	}
-	.yanshou2 .right{
+	.wenlist2 .right{
 		position: absolute;
 		right:0.15rem;
 		text-align: right;
 	}
-	.yanshou2 .thought{
+	.wenlist2 .thought{
 		position: absolute;
 		top:0.15rem;
 		right:0.15rem;
 		font-size: 0.14rem;
 		color: #1AAD19;
 	}
-	.yanshou2 .zhong{
+	.wenlist2 .zhong{
 		margin-left: 0.05rem;
 	}
-	.yanshou2 input[type="checkbox"]{
+	.wenlist2 input[type="checkbox"]{
 		appearance: none; 
 		-webkit-appearance: none;
 		outline: none;
 		display:none;
 	}
-	.yanshou2 label{
+	.wenlist2 label{
 		width:20px;
 		height:20px;
 		display:inline-block;
@@ -375,20 +375,20 @@ import { mapState } from 'vuex'
 		color: #666;
 		/*margin-top:0.2rem;*/
 	}
-	.yanshou2 label input[type="checkbox"] + span{
+	.wenlist2 label input[type="checkbox"] + span{
 		width:20px;
 		height:20px;
 		display:inline-block;
 		background:url(../assets/img/dui1.png)  no-repeat;
 	}
-	.yanshou2 label input[type="checkbox"]:checked + span{
+	.wenlist2 label input[type="checkbox"]:checked + span{
 		width:20px;
 		height:20px;
 		display:inline-block;
 		background:url(../assets/img/dui.png)  no-repeat;
 	}
 	
-	.yanshou2 .toast{
+	.wenlist2 .toast{
 	    width:2.4rem;
 	    height:0.6rem;
 	    line-height: 0.6rem;
@@ -403,7 +403,7 @@ import { mapState } from 'vuex'
 	    z-index: 4000;
 	    left: 0.6rem;
    }
-	.yanshou2 .problem{
+	.wenlist2 .problem{
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
@@ -414,7 +414,7 @@ import { mapState } from 'vuex'
 		top:1.26rem;
 		left: 0.45rem;
 	}
-	.yanshou2 .problem2{
+	.wenlist2 .problem2{
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem2.png') no-repeat;
@@ -425,43 +425,43 @@ import { mapState } from 'vuex'
 		top:1.26rem;
 		left: 0.45rem;
 	}
-	.yanshou2 .renwu{
+	.wenlist2 .renwu{
 		margin-top: 1.63rem;
 		font-size: 0.26rem;
 		color: #363D48;
 	}
-	.yanshou2 .isthought{
+	.wenlist2 .isthought{
 		margin-top:0.05rem;
 		font-size: 0.16rem;
 		color: #666;
 	}
-	.yanshou2 .sure{
+	.wenlist2 .sure{
 		display: flex;
 		margin-top: 0.41rem;
 	}
-	.yanshou2 .sure div{
+	.wenlist2 .sure div{
 		margin-left: 0.15rem;
 		width:1.2rem;
 		height: 0.38rem;
 		line-height: 0.38rem;
 		font-size: 0.2rem;
 	}
-	.yanshou2 .sure .no{
+	.wenlist2 .sure .no{
 		background: #E7E7E7;
 		color: #999;
 	}
-	.yanshou2 .sure .ok{
+	.wenlist2 .sure .ok{
 		background: #008CFF;
 		color: #fff;
 	}
-	.yanshou2 .isok{
+	.wenlist2 .isok{
 		width:100%;
 		height: 0.52rem;
 		background: #fff;
 		border-top:1px solid #e5e5e5;
 		
 	}
-	.yanshou2 .isok div{
+	.wenlist2 .isok div{
 		width: 1rem;
 		height: 0.32rem;
 		line-height: 0.32rem;

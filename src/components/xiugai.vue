@@ -137,7 +137,7 @@
 </script>
 <style type="text/css">
 	.xiugai{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
 		min-height: 90vh;
 		background: #EFEFF4;

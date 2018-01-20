@@ -129,7 +129,7 @@ export default{
 <style type="text/css">
 	.zhijian4{
 		width:100%;
-		height: 86.3vh;
+		min-height: 86.5vh;
 		/*padding-top: 1.28rem;*/
 		background: #EFEFF4;
 	}

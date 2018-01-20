@@ -1,11 +1,11 @@
 <template>
 	<div class="tab">
 		<ul>
-			<li @click.stop="naviTo({path: '/zhijian'})"  style='margin-right: 0.42rem' :class="($route.path === '/zhijian' || $route.path === '/zhijian4' || $route.path === '/zhijian3')?'color':'color2'" >
+			<li @click.stop="naviTo({path: '/zhijian'})"  style='margin-right: 0.4rem' :class="($route.path === '/zhijian' || $route.path === '/zhijian4' || $route.path === '/zhijian3')?'color':'color2'" >
 			<div>质检任务</div>
 			
 			</li>
-			<li @click.stop="naviTo({path: '/wenlist1'})" style='margin-right: 0.42rem' :class="($route.path === '/wenlist1' || $route.path ==='/wenlist2' )?'color':'color2'">问题清单</li>
+			<li @click.stop="naviTo({path: '/wenlist1'})" style='margin-right: 0.4rem' :class="($route.path === '/wenlist1' || $route.path ==='/wenlist2' )?'color':'color2'">问题清单</li>
 			<li @click.stop="naviTo({path: '/jilu'  })" style="margin-right:none;" :class="($route.path === '/jilu'  ||  $route.path ==='/jilu2'    ||  $route.path ==='/jilu3'    ||  $route.path ==='/jilu4' )?'color':'color2'">质检记录</li>
 		</ul>
 		<!-- <div class="hui"></div> -->
@@ -44,12 +44,13 @@ export default{
 		/*margin-right: 0.42rem;*/
 		height: 0.47rem;
 		font-size: 0.16rem;
-		width:0.64rem;
+		width:0.6rem;
 		line-height: 0.47rem;
 		/*padding-bottom: -0.2rem;*/
+		/*background: red;*/
 	}
 	.tab li:first-child{
-		margin-left: 0.45rem;
+		margin-left: 0.47rem;
 
 	}
 	.hui{

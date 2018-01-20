@@ -73,7 +73,7 @@ export default{
 	
 	.two{
 		width: 100%;
-		min-height: 86.5vh;
+		min-height: 86.6vh;
 		background:#EFEFF4;
 	}
 	.two ul{

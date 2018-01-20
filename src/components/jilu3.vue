@@ -36,28 +36,7 @@
 			</div>
 			<ul>
 
-			<li   >
-					<div class="phone">
-						<img src="../assets/img/phone.png" class="phone1">
-						<img src="../assets/img/phone.png" class="phone2">
-					</div>
-					<div class="weight">
-						<div>list.task_name</div>
-						<div class="begin">已验收</div>
-					</div>
-					<div class="detail">
-						<div class="left">
-							<div>操作负责人</div>
-							<div>计划完成时间</div>
-							<div>待处理问题数量</div>
-						</div>
-						<div class="right">
-							<div>list.head_user</div>
-							<div>list.plan_finish_time</div>
-							<div>list.problem_num</div>
-						</div>
-					</div>
-				</li>
+			
 				<li v-for='list in list3' @click="next(list)"  >
 					<div class="phone">
 						<img src="../assets/img/phone.png" class="phone1">

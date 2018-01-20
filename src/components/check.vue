@@ -124,7 +124,7 @@ import $ from 'jquery'
 	.check{
 		padding-top: 0.39rem;
 		width:100%;
-		min-height: 94vh;
+		min-height: 94.1vh;
 		background: #EFEFF4;
 	}
    	.check .backto{

@@ -244,14 +244,14 @@
 </script>
 <style type="text/css">
 	.yanshou{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
-		min-height: 90vh;
+		min-height: 93.3vh;
 		background: #EFEFF4;
 		position: relative;
 	}
 	.yanshou .yanshou1{
-		top: 0.64rem;
+		top: 0.44rem;
 		width:100%;
 		height: 90vh;
 		background: #000;
@@ -261,7 +261,7 @@
 	}
    	.yanshou .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.15rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
@@ -270,7 +270,7 @@
    	.yanshou .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
-		margin-right: 0.05rem;
+		margin-right: 0.1rem;
 		
    	}
    	.yanshou .daiyanshou{
