@@ -8,7 +8,7 @@
             <li  @click.stop="naviTo({path: '/zhijian'})">
                <img src="../assets/img/zhiliang.png">
             </li>
-            <li @click.stop="naviTo({path: '/jilu4'})">
+            <li @click.stop="naviTo({path: '/wenproblem'})">
                <img src="../assets/img/boss.png">
             </li>
           </ul>
@@ -37,6 +37,7 @@
 
 <script>
 import $ from 'jquery'
+import { mapState } from 'vuex'
 export default {
   name: 'jobTai',
   data () {
@@ -45,7 +46,8 @@ export default {
     }
   },
   mounted(){
-      this.getCode() 
+      this.getCode()
+      this.$store.state.count = '工作台'
   },
   methods:{
     

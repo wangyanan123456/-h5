@@ -9,8 +9,8 @@
 		</div>
 	</div>
 	<div class="problem2"  v-if='sure' >
-<!-- <div class="renwu">验收任务</div> -->
-		<div class="isthought" style="margin-top:1.5rem">问题是否解决</div>
+<div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
+		<!-- <div class="isthought" style="margin-top:1.5rem">问题是否解决</div> -->
 		<div class="sure">
 			<div class="no" @click='no'>否</div>
 			<div class="ok" @click= "yes">是</div>
@@ -100,9 +100,7 @@ import { mapState } from 'vuex'
 			
 			console.log(this.process_name)
 		},
-		computed:{
-				
-			},
+		
 		methods:{
 			gitlists(){
 				var that = this
@@ -282,14 +280,14 @@ import { mapState } from 'vuex'
 </script>
 <style type="text/css">
 	.yanshou2{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
-		min-height: 90vh;
+		min-height: 93.3vh;
 		background: #EFEFF4;
 		position: relative;
 	}
 	.yanshou2 .yanshou1{
-		top: 0.64rem;
+		top: 0.44rem;
 		width:100%;
 		height: 90vh;
 		background: #000;
@@ -299,7 +297,7 @@ import { mapState } from 'vuex'
 	}
    	.yanshou2 .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.15rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
@@ -308,7 +306,7 @@ import { mapState } from 'vuex'
    	.yanshou2 .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
-		margin-right: 0.05rem;
+		margin-right: 0.1rem;
 		
    	}
    	.yanshou2 .daiyanshou{
@@ -461,7 +459,7 @@ import { mapState } from 'vuex'
 	}
 	.yanshou2 .problem2{
 		width:2.85rem;
-		height: 3.26rem;
+		height: 2.69rem;
 		background: url('../assets/img/problem2.png') no-repeat;
 		background-image: 100% 100%;
 		background-size: 100% 100%;
@@ -494,10 +492,12 @@ import { mapState } from 'vuex'
 	.yanshou2 .sure .no{
 		background: #E7E7E7;
 		color: #999;
+		border-radius: 0.04rem
 	}
 	.yanshou2 .sure .ok{
 		background: #008CFF;
 		color: #fff;
+		border-radius: 0.04rem
 	}
 	.yanshou2 .isok{
 		width:100%;

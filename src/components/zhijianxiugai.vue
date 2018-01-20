@@ -13,9 +13,9 @@
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.1rem;">
 				<div>请选择</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" >
@@ -25,9 +25,9 @@
 			<div class="gai">整改时间</div>
 			<div class="xuan" style="margin-left: 1.7rem;">
 				<div> {{today}}</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" style="margin-top:0.1rem;border-bottom: 1px solid #e5e5e5">
@@ -38,7 +38,7 @@
 			
 		</div>
 		
-		<div class="checkdetali">{{checkList}}</div>
+		<div class="checkdetali">{{this.$route.params.goods_name}}/{{this.$route.params.process_name}}/{{this.$route.params.task_name}}</div>
 		<div class="btn" @click="keep" >修改</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
@@ -149,7 +149,7 @@
 	}
 	.xiugai .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.15rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
@@ -158,7 +158,7 @@
    	.xiugai .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
-		margin-right: 0.05rem;
+		margin-right: 0.1rem;
 		
    	}
    	.xiugai .detail{

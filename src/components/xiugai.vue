@@ -7,31 +7,31 @@
 		<div class="detail">问题描述</div>
 		<textarea class="text" v-model='mesg'></textarea>
 		<div class="name" style="border-bottom: 1px solid #e5e5e5">
-			<div class="img">
+			<div class="img" >
 				<img src="../assets/img/name.png">
 			</div>
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.05rem;">
 				<div>{{name}}</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" >
-			<div class="img">
+			<div class="img" >
 				<img src="../assets/img/data.png">
 			</div>
 			<div class="gai">整改时间</div>
 			<div class="xuan" style="margin-left: 1.7rem;">
 				<div> {{today}}</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" style="margin-top:0.1rem;border-bottom: 1px solid #e5e5e5">
-			<div class="img">
+			<div class="img" >
 				<img src="../assets/img/gai.png">
 			</div>
 			<div class="gai">检查项</div>
@@ -145,11 +145,11 @@
 	}
 	.xiugai .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.15rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
-	    left: 0.05rem;
+	    left: 0.1rem;
    }
    	.xiugai .backto img{
 		width: 0.1rem;
@@ -185,6 +185,10 @@
    		height: 0.24rem;
    		margin-top: 0.15rem;
    		margin-right: 0.1rem;
+   	}
+   	.xiugai .name .img img{
+   		width:0.24rem;
+   		height: 0.24rem;
    	}
    	.xiugai .name .gai{
    		font-size: 0.14rem;

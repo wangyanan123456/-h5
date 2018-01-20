@@ -13,9 +13,9 @@
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.1rem;">
 				<div>请选择</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png" >
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" >
@@ -25,9 +25,9 @@
 			<div class="gai">整改时间</div>
 			<div class="xuan" style="margin-left: 1.72rem;">
 				<div> {{today}}</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" style="margin-top:0.1rem;border-bottom: 1px solid #e5e5e5">
@@ -37,7 +37,7 @@
 			<div class="gai">检查项</div>
 		</div>
 		
-		<div class="checkdetali">黑眼豆豆质检/领料/称重</div>
+		<div class="checkdetali">{{this.$route.params.goods_name}}/{{this.$route.params.process_name}}/{{this.$route.params.task_name}}</div>
 		<div class="btn" @click="keep()">保存</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
@@ -105,7 +105,8 @@
 									project_id:that.$route.params.project_id,
 									goods_id:that.$route.params.goods_id,
 									goods_id:that.$route.params.goods_id,
-									task_name:that.$route.params.task_name
+									task_name:that.$route.params.task_name,
+									process_name:this.$route.params.process_name
 
 						          }
 								})
@@ -173,6 +174,10 @@
    		margin-top: 0.15rem;
    		margin-right: 0.1rem;
    	}
+ 	.xiugai .name .img img{
+		width:0.24rem;
+		height: 0.24rem;
+	}
    	.xiugai .name .gai{
    		font-size: 0.14rem;
    		color: #353535;

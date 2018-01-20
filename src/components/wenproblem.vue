@@ -13,9 +13,9 @@
 			<div class="gai">整改人</div>
 			<div class="xuan" style="margin-left: 2.1rem;">
 				<div>请选择</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" >
@@ -25,9 +25,9 @@
 			<div class="gai">整改时间</div>
 			<div class="xuan" style="margin-left: 1.7rem;">
 				<div> {{today}}</div>
-				<div class="kai">
+				<!-- <div class="kai">
 					<img src="../assets/img/kai.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="name" style="margin-top:0.1rem;border-bottom: 1px solid #e5e5e5">
@@ -121,7 +121,7 @@
 </script>
 <style type="text/css">
 	.xiugai{
-		padding-top: 0.64rem;
+		padding-top: 0.44rem;
 		width:100%;
 		min-height: 90vh;
 		background: #EFEFF4;
@@ -129,7 +129,7 @@
 	}
 	.xiugai .backto{
 	    position: fixed;
-	    top:0.32rem;
+	    top:0.15rem;
 	    z-index: 1200;
 	    color: #fff;
 	    display: flex;
@@ -138,7 +138,7 @@
    	.xiugai .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
-		margin-right: 0.05rem;
+		margin-right: 0.1rem;
 		
    	}
    	.xiugai .detail{
@@ -171,6 +171,10 @@
    		margin-top: 0.15rem;
    		margin-right: 0.1rem;
    	}
+	.xiugai .name .img img{
+	width:0.24rem;
+	height: 0.24rem;
+	}
    	.xiugai .name .gai{
    		font-size: 0.14rem;
    		color: #353535;
