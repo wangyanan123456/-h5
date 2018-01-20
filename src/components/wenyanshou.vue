@@ -335,7 +335,7 @@
 
 	}
 	.yanshou .backto div{
-   		margin-top: -0.05rem;
+   		margin-top: -0.08rem;
    	}
 	.yanshou .detail{
 		height: 0.67rem;

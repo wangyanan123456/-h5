@@ -154,7 +154,7 @@
    	.xiugai .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
-		margin-right: 0.05rem;
+		margin-right: 0.08rem;
 		
    	}
    	.xiugai .backto div{
