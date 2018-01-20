@@ -133,8 +133,8 @@ export default{
 		},
 		next(list){
 			this.$router.push({
-	          path:'/zhijian4',
-	          name:'zhijian4',
+	          path:'/jilu4',
+	          name:'jilu4',
 	          params:{
 	          	goods_name:this.$route.params.goods_name,
 				goods_id:this.$route.params.goods_id,
