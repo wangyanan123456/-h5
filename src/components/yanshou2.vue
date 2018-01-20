@@ -8,7 +8,7 @@
 			<div class="ok" @click= "thought">通过</div>
 		</div>
 	</div>
-	<div class="problem2"  v-if='sure' >
+	<div class="problem2"   v-if='sure'>
 <div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
 		<!-- <div class="isthought" style="margin-top:1.5rem">问题是否解决</div> -->
 		<div class="sure">
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	
-	<div class="yanshou1" ></div>
+	<div class="yanshou1"  v-if='isthought'></div>
 	<div class="yanshou1" v-if='sure'></div>
 		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
@@ -480,7 +480,7 @@ import { mapState } from 'vuex'
 	}
 	.yanshou2 .sure{
 		display: flex;
-		margin-top: 0.41rem;
+		margin-top: 0.31rem;
 	}
 	.yanshou2 .sure div{
 		margin-left: 0.15rem;
