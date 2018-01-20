@@ -254,7 +254,7 @@ import { mapState } from 'vuex'
 	.yanshou .yanshou1{
 		top: 0.44rem;
 		width:100%;
-		height: 93.4vh;
+		min-height: 93.4vh;
 		background: #000;
 		position: absolute;
 		z-index: 3000;

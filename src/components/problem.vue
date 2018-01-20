@@ -106,7 +106,7 @@
 									goods_id:that.$route.params.goods_id,
 									goods_id:that.$route.params.goods_id,
 									task_name:that.$route.params.task_name,
-									process_name:this.$route.params.process_name
+									process_name:that.$route.params.process_name
 
 						          }
 								})
