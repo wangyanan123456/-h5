@@ -11,7 +11,7 @@
 	<div class="problem2"   v-if='sure'>
 <div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
 		<!-- <div class="isthought" style="margin-top:1.5rem">问题是否解决</div> -->
-		<div class="sure">
+		<div class="sure" style="margin-top: 0.1rem">
 			<div class="no" @click='no'>否</div>
 			<div class="ok" @click= "yes">是</div>
 		</div>
