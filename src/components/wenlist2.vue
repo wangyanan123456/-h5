@@ -31,7 +31,7 @@
 						<div>
 			  	 			<label><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id"><span></span></label><br>
 			  			</div>
-						<div class="zhong">{{list.sub_project_name}}</div>
+						<div class="zhong">{{list.goods_name}}/{{list.procedure_name}}/{{list.project_name}}</div>
 						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>

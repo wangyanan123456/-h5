@@ -10,7 +10,7 @@
 			<ul>
 				<li v-for='list in lists' @click="todetail(list)">
 					<div class="weight">
-						<div>{{list.goods_name/list.procedure_name/list.project_name}}</div>
+						<div>{{list.goods_name}}/{{list.procedure_name}}/{{list.project_name}}</div>
 						<div class="begin" v-if='list.problem!=0' >待整改</div>
 						<div class="begin" v-if='list.problem==0'>已整改</div>
 					</div>
@@ -56,6 +56,7 @@ export default{
 					if(JSON.parse(res).status ==1){
 
 						that.lists = JSON.parse(res).data
+
 
 					}
 					

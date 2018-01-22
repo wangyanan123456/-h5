@@ -38,7 +38,7 @@
 			
 		</div>
 		
-		<div class="checkdetali">{{this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name}}</div>
+		<div class="checkdetali">{{this.$route.params.goods_name}}/{{this.$route.params.project_name}}/{{this.$route.params.project_name}}</div>
 		<div class="btn" @click="keep()">保存</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>

@@ -36,7 +36,7 @@
 			</div>
 			<div class="gai">检查项</div>
 		</div>
-		<div class="checkdetali">{{this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name}}</div>
+		<div class="checkdetali">{{this.$route.params.goods_name}}/{{this.$route.params.project_name}}/{{this.$route.params.project_name}}</div>
 
 		<div class="btn" @click="keep">修改</div>
 	</div>
