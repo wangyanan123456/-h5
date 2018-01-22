@@ -1,6 +1,6 @@
 <template>
 	<div class="zhijian">
-	<div class="none"></div>
+	<!-- <div class="none"></div> -->
 	<router-view/>
 	<zhijians></zhijians>
 	</div>

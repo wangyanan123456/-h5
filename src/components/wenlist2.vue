@@ -31,7 +31,7 @@
 						<div>
 			  	 			<label><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id"><span></span></label><br>
 			  			</div>
-						<div class="zhong">{{title}}66</div>
+						<div class="zhong">{{title}}</div>
 						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>
@@ -143,7 +143,8 @@ import { mapState } from 'vuex'
 	          	project_id:this.$route.params.project_id,
 	          	goods_name:this.$route.params.goods_name,
 	          	project_name:this.$route.params.project_name,
-	          	procedure_name:this.$route.params.procedure_name
+	          	procedure_name:this.$route.params.procedure_name,
+	          	procedure_id:this.$route.params.procedure_id,
 	          }
 	        })
 	    },

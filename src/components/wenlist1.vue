@@ -6,7 +6,7 @@
 	    </div>
 
 	    <div class="hui"></div>
-		<div class="wrap">
+		<div class="wrap" v-if='!all'>
 			<ul>
 				<li v-for='list in lists' @click="todetail(list)">
 					<div class="weight">
@@ -30,6 +30,10 @@
 				
 			</ul>
 		</div>
+		<div class="wrap"  v-if='all'>
+			<div class="nothing"></div>
+			<div>暂时没有问题需要解决</div>
+		</div>
 		
 	</div>
 </template>
@@ -39,7 +43,8 @@ export default{
 	name:'wenlist1',
 	data:function(){
 		return{
-			lists: []
+			lists: [],
+			all:''
 		}
 	},
 	mounted(){
@@ -54,7 +59,7 @@ export default{
 				url:'/wio/subproject_problem/lists',
 				success:function(res){
 					if(JSON.parse(res).status ==1){
-
+						that.all = 0
 						that.lists = JSON.parse(res).data
 
 
@@ -133,6 +138,20 @@ export default{
    	}
    	.wenlist1 .backto div{
    		margin-top: -0.05rem;
+   	}
+   	.wenlist1 .wrap  .nothing{
+   		width:100%;
+   		margin: 0 auto;
+   		margin-top: 1.18rem;
+   		width:1.81rem;
+   		height:1.74rem;
+   		background: url('../assets/img/nothing.png') no-repeat;
+   		background-image: 100% 100%;
+   		background-size: 100% 100%;
+   	}
+   	.wenlist1 .wrap  .nothing img{
+   		width:3.62rem;
+   		height: 3.5rem;
    	}
 	.wenlist1 .wrap ul{
 

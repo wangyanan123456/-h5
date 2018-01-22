@@ -41,6 +41,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'wenyanshou2',
 		data:function(){
@@ -66,6 +67,7 @@
 					success:function(res){
 						if(JSON.parse(res).status == 1){
 							that.lists = JSON.parse(res).data.list
+							that.$store.state.count = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
 						}
 						
 					}

@@ -97,7 +97,8 @@ import { mapState } from 'vuex'
 		          	project_id:this.$route.params.project_id,
 		          	goods_name:this.$route.params.goods_name,
 	          	    project_name:this.$route.params.project_name,
-	          	    procedure_name:this.$route.params.procedure_name
+	          	    procedure_name:this.$route.params.procedure_name,
+	          	    procedure_id:this.$route.params.procedure_id
 		          }
 		        })
 			},
@@ -128,7 +129,8 @@ import { mapState } from 'vuex'
 						          	project_id:that.$route.params.project_id,
 						          	goods_name:that.$route.params.goods_name,
 	          	                    project_name:that.$route.params.project_name,
-	          	                    procedure_name:that.$route.params.procedure_name
+	          	                    procedure_name:that.$route.params.procedure_name,
+	          	                    procedure_id:that.$route.params.procedure_id
 						        
 						          }
 								})

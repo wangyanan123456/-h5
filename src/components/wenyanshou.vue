@@ -124,7 +124,8 @@ import { mapState } from 'vuex'
 		          	project_id:this.$route.params.project_id,
 		          	goods_name:this.$route.params.goods_name,
 	          	    project_name:this.$route.params.project_name,
-	          	    procedure_name:this.$route.params.procedure_name
+	          	    procedure_name:this.$route.params.procedure_name,
+	          	    procedure_id:this.$route.params.procedure_id
 		          	// check_item:this.$route.params.check_item
 		          }
 	     	 	})

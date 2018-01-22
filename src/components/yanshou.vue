@@ -206,7 +206,7 @@ import { mapState } from 'vuex'
 						if(JSON.parse(res).status ==1){
 							that.$router.push({
 					          path:'/yanshou2',
-					          name:'yansho2',
+					          name:'yanshou2',
 					          params:{
 					          	goods_name:that.$route.params.goods_name,
 					          	problem_id:that.problem_id,
