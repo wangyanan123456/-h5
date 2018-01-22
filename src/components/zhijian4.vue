@@ -158,7 +158,7 @@ export default{
 	.zhijian4 .backto img{
 		width: 0.06rem;
 		height: 0.1rem;
-		margin-top: 0.23rem;
+		margin-top: 0.21rem;
 		margin-right: 0.05rem;
 	}
 	.zhijian4 .wrap .back{

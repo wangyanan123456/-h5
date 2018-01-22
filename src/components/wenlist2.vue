@@ -294,7 +294,7 @@ import { mapState } from 'vuex'
 		
    	}
    	.wenlist2 .backto div{
-   		margin-top: -0.05rem;
+   		margin-top: -0.06rem;
    	}
    	.wenlist2 .daiyanshou{
    		display: flex;

@@ -161,10 +161,11 @@
 		width: 0.1rem;
 		height: 0.18rem;
 		margin-right: 0.05rem;
+		margin-top: -0.01rem;
 		
    	}
    	.xiugai .backto div{
-   		margin-top: -0.05rem;
+   		margin-top: -0.06rem;
    	}
    	.xiugai .detail{
    		margin-top: 0.1rem;
