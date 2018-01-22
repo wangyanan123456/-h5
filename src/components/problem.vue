@@ -67,7 +67,7 @@
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/wio/subproject_problem/problem_info',
+				url:'http://dev-supplier.xiangsong.cn/wio/subproject_problem/problem_info',
 				data:{
 					project_id:this.$route.params.project_id,
 				},
@@ -106,7 +106,7 @@
 					var that = this
 					$.ajax({
 						type:'POST',
-						url:'/wio/subproject_problem/add',
+						url:'http://dev-supplier.xiangsong.cn/wio/subproject_problem/add',
 						data:{
 							check_project_id:that.$route.params.check_project_id,
 							check_subproject_id:that.$route.params.check_subproject_id,

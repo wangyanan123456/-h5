@@ -39,7 +39,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'/wio/Inspection_task/goods_list',
+				url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/goods_list',
 				success:function(res){
 					if(JSON.parse(res).status==1){
 						that.lists = JSON.parse(res).data
@@ -100,7 +100,7 @@ export default{
    	.two .backto img{
 		width: 0.1rem;
 		height: 0.18rem;
-		margin-right: 0.05rem;
+		margin-right: 0.04rem;
    	}
    	.two .backto div{
    		margin-top: -0.05rem;

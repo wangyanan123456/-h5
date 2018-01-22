@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="problem2"   v-if='sure'>
-<div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
+		<div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
 		<!-- <div class="isthought" style="margin-top:1.5rem">问题是否解决</div> -->
 		<div class="sure">
 			<div class="no" @click='no'>否</div>
@@ -100,7 +100,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/wio/Inspection_task/sub_project',
+					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -133,7 +133,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 	      			type:"POST",
-	      			url:'/wio/Inspection_task/acceptance',
+	      			url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/acceptance',
 	      			data:{
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
@@ -198,7 +198,7 @@ import { mapState } from 'vuex'
 				$.ajax({
 
 					type:'POST',
-					url:'/wio/subproject_problem/edit_status',
+					url:'http://dev-supplier.xiangsong.cn/wio/subproject_problem/edit_status',
 					data:{
 				          id:that.problem_id
 					},
@@ -456,7 +456,7 @@ import { mapState } from 'vuex'
 	}
 	.yanshou2 .problem2{
 		width:2.85rem;
-		height: 2.69rem;
+		height: 2.73rem;
 		background: url('../assets/img/problem2.png') no-repeat;
 		background-image: 100% 100%;
 		background-size: 100% 100%;

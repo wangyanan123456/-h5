@@ -62,7 +62,7 @@ export default{
 			var that= this
 			$.ajax({
 				type:'POST',
-				url:'/wio/Inspection_task/procedure_project',
+				url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/procedure_project',
 				data:{
 					procedure_id:that.$route.params.procedure_id
 				},
