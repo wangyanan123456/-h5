@@ -1,29 +1,6 @@
 <template>
 	<div class="jilu3">
-	<div class="today">
-			<div>
-				<img src="../assets/img/data.png">
-			</div>
-			<div >
-				<!-- <input   v-model='today'  v-if="sure"> -->
-				<div @click="open('picker1')" size="large">
-					<input   v-model='today'  v-if="sure">
-					<div  v-if= "!sure" style="margin-top: 0.05rem">日期选择</div>
-				</div>
-			<br>
-			<mt-datetime-picker
-			  ref="picker1"
-			  type="date"
-			  v-model="value1"
-			  year-format="{value} 年"
-			  month-format="{value} 月"
-			  date-format="{value} 日"
-			  :startDate="startDate"
-			  :endDate="endDate"
-			  @confirm="handleChange">
-			</mt-datetime-picker>
-					</div>
-			</div>
+	
 		<div class="wrap">
 			<div>
 				<div class="backto" @click="backTo">
@@ -71,13 +48,8 @@ export default{
 	name:'jilu3',
 	data:function(){
 		return{
-			list3:[],
-			value: null,
-      		value1: null,
-      		startDate: new Date('2018'),
-      		endDate: new Date(),
-      		today:'请选择日期',
-      		sure:false
+			list3:[]
+			
 		}
 	},
 	mounted(){
@@ -86,25 +58,7 @@ export default{
 		this.getlist3()
 	},
 	methods:{
-		open(picker) {
-        this.$refs[picker].open();
-      },
-      formatDate(date) {
-	    const y = date.getFullYear()
-	    let m = date.getMonth() + 1
-	    m = m < 10 ? '0' + m : m
-	    let d = date.getDate()
-	    d = d < 10 ? ('0' + d) : d
-	    return y + ' ' + m + ' ' + d
-	  },
-      handleChange(value) {
-        this.date1 = value.toString();
-       	var d = new Date(this.date1);
-          var  nowd = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() 
-          console.log(nowd)
-          this.sure = true
-          this.today = nowd
-      },
+		
 		getlist3(){
 			var that= this
 			$.ajax({
@@ -175,7 +129,7 @@ export default{
 		background: #fff;
 		line-height: 0.46rem;
 		padding-left: 0.15rem;
-		margin-top: 0.5rem;
+		margin-top: 0.1rem;
 	}
 	.jilu3 .backto{
 		display: flex;
@@ -258,34 +212,7 @@ export default{
 		font-size: 0.14rem;
 		color: #1AAD19;
 	}
-	.jilu3 .today {
-		width:3.45rem;
-		height: 0.35rem;
-		background: #fff;
-		margin-bottom: 0.15rem;
-		border-radius: 0.24rem;
-		display: flex;
-		position: fixed;
-		top:1.05rem;
-		left: 0.15rem;
-		color: #999;
-		z-index: 2000;
-	}
-	.jilu3 .today  input{
-		border:none;
-		height: 0.25rem;
-		line-height: 0.25rem;
-		width:1.5rem;
-		color: #999;
-		margin-top: 0.05rem;
-	}
-	.jilu3 .today img{
-		width:0.17rem;
-		height: 0.16rem;
-		margin-left:0.17rem;
-		margin-top: 0.1rem;
-		margin-right: 0.05rem;
-	}
+	
 
 	
 </style>

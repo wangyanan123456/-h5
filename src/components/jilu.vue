@@ -5,6 +5,31 @@
       <div>返回</div>
     </div>
     <div class="hui"></div>
+
+    <div class="today">
+			<div>
+				<img src="../assets/img/data.png">
+			</div>
+			<div >
+				<!-- <input   v-model='today'  v-if="sure"> -->
+				<div @click="open('picker1')" size="large">
+					<input   v-model='today'  v-if="sure">
+					<div  v-if= "!sure" style="margin-top: 0.05rem">日期选择</div>
+				</div>
+			<br>
+			<mt-datetime-picker
+			  ref="picker1"
+			  type="date"
+			  v-model="value1"
+			  year-format="{value} 年"
+			  month-format="{value} 月"
+			  date-format="{value} 日"
+			  :startDate="startDate"
+			  :endDate="endDate"
+			  @confirm="handleChange">
+			</mt-datetime-picker>
+					</div>
+			</div>
     	
 		<ul>
 			<li v-for='list in lists' @click="torenwu(list)">
@@ -27,7 +52,13 @@ export default{
 	name:'zhijian2',
 	data:function(){
 		return{
-			lists:[]
+			lists:[],
+			value: null,
+      		value1: null,
+      		startDate: new Date('2018'),
+      		endDate: new Date(),
+      		today:'请选择日期',
+      		sure:false
 		}
 	},
 	mounted(){
@@ -49,6 +80,40 @@ export default{
 				}
 			})
 		},
+		open(picker) {
+        this.$refs[picker].open();
+      },
+      formatDate(date) {
+	    const y = date.getFullYear()
+	    let m = date.getMonth() + 1
+	    m = m < 10 ? '0' + m : m
+	    let d = date.getDate()
+	    d = d < 10 ? ('0' + d) : d
+	    return y + ' ' + m + ' ' + d
+	  },
+      handleChange(value) {
+        this.date1 = value.toString();
+       	var d = new Date(this.date1);
+          var  nowd = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() 
+          console.log(nowd)
+          this.sure = true
+          this.today = nowd
+          var that =  this
+          $.ajax({
+          	type:'POST',
+          	url:'/wio/Inspection_record/goods_list',
+          	data:{
+          		date:that.today
+          	},
+          	success:function(res){
+          		if(JSON.parse(res).status==1){
+						that.lists = JSON.parse(res).data
+						console.log(that.lists)
+					}
+          	}
+
+          })
+      },
 		naviTo({path, query}) {
         this.$router.push({
           path, query
@@ -72,11 +137,11 @@ export default{
 	
 	.jilu{
 		width: 100%;
-		min-height: 86.3vh;
+		min-height: 86.1vh;
 		background:#EFEFF4;
 	}
 	.jilu ul{
-		padding-top: 
+		margin-top: 0.4rem; 
 	}
 	.jilu li{
 		height: 0.5rem;
@@ -115,6 +180,34 @@ export default{
 	}
 	.jilu li:last-child{
 		border: none;
+	}
+	.jilu .today {
+		width:3.45rem;
+		height: 0.35rem;
+		background: #fff;
+		margin-bottom: 0.15rem;
+		border-radius: 0.24rem;
+		display: flex;
+		position: fixed;
+		top:1.05rem;
+		left: 0.15rem;
+		color: #999;
+		z-index: 2000;
+	}
+	.jilu .today  input{
+		border:none;
+		height: 0.25rem;
+		line-height: 0.25rem;
+		width:1.5rem;
+		color: #999;
+		margin-top: 0.05rem;
+	}
+	.jilu .today img{
+		width:0.17rem;
+		height: 0.16rem;
+		margin-left:0.17rem;
+		margin-top: 0.1rem;
+		margin-right: 0.05rem;
 	}
 
 </style>

@@ -13,7 +13,16 @@
             </li>
           </ul>
     </div>
-    <div  v-if='!img'>hi</div>
+    <div  v-if='!img'>
+        <div>
+            <div style="width:3.75rem;margin-top: 1rem;">
+              <img src="../assets/img/name.png" style="margin:0.2rem auto">
+            </div>
+          
+          <div>{{username}}</div>
+          <div style="margin:0.2rem auto">其贝雨工厂</div>
+        </div>
+    </div>
     <div class="footer">
       <ul>
       <li @click="tojobtai">
@@ -23,7 +32,7 @@
       </li>
       <li @click="tosetting">
        <div  :class=" !img?'img2':'img5'" ></div>
-          <p :style="{color:!img ? '#008CFF' : '#999'}">退出</p>
+          <p :style="{color:!img ? '#008CFF' : '#999'}">我的</p>
       </li>
       </ul>
     </div>
@@ -44,7 +53,8 @@ export default {
     return {
      img:true,
      apper:false,
-     info:''
+     info:'',
+     username:''
     }
   },
   mounted(){
@@ -94,6 +104,16 @@ export default {
     },
     tosetting:function(){
       this.img = false
+      var that = this
+      $.ajax({
+        type:'POST',
+        url:'wio/weixin_user/user_info',
+        success:function(res){
+          if(JSON.parse(res).status == 1){
+              that.username = JSON.parse(res).data.name
+            }
+        }
+      })
     },
     naviTo({path, query}) {
         this.$router.push({
