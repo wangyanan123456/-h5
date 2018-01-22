@@ -18,7 +18,7 @@
 	</div>
 	
 	<div class="yanshou1"  v-if='isthought'></div>
-	<div class="yanshou1" v-if='sure'></div>
+	<!-- <div class="yanshou1" v-if='sure'></div> -->
 		<div class="backto" @click="backTo">
 	      <img src="../assets/img/backto.png">
 	      <div>返回</div>
@@ -100,7 +100,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/sub_project',
+					url:'http://wio.xiangsong.cn/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -133,7 +133,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 	      			type:"POST",
-	      			url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/acceptance',
+	      			url:'http://wio.xiangsong.cn/wio/Inspection_task/acceptance',
 	      			data:{
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
@@ -198,15 +198,15 @@ import { mapState } from 'vuex'
 				$.ajax({
 
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/subproject_problem/edit_status',
+					url:'http://wio.xiangsong.cn/wio/subproject_problem/edit_status',
 					data:{
 				          id:that.problem_id
 					},
 					success:function(res){
 						if(JSON.parse(res).status ==1){
 							that.$router.push({
-					          path:'/yanshou',
-					          name:'yanshou',
+					          path:'/yanshou2',
+					          name:'yanshou2',
 					          params:{
 					          	goods_name:that.$route.params.goods_name,
 					          	problem_id:that.problem_id,
@@ -454,10 +454,11 @@ import { mapState } from 'vuex'
 		top:1.26rem;
 		left: 0.45rem;
 	}
-	.yanshou2 .problem2{
+	.yanshou .problem2{
 		width:2.85rem;
 		height: 2.73rem;
 		background: url('../assets/img/problem2.png') no-repeat;
+		
 		background-image: 100% 100%;
 		background-size: 100% 100%;
 		position: absolute;
@@ -466,7 +467,7 @@ import { mapState } from 'vuex'
 		left: 0.45rem;
 	}
 	.yanshou .renwu{
-		margin-top: 1.63rem;
+		margin-top: 1.56rem;
 		font-size: 0.26rem;
 		color: #363D48;
 	}

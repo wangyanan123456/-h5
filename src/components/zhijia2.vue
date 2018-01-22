@@ -39,7 +39,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/goods_list',
+				url:'http://wio.xiangsong.cn/wio/Inspection_task/goods_list',
 				success:function(res){
 					if(JSON.parse(res).status==1){
 						that.lists = JSON.parse(res).data

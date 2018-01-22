@@ -109,7 +109,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/sub_project',
+					url:'/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						

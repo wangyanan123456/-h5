@@ -56,7 +56,7 @@ export default{
 			var that = this
 			$.ajax({
 			type:'POST',
-			url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/goods_procedure',
+			url:'http://wio.xiangsong.cn/wio/Inspection_task/goods_procedure',
 			data:{
 				goods_id:this.$route.params.goods_id
 			},

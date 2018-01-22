@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="problem2"   v-if='sure'>
-<div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
+		<div class="renwu" style="font-size: 0.22rem">问题是否解决</div>
 		<!-- <div class="isthought" style="margin-top:1.5rem">问题是否解决</div> -->
 		<div class="sure">
 			<div class="no" @click='no'>否</div>
@@ -106,7 +106,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/sub_project',
+					url:'http://wio.xiangsong.cn/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -158,12 +158,12 @@ import { mapState } from 'vuex'
 		        })
 			},
 			yes(){
-				// console.log(this.problem_id)
+				console.log(this.problem_id)
 				var that = this
 				$.ajax({
 
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/subproject_problem/edit_status',
+					url:'http://wio.xiangsong.cn/wio/subproject_problem/edit_status',
 					data:{
 				          id:that.problem_id
 					},
@@ -183,6 +183,9 @@ import { mapState } from 'vuex'
 					          }
 
 					        })
+					        that.sure = false
+					        console.log(888)
+
 						}
 					}
 				})
@@ -246,7 +249,7 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 	      			type:"POST",
-	      			url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/acceptance',
+	      			url:'http://wio.xiangsong.cn/wio/Inspection_task/acceptance',
 	      			data:{
 	      				project_id:that.check_project_id,
 	      				procedure_id:that.$route.params.procedure_id
@@ -458,6 +461,7 @@ import { mapState } from 'vuex'
 		width:2.85rem;
 		height: 3.26rem;
 		background: url('../assets/img/problem.png') no-repeat;
+		background: red;
 		background-image: 100% 100%;
 		background-size: 100% 100%;
 		position: absolute;
@@ -472,12 +476,12 @@ import { mapState } from 'vuex'
 		background-image: 100% 100%;
 		background-size: 100% 100%;
 		position: absolute;
-		z-index: 4000;
+		z-index: 5000;
 		top:1.26rem;
 		left: 0.45rem;
 	}
 	.yanshou2 .renwu{
-		margin-top: 1.63rem;
+		margin-top: 1.56rem;
 		font-size: 0.26rem;
 		color: #363D48;
 	}

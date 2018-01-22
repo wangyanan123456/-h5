@@ -47,7 +47,7 @@ import $ from 'jquery'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/sub_project',
+					url:'http://wio.xiangsong.cn/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
@@ -79,7 +79,7 @@ import $ from 'jquery'
 	    	var that = this
 				$.ajax({
 					type:"POST",
-					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/start_check',
+					url:'http://wio.xiangsong.cn/wio/Inspection_task/start_check',
 					data:{
 						project_id:that.$route.params.project_id,
 						procedure_id:that.$route.params.procedure_id
