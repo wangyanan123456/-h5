@@ -76,7 +76,7 @@ import { mapState } from 'vuex'
 						that.mesg = JSON.parse(res).data.problem_desc
 						that.check_item = JSON.parse(res).data.check_item
 						that.name = JSON.parse(res).data.head_user
-						that.$store.state.count = that.$route.params.goods_name/that.$route.params.project_name/that.$route.params.project_name
+						that.$store.state.count = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
 
 					}
 				})

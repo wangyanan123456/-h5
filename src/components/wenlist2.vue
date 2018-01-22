@@ -31,7 +31,7 @@
 						<div>
 			  	 			<label><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id"><span></span></label><br>
 			  			</div>
-						<div class="zhong">{{ this.$route.params.goods_name}}/{{ this.$route.params.procedure_name}}/{{ this.$route.params.project_name}}</div>
+						<div class="zhong">{{title}}66</div>
 						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>
@@ -83,20 +83,28 @@ import { mapState } from 'vuex'
 				arr:[],
 				total:'',
 				sure:false,
-				problem_id:''
+				problem_id:'',
+				title:''
 
 			}
 		},
 		mounted(){
-			setTimeout(function(){
-          			that.apper = true
-        			},1000)
-	      		var that = this
-	      		 setTimeout(function(){
-          			that.apper = false
-        			},1000)
+
+			
+	   //    		var that = this
+	   //    		setTimeout(function(){
+    //       			that.apper = true
+    //     			},1000)
+	   //    		 setTimeout(function(){
+    //       			that.apper = false
+    //     			},1000)
+				// console.log(this.$route.params.goods_name)
 				console.log(this.$route.params)
 				this.gitlists()
+				// this.$store.state.count = '问题清单333'
+				// this.$store.state.coun='000'
+				this.$store.state.count = this.$route.params.goods_name+'/'+this.$route.params.project_name+'/'+this.$route.params.project_name
+				// /this.$route.params.project_name/this.$route.params.project_name
 				
 		},
 		methods:{
@@ -105,21 +113,26 @@ import { mapState } from 'vuex'
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'/wio/Inspection_task/sub_project',
+					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_task/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 						
 					},
 					success:function(res){
+						if(JSON.parse(res).status==1){
+
+
 						that.list2= JSON.parse(res).data.list
 						that.check_project_id = JSON.parse(res).data.check_project_id,
 
 						// that.check_project_id = JSON.parse(res).data.check_project_id
 						
 						that.total = JSON.parse(res).total,
-						that.$store.state.count = that.$route.params.goods_name/that.$route.params.project_name/that.$route.params.project_name
+						
+						that.title = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
 						// this.problem_id = list.problem_id
 						console.log(res)
+						}
 					}
 				})
 				},

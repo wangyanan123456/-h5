@@ -106,7 +106,7 @@ import { mapState } from 'vuex'
 						that.check_project_id = JSON.parse(res).data.check_project_id
 						// that.check_project_id = JSON.parse(res).data.check_project_id
 						that.total = JSON.parse(res).total
-						that.$store.state.count = that.$route.params.goods_name/that.$route.params.project_name/that.$route.params.project_name
+						that.$store.state.count = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
 						// that.total = JSON.parse(res).total
 						console.log(res)
 					}
@@ -204,29 +204,7 @@ import { mapState } from 'vuex'
 	      ok:function(list){
 	      	this.sure = true
 	      	this.problem_id = list.problem_id
-	   //    	var that = this
-				// $.ajax({
-
-				// 	type:'POST',
-				// 	url:'/api/subproject_problem/edit_status',
-				// 	data:{
-				//           id:list.problem_id
-				// 	},
-				// 	success:function(res){
-				// 		if(JSON.parse(res).status ==1){
-				// 			that.$router.push({
-				// 	          path:'/wenlist2',
-				// 	          name:'wenlist2',
-				// 	          params:{
-				// 	          	problem_id:list.problem_id,
-				// 	          	project_id:that.$route.params.project_id
-				// 	          }
-
-				// 	        })
-				// 		}
-				// 	}
-				// })
-				 
+	  
 	      },
 	      thought(){
 	      	var that = this

@@ -77,7 +77,7 @@ import { mapState } from 'vuex'
 				success:function(res){
 					if(JSON.parse(res).status==1){
 						that.name = JSON.parse(res).data.head_user
-						that.$store.state.count = that.$route.params.goods_name/that.$route.params.project_name/that.$route.params.project_name
+						that.$store.state.count = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
 					}
 					
 				}
