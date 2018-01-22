@@ -55,8 +55,10 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 export default{
 	name:'zhijian3',
+	
 	data:function(){
 		return{
 			list2:[],
@@ -71,6 +73,7 @@ export default{
 	mounted(){
 		this.getList2()
 		console.log(this.$route.params)
+		this.$store.state.count = '质检管理'
 	},
 	methods:{
 		open(picker) {

@@ -66,6 +66,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 export default{
 	name:'jilu3',
 	data:function(){
@@ -81,6 +82,7 @@ export default{
 	},
 	mounted(){
 		console.log(this.$route.params)
+		this.$store.state.count = '质检管理'
 		this.getlist3()
 	},
 	methods:{
