@@ -10,9 +10,9 @@
 			<ul>
 				<li v-for='list in lists' @click="todetail(list)">
 					<div class="weight">
-						<div>{{list.project_name}}</div>
-						<div class="begin" v-if='list.problem!=2' >待整改</div>
-						<div class="begin" v-if='list.problem==2'>已整改</div>
+						<div>{{list.goods_name/list.procedure_name/list.project_name}}</div>
+						<div class="begin" v-if='list.problem!=0' >待整改</div>
+						<div class="begin" v-if='list.problem==0'>已整改</div>
 					</div>
 					<div class="detail">
 						<div class="left">
@@ -53,8 +53,12 @@ export default{
 				type:'POST',
 				url:'/wio/subproject_problem/lists',
 				success:function(res){
-					console.log(JSON.parse(res).data)
-					that.lists = JSON.parse(res).data
+					if(JSON.parse(res).status ==1){
+
+						that.lists = JSON.parse(res).data
+
+					}
+					
 				}
 			})
 		},
@@ -72,7 +76,9 @@ export default{
 		          params:{
 		          	project_id:list.project_id,
 		          	project_name:list.project_name,
-		          	procedure_id:list.check_procedure_id
+		          	procedure_id:list.check_procedure_id,
+		          	goods_name:list.goods_name,
+		          	procedure_name:list.procedure_name
 		          }
 	        	})
 	    	}else{
@@ -82,7 +88,9 @@ export default{
 		          params:{
 		          	project_id:list.id,
 		          	project_name:list.project_name,
-		          	procedure_id:list.check_procedure_id
+		          	procedure_id:list.check_procedure_id,
+		          	goods_name:list.goods_name,
+		          	procedure_name:list.procedure_name
 		          }
 		        })
 	    	}
@@ -98,7 +106,7 @@ export default{
 	.wenlist1{
 		width:100%;
 		min-height: 86.5vh;
-		padding-top: 0.05rem;
+		padding-top: 0.01rem;
 		background: #EFEFF4;
 		/*background: red;*/
 	}

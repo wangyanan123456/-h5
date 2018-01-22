@@ -97,7 +97,7 @@ import { mapState } from 'vuex'
         			},1000)
 				console.log(this.$route.params)
 				this.gitlists()
-				this.$store.state.count = '问题清单'
+				this.$store.state.count = this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name
 		},
 		methods:{
 			
@@ -137,6 +137,11 @@ import { mapState } from 'vuex'
 	          params:{
 	          	problem_id:list.problem_id,
 	          	project_id:this.$route.params.project_id,
+	          	goods_name:this.$route.params.goods_name,
+	          	project_name:this.$route.params.project_name,
+	          	procedure_name:this.$route.params.procedure_name
+
+
 	          	// check_item:this.$route.params.check_item
 	          }
 	        })
@@ -167,6 +172,9 @@ import { mapState } from 'vuex'
 				          	project_id:that.$route.params.project_id,
 				          	check_item:that.$route.params.check_item,
 				          	procedure_id:that.$route.params.procedure_id,
+				          	goods_name:that.$route.params.goods_name,
+	          				project_name:that.$route.params.project_name,
+	          				procedure_name:that.$route.params.procedure_name
 				          }
 				      })
 					}
@@ -186,8 +194,10 @@ import { mapState } from 'vuex'
 	          	check_subproject_id:list.check_subproject_id,
 	          	check_project_id:this.check_project_id,
 	          	project_id:this.$route.params.project_id,
-	          	project_name:this.$route.params.project_name,
 	          	procedure_id:this.$route.params.procedure_id,
+	          	goods_name:this.$route.params.goods_name,
+	          	project_name:this.$route.params.project_name,
+	          	procedure_name:this.$route.params.procedure_name
 	          	// check_item:this.$route.params.check_item
 	          }
 	      })
@@ -210,7 +220,10 @@ import { mapState } from 'vuex'
 					          name:'wenlist1',
 					          params:{
 					          procedure_id:that.$route.params.procedure_id,
-								project_id:that.$route.params.project_id
+							  project_id:that.$route.params.project_id,
+							  goods_name:that.$route.params.goods_name,
+	          	              project_name:that.$route.params.project_name,
+	          	              procedure_name:that.$route.params.procedure_name
 					          }
 					        })
 		      			}

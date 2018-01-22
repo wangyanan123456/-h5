@@ -73,6 +73,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'wenyanshou',
 		data:function(){
@@ -88,6 +89,7 @@
 		mounted(){
 			console.log(this.$route.params)
 			this.gitlists()
+			this.$store.state.count = this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name
 		},
 		methods:{
 			gitlists(){
@@ -118,7 +120,10 @@
 		          params:{
 		          	check_subproject_id:list.check_subproject_id,
 		          	check_project_id:this.check_project_id,
-		          	project_id:this.$route.params.project_id
+		          	project_id:this.$route.params.project_id,
+		          	goods_name:this.$route.params.goods_name,
+	          	    project_name:this.$route.params.project_name,
+	          	    procedure_name:this.$route.params.procedure_name
 		          	// check_item:this.$route.params.check_item
 		          }
 	     	 	})
@@ -136,6 +141,9 @@
 		          params:{
 		          	project_id:this.$route.params.project_id,
 		          	procedure_id:this.$route.params.procedure_id,
+		          	goods_name:this.$route.params.goods_name,
+	          	    project_name:this.$route.params.project_name,
+	          	    procedure_name:this.$route.params.procedure_name
 		          }
 		        })
 	      },
@@ -179,6 +187,9 @@
 				          	project_id:that.$route.params.project_id,
 				          	check_item:that.$route.params.check_item,
 				          	procedure_id:that.$route.params.procedure_id,
+				          	goods_name:that.$route.params.goods_name,
+	          	            project_name:that.$route.params.project_name,
+	          	            procedure_name:that.$route.params.procedure_name
 				          }
 				      })
 					}

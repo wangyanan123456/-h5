@@ -38,12 +38,13 @@
 			
 		</div>
 		
-		<div class="checkdetali">{{check_item}}</div>
+		<div class="checkdetali">{{this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name}}</div>
 		<div class="btn" @click="keep()">保存</div>
 		<div class="toast" v-if='apper'>字符限制3-200</div>
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'wenproblem',
 		data:function(){
@@ -62,6 +63,7 @@
 			console.log(this.today)
 			this.check_item  = this.$route.params.project_name
 			this.getname()
+			this.$store.state.count = this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name
 		},
 		methods:{
 			getname:function(){
@@ -91,7 +93,10 @@
 		          path:'/wenlist2',
 		          name:'wenlist2',
 		          params:{
-		          	project_id:this.$route.params.project_id
+		          	project_id:this.$route.params.project_id,
+		          	goods_name:this.$route.params.goods_name,
+	          	    project_name:this.$route.params.project_name,
+	          	    procedure_name:this.$route.params.procedure_name
 		          }
 		        })
 			},
@@ -119,7 +124,10 @@
 					          	 path:'/wenlist2',
 					          	 name:'wenlist2',
 						          params:{
-						          	project_id:that.$route.params.project_id
+						          	project_id:that.$route.params.project_id,
+						          	goods_name:that.$route.params.goods_name,
+	          	                    project_name:that.$route.params.project_name,
+	          	                    procedure_name:that.$route.params.procedure_name
 						        
 						          }
 								})

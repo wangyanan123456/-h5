@@ -36,12 +36,13 @@
 			</div>
 			<div class="gai">检查项</div>
 		</div>
-		<div class="checkdetali">{{check_item}}</div>
+		<div class="checkdetali">{{this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name}}</div>
 
 		<div class="btn" @click="keep">修改</div>
 	</div>
 </template>
 <script type="text/javascript">
+import { mapState } from 'vuex'
 	export default{
 		name:'xiugai',
 		data:function(){
@@ -57,6 +58,8 @@
 			this.getmeg()
 			var d = new Date();
 			this.today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			this.$store.state.count = this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name
+
 			// console.log(this.today)
 		},
 		methods:{
@@ -85,6 +88,9 @@
 		          name:'wenlist2',
 		          params:{
 		          	project_id:this.$route.params.project_id,
+		          	goods_name:this.$route.params.goods_name,
+	          	    project_name:this.$route.params.project_name,
+	          	    procedure_name:this.$route.params.procedure_name
 		          }
 		        })
 			},
@@ -113,8 +119,11 @@
 					          	 name:'wenlist2',
 					          	  params:{
 						          project_id:that.$route.params.project_id,
-			          			 problem_id:that.$route.params.problem_id,
-								 problem_desc:that.mesg
+			          			  problem_id:that.$route.params.problem_id,
+								  problem_desc:that.mesg,
+								  goods_name:that.$route.params.goods_name,
+	          	                  project_name:that.$route.params.project_name,
+	          	                  procedure_name:that.$route.params.procedure_name
 									
 						          }
 								})
