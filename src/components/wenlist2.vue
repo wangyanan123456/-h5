@@ -31,7 +31,7 @@
 						<div>
 			  	 			<label><input type="checkbox" name="items" v-model='arr' v-bind:value="list.id"><span></span></label><br>
 			  			</div>
-						<div class="zhong">{{list.goods_name}}/{{list.procedure_name}}/{{list.project_name}}</div>
+						<div class="zhong">{{ this.$route.params.goods_name}}/{{ this.$route.params.procedure_name}}/{{ this.$route.params.project_name}}</div>
 						<div class="begin" @click="problem(list)">
 							<div>添加问题</div>
 							<div>
@@ -97,7 +97,7 @@ import { mapState } from 'vuex'
         			},1000)
 				console.log(this.$route.params)
 				this.gitlists()
-				this.$store.state.count = this.$route.params.goods_name/this.$route.params.project_name/this.$route.params.project_name
+				
 		},
 		methods:{
 			
@@ -117,6 +117,7 @@ import { mapState } from 'vuex'
 						// that.check_project_id = JSON.parse(res).data.check_project_id
 						
 						that.total = JSON.parse(res).total,
+						that.$store.state.count = that.$route.params.goods_name/that.$route.params.project_name/that.$route.params.project_name
 						// this.problem_id = list.problem_id
 						console.log(res)
 					}

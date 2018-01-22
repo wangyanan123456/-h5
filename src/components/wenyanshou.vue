@@ -106,6 +106,7 @@ import { mapState } from 'vuex'
 						that.check_project_id = JSON.parse(res).data.check_project_id
 						// that.check_project_id = JSON.parse(res).data.check_project_id
 						that.total = JSON.parse(res).total
+						that.$store.state.count = that.$route.params.goods_name/that.$route.params.project_name/that.$route.params.project_name
 						// that.total = JSON.parse(res).total
 						console.log(res)
 					}
