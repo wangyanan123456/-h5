@@ -5,7 +5,7 @@
 		<div class="isthought">是否通过验收任务</div>
 		<div class="sure">
 			<div class="no" @click='nothough'>不通过</div>
-			<div class="ok" @click.stop= "naviTo({path: '/zhijian4'})">通过</div>
+			<div class="ok" @click.stop= "naviTo({path: '/wenlist1'})">通过</div>
 		</div>
 	</div>
 	<div class="yanshou1" v-if='isthought'></div>
@@ -58,7 +58,7 @@
 				var that = this
 				$.ajax({
 					type:'POST',
-					url:'http://dev-supplier.xiangsong.cn/wio/Inspection_record/sub_project',
+					url:'/wio/Inspection_record/sub_project',
 					data:{
 						project_id:that.$route.params.project_id,
 	

@@ -91,20 +91,16 @@ import { mapState } from 'vuex'
 		mounted(){
 
 			
-	   //    		var that = this
-	   //    		setTimeout(function(){
-    //       			that.apper = true
-    //     			},1000)
-	   //    		 setTimeout(function(){
-    //       			that.apper = false
-    //     			},1000)
-				// console.log(this.$route.params.goods_name)
+	      		var that = this
+	      		setTimeout(function(){
+          			that.apper = true
+        			},1000)
+	      		 setTimeout(function(){
+          			that.apper = false
+        			},1000)
 				console.log(this.$route.params)
-				this.gitlists()
-				// this.$store.state.count = '问题清单333'
-				// this.$store.state.coun='000'
-				this.$store.state.count = this.$route.params.goods_name+'/'+this.$route.params.project_name+'/'+this.$route.params.project_name
-				// /this.$route.params.project_name/this.$route.params.project_name
+				that.gitlists()
+				that.$store.state.count = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
 				
 		},
 		methods:{
@@ -120,17 +116,11 @@ import { mapState } from 'vuex'
 					},
 					success:function(res){
 						if(JSON.parse(res).status==1){
-
-
 						that.list2= JSON.parse(res).data.list
-						that.check_project_id = JSON.parse(res).data.check_project_id,
+						that.check_project_id = JSON.parse(res).data.check_project_id
+						that.total = JSON.parse(res).total
 
-						// that.check_project_id = JSON.parse(res).data.check_project_id
-						
-						that.total = JSON.parse(res).total,
-						
 						that.title = that.$route.params.goods_name+'/'+that.$route.params.project_name+'/'+that.$route.params.project_name
-						// this.problem_id = list.problem_id
 						console.log(res)
 						}
 					}
@@ -154,9 +144,6 @@ import { mapState } from 'vuex'
 	          	goods_name:this.$route.params.goods_name,
 	          	project_name:this.$route.params.project_name,
 	          	procedure_name:this.$route.params.procedure_name
-
-
-	          	// check_item:this.$route.params.check_item
 	          }
 	        })
 	    },

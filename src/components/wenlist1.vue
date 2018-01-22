@@ -51,7 +51,7 @@ export default{
 			var that = this
 			$.ajax({
 				type:'POST',
-				url:'http://dev-supplier.xiangsong.cn/wio/subproject_problem/lists',
+				url:'/wio/subproject_problem/lists',
 				success:function(res){
 					if(JSON.parse(res).status ==1){
 
