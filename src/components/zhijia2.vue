@@ -101,6 +101,7 @@ export default{
 		width: 0.1rem;
 		height: 0.18rem;
 		margin-right: 0.05rem;
+		margin-top: -0.01rem;
    	}
    	.two .backto div{
    		margin-top: -0.06rem;

@@ -477,7 +477,7 @@ import { mapState } from 'vuex'
 		left: 0.45rem;
 	}
 	.yanshou2 .renwu{
-		margin-top: 1.63rem;
+		margin-top: 1.56rem;
 		font-size: 0.26rem;
 		color: #363D48;
 	}

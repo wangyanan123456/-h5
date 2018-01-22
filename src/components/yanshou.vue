@@ -454,7 +454,7 @@ import { mapState } from 'vuex'
 		top:1.26rem;
 		left: 0.45rem;
 	}
-	.yanshou2 .problem2{
+	.yanshou .problem2{
 		width:2.85rem;
 		height: 2.69rem;
 		background: url('../assets/img/problem2.png') no-repeat;
