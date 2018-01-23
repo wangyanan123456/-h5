@@ -70,7 +70,7 @@ export default{
 	
 	.jilu{
 		width: 100%;
-		min-height: 86.3vh;
+		min-height: 86.2vh;
 		background:#EFEFF4;
 	}
 	.jilu ul{

@@ -135,7 +135,7 @@ export default{
 	.jilu2{
 		/*padding-top: 0.5rem;*/
 		width:100%;
-		height: 86.3vh;
+		height: 86.2vh;
 		background: #EFEFF4;
 	}
 	.jilu2 .box{
@@ -182,7 +182,6 @@ export default{
 		/*padding-left: 4%;*/
 		border-bottom:1px solid #e5e5e5;
 		line-height: 0.51rem;
-		background: red;
 	}
 	.jilu2 li:first-child{
 		background: url('../assets/img/run2.png') no-repeat;
